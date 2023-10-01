@@ -14,8 +14,8 @@ use App\Http\Controllers\PenggunaController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('tampilanawal');
+})->name('home');
 
 Route::get('/pengguna',[PenggunaController::class, 'index'])->name('pengguna');
 
@@ -27,3 +27,7 @@ Route::post('/insertdata',[PenggunaController::class, 'insertdata'])->name('inse
 Route::get('/tampilanawal', function () {
     return view('tampilanawal');
 });
+
+Route::get('/preview', function () {
+    return view('preview');
+})->name('preview');

@@ -1,15 +1,24 @@
-<style>
+body {
+  font-family: Arial, sans-serif;
+}
 
-  .square-button {
-    width: 200px; /* Sesuaikan dengan lebar yang Anda inginkan */
-    height: 100px; /* Sesuaikan dengan tinggi yang Anda inginkan */
-    margin: 10px; /* Sesuaikan dengan margin yang Anda inginkan */
-    border-radius: 0; /* Menghapus sudut bulat (membuatnya persegi) */
-    font-size: 16px; /* Sesuaikan dengan ukuran teks yang Anda inginkan */
-    display: inline-block; /* Menjadikan tombol sebagai elemen inline-block */
-    text-align: center; /* Menengahkan teks tombol */
-    line-height: 100px; /* Menengahkan teks tombol secara vertikal */
-    text-decoration: none; /* Menghapus dekorasi tautan (underline) */
-  }
+.bodyEdit {
+  /* Gaya untuk .bodyEdit */
+}
 
-  </style>
+.cv {
+  /* Gaya untuk .cv */
+}
+
+.vertical {
+  width: 100%;
+  height: 100%;
+  background: #004C79;
+}
+
+.custom-heading {
+  color: red; /* Warna teks merah */
+  font-size: 24px; /* Ukuran font 24px */
+  font-weight: bold; /* Tebal */
+}
+
