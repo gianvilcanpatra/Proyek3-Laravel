@@ -22,3 +22,8 @@ Route::get('/pengguna',[PenggunaController::class, 'index'])->name('pengguna');
 Route::get('/tambahdata',[PenggunaController::class, 'tambahdata'])->name('tambahdata');
 
 Route::post('/insertdata',[PenggunaController::class, 'insertdata'])->name('insertdata');
+
+// Route::get('/tampilanawal',[PenggunaController::class, 'tampilanawal'])->name('tampilanwal');
+Route::get('/tampilanawal', function () {
+    return view('tampilanawal');
+});

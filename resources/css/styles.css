@@ -1,0 +1,15 @@
+<style>
+
+  .square-button {
+    width: 200px; /* Sesuaikan dengan lebar yang Anda inginkan */
+    height: 100px; /* Sesuaikan dengan tinggi yang Anda inginkan */
+    margin: 10px; /* Sesuaikan dengan margin yang Anda inginkan */
+    border-radius: 0; /* Menghapus sudut bulat (membuatnya persegi) */
+    font-size: 16px; /* Sesuaikan dengan ukuran teks yang Anda inginkan */
+    display: inline-block; /* Menjadikan tombol sebagai elemen inline-block */
+    text-align: center; /* Menengahkan teks tombol */
+    line-height: 100px; /* Menengahkan teks tombol secara vertikal */
+    text-decoration: none; /* Menghapus dekorasi tautan (underline) */
+  }
+
+  </style>

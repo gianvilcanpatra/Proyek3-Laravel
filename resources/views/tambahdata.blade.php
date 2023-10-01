@@ -11,26 +11,26 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <h1 class="text-center mb-4">Tambah Data Pegawai </h1>
-    @csrf
+    <h1 class="text-center mb-4">Isi Profil</h1>
     <div class="container">
         <div class="row justiy-content-center">
-          <div class="card">
+          <div class="col-8 justify-content-center">
+            <div class="card">
             <div class="card-body">
             <form action="/insertdata" method="POST" enctype="multipart/form-data">
-
+              @csrf   
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 <div id="emailHelp"></div>
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="exampleInputPassword1">
+                <input type="text" name="lastName" class="form-control" id="exampleInputPassword1">
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Jenis Kelamin</label>
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" name="jenisKelamin" aria-label="Default select example">
                   <option selected>Jenis Kelamin</option>
                   <option value="cowo">Male</option>
                   <option value="cewe">Female</option>
@@ -38,21 +38,22 @@
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Address</label>
-                <input type="text" class="form-control" id="exampleInputPassword1">
+                <input type="text" name="address" class="form-control" id="exampleInputPassword1">
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Nomor Handphone</label>
-                <input type="number" class="form-control" id="exampleInputPassword1">
+                <input type="number" name="nomorTelepon" class="form-control" id="exampleInputPassword1">
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Email</label>
-                <input type="email" class="form-control" id="exampleInputPassword1">
+                <input type="email" name="emailUser" class="form-control" id="exampleInputPassword1">
               </div>
               <div class="mb-3">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                {{--<input type="checkbox" class="form-check-input" id="exampleCheck1"> --}}
+                {{-- <label class="form-check-label" for="exampleCheck1"></label> --}}
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <a href="/tampilanawal" type="submit" class="btn btn-danger">Kembali</a>
+              <button type="submit" class="btn btn-primary">Simpan</button>
             </form>
             </div>
           </div>

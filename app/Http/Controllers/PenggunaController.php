@@ -17,7 +17,8 @@ class PenggunaController extends Controller
     }
 
     public function insertdata(Request $request){
-        dd($request->all());
+        //dd($request->all());
         Pengguna::create($request->all());
+        return redirect()->route('pengguna');
     }    
 }
