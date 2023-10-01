@@ -8,13 +8,18 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+
     <title>Hello, world!</title>
   </head>
+  <li class="nav-item">
+    <a class="nav-link" href="/tampilanawal">HOME</a>
+  </li>
   <body>
-    <h1 class="text-center mb-4">Data Pegawai</h1>
+    <h1 class="text-center mb-4">Isi Data Profil </h1>
 
     <div class="container">
-        <button type="button" class="btn btn-success">Tambah Data +</button>
+        {{-- <a href="/tambahdata" class="btn btn-success">MAKE CV</a> --}}
         <div class="row">
             <table class="table">
                 <thead>
@@ -41,15 +46,18 @@
                         <td>
                         <button type="button" class="btn btn-primary">Edit</button>
                         <button type="button" class="btn btn-danger">Delete</button>
-                    </td>
+                    </td>  
                   </tr>    
                 
                   @endforeach
                 </tbody>
               </table>
+              {{-- <a href="/tambahdata" class="btn btn-success square-button">MAKE CV</a>
+              <h1 class="text-center mb-4"></h1>
+              <a href="/template" class="btn btn-success square-button">TEMPLATE CV</a> --}}
+  
         </div>
     </div>
-
     
 
     <!-- Optional JavaScript; choose one of the two! -->
