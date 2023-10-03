@@ -1,0 +1,38 @@
+
+/* css tampilan awal */
+.navbar-nav .nav-item .nav-link:hover {
+    border-bottom: 2px solid black; 
+  }
+  .container h1 {
+    margin-top: 100px;
+    font-size: 30px;
+    font-family: "Georgia", serif; 
+ }
+  .container h2 {
+    font-size: 100px;
+    font-family: "Georgia", serif; 
+    margin-bottom: 30px ;
+}
+  .container h3 {
+    font-size: 20px;
+    font-family: "Georgia", serif; 
+    margin-bottom: 10px;    
+}
+@media (max-width: 1200px) {
+    .container img {
+    display: none;
+  }
+}
+/* css templet cv */      
+.navbar-nav .nav-item .nav-link:hover {
+  border-bottom: 2px solid black; 
+}
+
+@media (max-width: 1200px) {
+  .container img {
+  display: none;
+}
+}
+
+
+
