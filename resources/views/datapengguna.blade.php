@@ -1,3 +1,8 @@
+{{-- Set data pengguna ke dalam session --}}
+@php
+    session(['userData' => $data]); 
+@endphp
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -55,6 +60,9 @@
               {{-- <a href="/tambahdata" class="btn btn-success square-button">MAKE CV</a>
               <h1 class="text-center mb-4"></h1>
               <a href="/template" class="btn btn-success square-button">TEMPLATE CV</a> --}}
+              <a href="{{ route('preview') }}" class="btn btn-primary">Preview</a>
+
+
   
         </div>
     </div>

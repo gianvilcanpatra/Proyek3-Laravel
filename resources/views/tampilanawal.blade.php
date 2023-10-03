@@ -48,7 +48,7 @@
                 <a class="nav-link active  " aria-current="page" href="{{ route('home') }}">Home</a>
               </li>
               <li class="nav-item mx-3">
-                <a class="nav-link active" aria-current="page" href="{{ route('preview') }}">CV TEMPLATES</a>
+                <a class="nav-link active" aria-current="page" href="#">CV TEMPLATES</a>
               </li>
               <li class="nav-item dropdown mx-3">
                 <a class="nav-link active" aria-current="page" href="{{ route('tambahdata') }}">CREATE CV</a>
