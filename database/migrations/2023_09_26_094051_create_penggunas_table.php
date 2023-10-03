@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('firstName');
             $table->string('lastName');
-            $table->enum('jenisKelamin', ['cowo', 'cewe']);
+            $table->enum('gender', ['Male', 'Female']);
             $table->string('address');
             $table->string('emailUser');
             $table->bigInteger('nomorTelepon');
+            $table->date('tanggalLahir');
+            $table->text('deskripsi');
+            // $table->enum('');
             
             $table->timestamps();
         });

@@ -16,10 +16,12 @@ class penggunaSeeder extends Seeder
         DB::table('penggunas')->insert([
             'firstName' => 'Gian Vilcan',
             'lastName' => 'Patra',
-            'jenisKelamin' => 'cowo',
+            'gender' => 'Male',
             'address' => 'sarijadi bandung',
             'emailUser' => 'gian@gmail.com',
             'nomorTelepon' => '082283398556',
+            'tanggalLahir' => Carbon::parse('1990-05-15'),
+            'deskripsi' => 'saya adalah gian saya mahasiswa baru polban'
         ]);
     }   
 }
