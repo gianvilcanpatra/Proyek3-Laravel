@@ -36,9 +36,11 @@
                     <th scope="col">Address</th>
                     <th scope="col">No Handphone</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Birthdate</th>
+                    <th scope="col">Country</th>
                     {{-- <th scope="col">Date</th>         --}}
                     <th scope="col">Description</th>        
-                    <th scope="col">Date</th>             
+                                 
                   </tr>
                 </thead>
                 <tbody>
@@ -51,9 +53,12 @@
                         <td>{{ $row->address}}</td>
                         <td>0{{ $row->nomorTelepon}}</td>
                         <td>{{ $row->emailUser}}</td>
+                        <td>{{ $row->tanggalLahir}}</td>
+                        <td>{{ $row->country}}</td>
+                        
                         {{-- <td>{{ $row->tanggalLahir}}</td> --}}
                         <td>{{ $row->deskripsi}}</td>
-                        <td>{{ $row->tanggalLahir}}</td>
+                        
                         <td>
                         <button type="button" class="btn btn-primary">Edit</button>
                         <button type="button" class="btn btn-danger">Delete</button>

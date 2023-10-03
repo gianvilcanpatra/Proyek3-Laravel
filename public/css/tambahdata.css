@@ -1,0 +1,109 @@
+/* Atur gaya untuk body dan konten utama */
+body {
+    background-color: #fefefe;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.form-control {
+    border-color: black;
+}
+
+.form-select {
+    border-color: black;
+}
+.profile-section {
+    width: 200px; /* Sesuaikan dengan lebar yang Anda inginkan */
+    height: 200px; /* Sesuaikan dengan tinggi yang Anda inginkan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc; /* Opsional: Tambahkan garis tepi jika diperlukan */
+}
+
+.profile-image {
+    margin-top: 40%;
+    
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.card {
+    border-color: black;
+}
+
+.container {
+    height: 525px;
+    border-color: black;
+    justify-content: center;
+    min-height: 90vh;
+}
+
+.btn {
+    width: 90px;
+    height: 40px;
+}
+
+.profile-section {
+    float: left;
+    display: inline;
+    position: relative;
+    margin: 3px 0 0 0;
+    padding: 10px;
+    height: 152px;
+    width: 152px;
+    text-align: center;
+    background: #f5f5f5;
+    border-radius: 3px;
+    border: 2px dotted #dddbdb;
+    background-size: cover !important;
+    transition: all 200ms ease-in-out;
+    box-shadow: 0px 0px 3px 0px #d3cfcf;
+}
+
+.fn-ln {
+    float: left;
+    display: inline;
+    margin: 0;
+    padding: 0 0 0 20px;
+    height: auto;
+    width: calc(100% - 152px);
+}
+
+.row-2 {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.row-2-mb-3 {
+    float: left;
+    display: inline;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.col-1 { 
+    width: 100%;
+}
+
+.col-2 {
+    width: 50%;
+}
+
+.custom-col {
+    margin-left: 0px; /* Sesuaikan margin kiri sesuai kebutuhan */
+    margin-right: 0px; /* Sesuaikan margin kanan sesuai kebutuhan */
+}
+
+.col-md-6
+
+

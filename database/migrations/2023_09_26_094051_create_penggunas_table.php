@@ -21,6 +21,7 @@ return new class extends Migration
             $table->bigInteger('nomorTelepon');
             $table->date('tanggalLahir');
             $table->text('deskripsi');
+            $table->string('country');
             // $table->enum('');
             
             $table->timestamps();
