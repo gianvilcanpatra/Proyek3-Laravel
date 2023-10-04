@@ -31,3 +31,12 @@ Route::get('/tampilanawal', function () {
 Route::get('/preview', function () {
     return view('preview');
 })->name('preview');
+
+Route::get('/templatecv', function () {
+    return view('templatecv');
+})->name('templatecv');
+
+Route::get('/edit', function () {
+    $userData = session('userData')[count(session('userData')) - 1]; // Retrieve the last data from the session
+    return view('tambahdata', compact('userData'));
+})->name('edit');

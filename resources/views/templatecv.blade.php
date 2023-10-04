@@ -9,36 +9,18 @@
 <body class="bg-transparent">
     <nav class="navbar navbar-expand-md navbar-light bg-light ">
         <div class="container-fluid">
-          <a class="navbar-brand" href="http://google.com">
-             <img src ="Logo2.png"  width="100" height="100"> </a>
+          <a class="navbar-brand" href="{{ route('home') }}">
+             <img src ="image/Logo2.png"  width="100" height="100"> </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item mx-5">
-                <a class="nav-link active  " aria-current="page" href="Website.html">Home</a>
-              </li>
-              <li class="nav-item mx-5">
-                <a class="nav-link active" aria-current="page" href="CVTEMPLATES.HTML">CV TEMPLATES</a>
-              </li>
-              <li class="nav-item dropdown mx-5">
-                <a class="nav-link active" aria-current="page" href="#">CREATE CV</a>
-              </li>
-              <li class="nav-item mx-5">
-                <a class="nav-link active" aria-current="page" href="#">Modifikasi CV</a>
-              </li>
-            </ul>
-
-          </div>
         </div>
       </nav>
       <div class="container">
         <div class="row">
           <div class="col-md-4">
             <div class="card border-primary mb-4" style="max-width: 20rem;">
-              <img class="card-img-top" src="gambarCV1.jpg" alt="Card image cap">
+              <img class="card-img-top" src="image/gambarCV1.jpg" alt="Card image cap">
               <div class="card-body text-primary">
                 <div class="card-body">
                   <a href="#" class="btn btn-primary">Create CV</a>
@@ -48,7 +30,7 @@
           </div>
           <div class="col-md-4">
             <div class="card border-primary mb-4" style="max-width: 20rem;">
-              <img class="card-img-top" src="gambarCV2.jpg" alt="Card image cap">
+              <img class="card-img-top" src="image/gambarCV2.jpg" alt="Card image cap">
               <div class="card-body text-primary">
                 <div class="card-body">
                   <a href="#" class="btn btn-primary">Create CV</a>
@@ -58,7 +40,7 @@
           </div>
           <div class="col-md-4">
             <div class="card border-primary mb-4" style="max-width: 20rem;">
-              <img class="card-img-top" src="gambarCV3.jpg" alt="Card image cap">
+              <img class="card-img-top" src="image/gambarCV3.jpg" alt="Card image cap">
               <div class="card-body text-primary">
                 <div class="card-body">
                   <a href="#" class="btn btn-primary">Create CV</a>

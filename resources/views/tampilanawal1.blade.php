@@ -10,7 +10,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="http://google.com">
-             <img src ="Logo2.png"  width="100" height="100"> </a>
+             <img src ="image/Logo2.png"  width="100" height="100"> </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -35,16 +35,16 @@
         </div>
       </nav>
       <div class="container mt-5" > 
-        <h1 ><img src="gambar1.png" width="300" height="200" style="position: absolute; bottom: 0; right: 0 ; top:0;transform: translatey(50%); margin-right: 100px; ">
+        <h1 ><img src="image/gambar1.png" width="300" height="200" style="position: absolute; bottom: 0; right: 0 ; top:0;transform: translatey(50%); margin-right: 100px; ">
            WELCOME  TO MY CV CREATOR</h1>
         <h2 style="position: relative;">
             MY CV
-            <img src="gambar2.png" width="600" height="400" style="position: absolute; top: -100%; right: 0;  transform: translatey(-20%); margin-right:200px;"> 
+            <img src="image/gambar2.png" width="600" height="400" style="position: absolute; top: -100%; right: 0;  transform: translatey(-20%); margin-right:200px;"> 
         </h2>
         <h2>CREATOR</h2>
-        <img src="gambar3.png" width="600" height="400" style="position: absolute; top: 30%; right: 0;  transform: translatey(20%); margin-right:10px;">
+        <img src="image/gambar3.png" width="600" height="400" style="position: absolute; top: 30%; right: 0;  transform: translatey(20%); margin-right:10px;">
         <h3> <span id="typed-text"></span></h3> 
-        <img src="gambar1.png" width="300" height="200" style="position: absolute; bottom: 0; right: 0 ; top:0;transform: translatey(200%); margin-right: 500px; ">
+        <img src="image/gambar1.png" width="300" height="200" style="position: absolute; bottom: 0; right: 0 ; top:0;transform: translatey(200%); margin-right: 500px; ">
       </div>
 
       <script>

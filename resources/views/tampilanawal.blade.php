@@ -45,23 +45,21 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item mx-3">
-                <a class="nav-link active  " aria-current="page" href="{{ route('home') }}">Home</a>
+                <a class="nav-link active  " aria-current="page" href="{{ route('home') }}">HOME</a>
               </li>
               <li class="nav-item mx-3">
-                <a class="nav-link active" aria-current="page" href="#">CV TEMPLATES</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('templatecv') }}">CV TEMPLATES</a>
               </li>
               <li class="nav-item dropdown mx-3">
                 <a class="nav-link active" aria-current="page" href="{{ route('tambahdata') }}">CREATE CV</a>
               </li>
               <li class="nav-item mx-3">
-                <a class="nav-link active" aria-current="page" href="{{ route('pengguna') }}">Modifikasi CV</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('preview') }}">EDIT CV</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link active" aria-current="page" href="{{ route('pengguna') }}">ADMIN</a>
               </li>
             </ul>
-
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
           </div>
         </div>
       </nav>
