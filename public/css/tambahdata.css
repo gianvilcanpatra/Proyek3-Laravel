@@ -10,6 +10,13 @@ body {
     border-color: black;
 }
 
+.header-profil {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+    font-style: oblique;
+}
+
 .form-select {
     border-color: black;
 }
@@ -35,7 +42,13 @@ body {
 }
 
 .card {
-    border-color: black;
+    /* border-color: rgb(177, 174, 174); */
+    opacity: 2;
+}
+
+.card-body{
+    opacity: 2;
+    box-shadow: 0 15px 35px rgba(50,50,93,0.1), 0 5px 15px rgba(0,0,0,0.07);
 }
 
 .container {
@@ -103,7 +116,4 @@ body {
     margin-left: 0px; /* Sesuaikan margin kiri sesuai kebutuhan */
     margin-right: 0px; /* Sesuaikan margin kanan sesuai kebutuhan */
 }
-
-.col-md-6
-
 

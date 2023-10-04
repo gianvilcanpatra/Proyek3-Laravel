@@ -20,12 +20,22 @@
         </a>
     </div>
 </nav>
+<div class="prev-next-buttons">
+    <button onclick="goToSlide(1)" class="next-button">Profil</button>
+    <button onclick="goToSlide(2)" class="next-button">Riwayat Pendidikan</button>
+    <button onclick="goToSlide(3)" class="next-button">Riwayat Pekerjaan</button>
+    <button onclick="goToSlide(4)" class="next-button">Keterampilan</button>
+    <button onclick="goToSlide(5)" class="next-button">Dokumen Pendukung</button>
+</div>
+<div class="slide-form" id="slide-1">
 <h1 class="center">PROFILE</h1>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
+                    <h2 class="header-profil">PERSONAL DETAIL</h2>
+                    <hr style="margin-top: 0px; margin-bottom: 20px; color:#000000;">
                   <div class="container mb-4">
                   <div class="row-1">
                     <div class="profile-section">
@@ -284,9 +294,7 @@
                                   </div>
                               </div>
                           </div>
-                      
-                      
-                      
+                           
                       
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Address*</label>
@@ -300,7 +308,7 @@
                         </div>
                         <div class="d-flex justify-content-between">
                           <a href="/tampilanawal" class="btn btn-danger">Previous</a>
-                          <button type="submit" class="btn btn-primary">Next</button>
+                          <button onclick="nextSlide(1)">Selanjutnya</button>
                       </div>
                     </form>
                     </div>
@@ -310,6 +318,151 @@
         </div>
     </div>
 </div>
+
+<div class="slide-form" id="slide-2">
+    <h1 class="center">RIWAYAT PENDIDIKAN</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                  <div class="container mb-4">
+                  <div class="row-1">
+                    <form action="/insertdata" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                        @csrf
+                        <div class="mb-3">   
+                          <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Pendidikan Formal*</label>
+                              <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                          </div>
+                          <div class="mb-3">
+                              <label for="exampleInputPassword1" class="form-label">Jurusan*</label>
+                              <input type="text" name="lastName" class="form-control" id="exampleInputPassword1">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Tahun*</label>
+                            <input type="text" name="lastName" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        </div>
+                      </div>
+                      <button onclick="prevSlide(1)">Kembali</button>
+                      <button onclick="nextSlide(2)">Selanjutnya</button>
+                </div>
+              </div>
+             </div>
+          </div>
+        </div>
+      </div>            
+    </div>
+
+    <div class="slide-form" id="slide-3">
+        <h1 class="center">RIWAYAT PEKERJAAN</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-body">
+                      <div class="container mb-4">
+                      <div class="row-1">
+                        <form action="/insertdata" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                            @csrf
+                            <div class="mb-3">   
+                              <div class="mb-3">
+                                  <label for="exampleInputEmail1" class="form-label">Pendidikan Formal*</label>
+                                  <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                              </div>
+                              <div class="mb-3">
+                                  <label for="exampleInputPassword1" class="form-label">Jurusan*</label>
+                                  <input type="text" name="lastName" class="form-control" id="exampleInputPassword1">
+                              </div>
+                              <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Tahun*</label>
+                                <input type="text" name="lastName" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            </div>
+                          </div>
+                          <button onclick="prevSlide(1)">Kembali</button>
+                          <button onclick="nextSlide(2)">Selanjutnya</button>
+                    </div>
+                  </div>
+                 </div>
+              </div>
+            </div>
+          </div>            
+        </div>    
+
+        <div class="slide-form" id="slide-4">
+            <h1 class="center">KETERAMPILAN</h1>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <div class="card">
+                        <div class="card-body">
+                          <div class="container mb-4">
+                          <div class="row-1">
+                            <form action="/insertdata" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                                @csrf
+                                <div class="mb-3">   
+                                  <div class="mb-3">
+                                      <label for="exampleInputEmail1" class="form-label">Pendidikan Formal*</label>
+                                      <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                  </div>
+                                  <div class="mb-3">
+                                      <label for="exampleInputPassword1" class="form-label">Jurusan*</label>
+                                      <input type="text" name="lastName" class="form-control" id="exampleInputPassword1">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Tahun*</label>
+                                    <input type="text" name="lastName" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                </div>
+                              </div>
+                              <button onclick="prevSlide(1)">Kembali</button>
+                              <button onclick="nextSlide(2)">Selanjutnya</button>
+                        </div>
+                      </div>
+                     </div>
+                  </div>
+                </div>
+              </div>            
+            </div>            
+
+<div class="slide-form" id="slide-5">
+<h1 class="center">Dokumen Pendukung</h1>
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-8">
+    <div class="card">
+        <div class="card-body">
+            <div class="container mb-4">
+            <div class="row-1">
+            <form action="/insertdata" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                @csrf
+                <div class="mb-3">   
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Dokumen 1*</label>
+                        <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Dokumen 2*</label>
+                        <input type="text" name="lastName" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Dokumen 3*</label>
+                    <input type="text" name="lastName" class="form-control" id="exampleInputPassword1">
+                </div>
+                </div>
+                </div>
+                <button onclick="prevSlide(1)">Kembali</button>
+                <button onclick="nextSlide(2)">Selanjutnya</button>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </div>            
+    </div>   
+
 
 <!-- Optional JavaScript; choose one of the two! -->
 
@@ -321,8 +474,40 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 -->
+<style>
+    .prev-next-buttons {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .prev-button,
+    .next-button {
+        color: #000000;
+        border: none;
+        /* padding: 10px 20px; */
+        cursor: pointer;
+        font-size: 18px;
+        margin-right: 10px;
+        background: transparent;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .prev-button:hover,
+    .next-button:hover {
+        text-decoration: none; /* Menghapus garis bawah pada hover (opsional) */
+        color: #0056b3; /* Warna teks pada hover */
+        background: transparent; 
+    }
+
+    .slide-form {
+        display: none;
+    }
+</style>
 
 <script>
+    
+
     function validateForm() {
         var tanggalLahir = document.getElementById("tanggalLahir").value;
         
@@ -341,6 +526,30 @@
     
         return true;
     }
+
+    var currentSlide = 1;
+
+function showSlide(n) {
+    var slides = document.getElementsByClassName("slide-form");
+    if (n < 1) {
+        currentSlide = 1;
+    }
+    if (n > slides.length) {
+        currentSlide = slides.length;
+    }
+    for (var i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[currentSlide - 1].style.display = "block";
+}
+
+function goToSlide(n) {
+    currentSlide = n;
+    showSlide(n);
+}
+
+showSlide(1);
+
 </script>
 </body>
 </html>

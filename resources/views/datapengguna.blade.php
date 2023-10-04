@@ -63,6 +63,8 @@
                         <td>{{ $row->deskripsi}}</td>
                         
                         <td>
+                          
+
                           <a href="/tampilkandata/{{ $row->id }}" class="btn btn-info">Edit</a>
                           <a href="#" class="btn btn-danger">Delete</a>
                         </td>  
