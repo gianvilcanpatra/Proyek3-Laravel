@@ -44,3 +44,5 @@ Route::get('/edit', function () {
 Route::get('/tampilkandata/{id}',[PenggunaController::class, 'tampilkandata'])->name('tampilkandata');
 
 Route::post('/updatedata/{id}',[PenggunaController::class, 'updatedata'])->name('updatedata');
+
+Route::get('/delete/{id}',[PenggunaController::class, 'delete'])->name('delete');

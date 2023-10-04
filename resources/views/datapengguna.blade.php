@@ -47,9 +47,12 @@
                   </tr>
                 </thead>
                 <tbody>
+                    @php
+                      $no = 1;
+                    @endphp
                     @foreach ($data as $row)
                     <tr>
-                        <th scope="row">{{ $row->id }}</th>
+                        <th scope="row">{{ $no++ }}</th>
                         <td>{{ $row->firstName}} </td>
                         <td>{{ $row->lastName}}</td>
                         <td>{{ $row->gender}}</td>
@@ -66,7 +69,7 @@
                           
 
                           <a href="/tampilkandata/{{ $row->id }}" class="btn btn-info">Edit</a>
-                          <a href="#" class="btn btn-danger">Delete</a>
+                          <a href="/delete/{{ $row->id }}" class="btn btn-danger">Delete</a>
                         </td>  
                   </tr>    
                 

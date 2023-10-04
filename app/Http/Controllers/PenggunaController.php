@@ -36,4 +36,10 @@ class PenggunaController extends Controller
 
         return redirect()->route('pengguna')->with('success','Data Berhasil di Update');   
     }
+
+    public function delete($id){
+        $data = pengguna::find($id);
+        $data->delete();
+        return redirect()->route('pengguna');
+    }
 }

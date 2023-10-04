@@ -16,7 +16,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="image/home.png" width="70" height="70">
+            <img src="image/home.png" width="50" height="50">
         </a>
     </div>
 </nav>
