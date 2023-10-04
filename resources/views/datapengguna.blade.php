@@ -17,10 +17,13 @@
 
     <title>Hello, world!</title>
   </head>
-  <li class="nav-item">
-    <a class="nav-link" href="/tampilanawal">HOME</a>
-  </li>
   <body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="{{ route('home') }}">
+              <img src ="image/Logo2.png"  width="70" height="70"> </a>
+          </div>
+    </nav>
     <h1 class="text-center mb-4">Isi Data Profil </h1>
 
     <div class="container">
@@ -71,8 +74,11 @@
               {{-- <a href="/tambahdata" class="btn btn-success square-button">MAKE CV</a>
               <h1 class="text-center mb-4"></h1>
               <a href="/template" class="btn btn-success square-button">TEMPLATE CV</a> --}}
-              <a href="{{ route('preview') }}" class="btn btn-primary">Preview</a>
-
+              <div class="buttonPreview">
+                <div class="textPreview">
+                  <a href="{{ route('preview') }}" class="btn btn-primary">Preview</a>  
+                </div>
+              </div>
 
   
         </div>
