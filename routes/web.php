@@ -40,3 +40,7 @@ Route::get('/edit', function () {
     $userData = session('userData')[count(session('userData')) - 1]; // Retrieve the last data from the session
     return view('tambahdata', compact('userData'));
 })->name('edit');
+
+Route::get('/tampilkandata/{id}',[PenggunaController::class, 'tampilkandata'])->name('tampilkandata');
+
+Route::post('/updatedata/{id}',[PenggunaController::class, 'updatedata'])->name('updatedata');

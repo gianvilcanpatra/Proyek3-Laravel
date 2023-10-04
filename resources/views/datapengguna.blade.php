@@ -63,9 +63,9 @@
                         <td>{{ $row->deskripsi}}</td>
                         
                         <td>
-                        <button type="button" class="btn btn-primary">Edit</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
-                    </td>  
+                          <a href="/tampilkandata/{{ $row->id }}" class="btn btn-info">Edit</a>
+                          <a href="#" class="btn btn-danger">Delete</a>
+                        </td>  
                   </tr>    
                 
                   @endforeach

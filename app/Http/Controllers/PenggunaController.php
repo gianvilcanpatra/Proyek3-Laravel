@@ -18,7 +18,22 @@ class PenggunaController extends Controller
 
     public function insertdata(Request $request){
         //dd($request->all());
-        Pengguna::create($request->all());
+        pengguna::create($request->all());
         return redirect()->route('pengguna');
     }    
+
+    public function tampilkandata($id){
+        // dd($id);
+        $data = pengguna::find($id);
+        // dd($data);
+
+        return view('tampildata', compact('data'));   
+    }
+
+    public function updatedata(Request $request, $id){
+        $data = pengguna::find($id);
+        $data->update($request->all());
+
+        return redirect()->route('pengguna')->with('success','Data Berhasil di Update');   
+    }
 }
