@@ -427,42 +427,41 @@
               </div>            
             </div>            
 
-<div class="slide-form" id="slide-5">
-<h1 class="center">Dokumen Pendukung</h1>
-<div class="container">
-<div class="row justify-content-center">
-<div class="col-8">
-    <div class="card">
-        <div class="card-body">
-            <div class="container mb-4">
-            <div class="row-1">
-            <form action="/insertdata" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
-                @csrf
-                <div class="mb-3">   
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Dokumen 1*</label>
-                        <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Dokumen 2*</label>
-                        <input type="text" name="lastName" class="form-control" id="exampleInputPassword1">
-                    </div>
-                    <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Dokumen 3*</label>
-                    <input type="text" name="lastName" class="form-control" id="exampleInputPassword1">
-                </div>
-                </div>
-                </div>
-                <button onclick="prevSlide(1)">Kembali</button>
-                <button onclick="nextSlide(2)">Selanjutnya</button>
-            </div>
-        </div>
-        </div>
-        </div>
-        </div>
-    </div>            
-    </div>   
-
+            <div class="slide-form" id="slide-5">
+                <h1 class="center">Dokumen Pendukung</h1>
+                <div class="container">
+                <div class="row justify-content-center">
+                <div class="col-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="container mb-4">
+                            <div class="row-1">
+                            <form action="/insertdata" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                                @csrf
+                                <div class="mb-3">   
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Dokumen 1*</label>
+                                        <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Dokumen 2*</label>
+                                        <input type="text" name="lastName" class="form-control" id="exampleInputPassword1">
+                                    </div>
+                                    <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Dokumen 3*</label>
+                                    <input type="text" name="lastName" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                </div>
+                                </div>
+                                <button onclick="prevSlide(1)">Kembali</button>
+                                <button onclick="nextSlide(2)">Selanjutnya</button>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                    </div>            
+                    </div>   
 
 <!-- Optional JavaScript; choose one of the two! -->
 
