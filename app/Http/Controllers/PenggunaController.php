@@ -8,21 +8,24 @@ use Illuminate\Support\Facades\Storage;
 
 class PenggunaController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $data = pengguna::all();
 
-        foreach($data as $item){
-            $item->document_url = Storage::url('public/documents/'.$item->document_path);
+        foreach ($data as $item) {
+            $item->document_url = Storage::url('public/documents/' . $item->document_path);
         }
 
-        return view('datapengguna', compact('data'));   
+        return view('datapengguna', compact('data'));
     }
 
-    public function tambahdata(){
-        return view('tambahdata'); 
+    public function tambahdata()
+    {
+        return view('tambahdata');
     }
 
-    public function insertdata(Request $request){
+    public function insertdata(Request $request)
+    {
         //dd($request->all());
         // pengguna::create($request->all());
 
@@ -44,8 +47,8 @@ class PenggunaController extends Controller
             'skill' => 'required|string',
             'level' => 'required|in:novice,intermediate',
         ]);
-        
-        if($request->hasFile('image')) {
+
+        if ($request->hasFile('image')) {
             $request->file('foto')->move('fotoprofil/', $request->file('foto')->getClientOriginalName());
             $data->foto = $request->file('foto')->getClientOriginalName();
         }
@@ -67,24 +70,103 @@ class PenggunaController extends Controller
         pengguna::create($data);
 
         return redirect()->route('pengguna');
-    }    
+    }
 
-    public function tampilkandata($id){
+    public function tampilkandata($id)
+    {
         // dd($id);
         $data = pengguna::find($id);
         // dd($data);
 
-        return view('tampildata', compact('data'));   
+        return view('tampildata', compact('data'));
     }
 
-    public function updatedata(Request $request, $id){
+    public function tampil($id)
+    {
+        // dd($id);
         $data = pengguna::find($id);
-        $data->update($request->all());
+        // dd($data);
 
-        return redirect()->route('pengguna')->with('success','Data Berhasil di Update');   
+        return view('tampil', compact('data'));
     }
 
-    public function delete($id){
+    public function tampilketerampilan($id)
+    {
+        // dd($id);
+        $data = pengguna::find($id);
+        // dd($data);
+
+        return view('tampilketerampilan', compact('data'));
+    }
+
+    public function tampilriwayatpendidikan($id)
+    {
+        // dd($id);
+        $data = pengguna::find($id);
+        // dd($data);
+
+        return view('tampilriwayatpendidikan', compact('data'));
+    }
+
+    public function tampilriwayatpekerjaan($id)
+    {
+        // dd($id);
+        $data = pengguna::find($id);
+        // dd($data);
+
+        return view('tampilriwayatpekerjaan', compact('data'));
+    }
+
+    public function tampilprofil($id)
+    {
+        // dd($id);
+        $data = pengguna::find($id);
+        // dd($data);
+
+        return view('tampilprofil', compact('data'));
+    }
+
+    public function tampildokumenpendukung($id)
+    {
+        // dd($id);
+        $data = pengguna::find($id);
+        // dd($data);
+
+        return view('tampildokumenpendukung', compact('data'));
+    }
+
+    public function updatedata(Request $request, $id)
+    {
+        $data = pengguna::find($id);
+
+        $data->update($request->only([
+            'firstName',
+            'lastName',
+            'gender',
+            'address',
+            'emailUser',
+            'nomorTelepon',
+            'tanggalLahir',
+            'deskripsi',
+            'country',
+            'image',
+            // Jika Anda ingin memperbarui gambar juga
+            'pendidikanFormal',
+            'jurusan',
+            'tahunPendidikan',
+            'pekerjaan',
+            'skill',
+            'level',
+        ]));
+
+        $data->save(); // Simpan perubahan ke database
+
+        return redirect()->route('pengguna');
+    }
+
+
+    public function delete($id)
+    {
         $data = pengguna::find($id);
         $data->delete();
         return redirect()->route('pengguna');
@@ -92,15 +174,15 @@ class PenggunaController extends Controller
 
     public function simpanData(Request $request)
     {
-    $validator = Validator::make($request->all(), [
-        'tahunPendidikan' => ['required', 'regex:/^\d{4}-\d{4}$/'],
-        // ... tambahkan aturan validasi lainnya sesuai kebutuhan
-    ]);
+        $validator = Validator::make($request->all(), [
+            'tahunPendidikan' => ['required', 'regex:/^\d{4}-\d{4}$/'],
+            // ... tambahkan aturan validasi lainnya sesuai kebutuhan
+        ]);
 
-    if ($validator->fails()) {
-        return redirect()->back()->withErrors($validator)->withInput();
-    }
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
-    // Lanjutkan dengan penyimpanan data jika validasi berhasil
+        // Lanjutkan dengan penyimpanan data jika validasi berhasil
     }
 }

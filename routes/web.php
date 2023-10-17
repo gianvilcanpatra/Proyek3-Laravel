@@ -43,6 +43,16 @@ Route::get('/edit', function () {
 
 Route::get('/tampilkandata/{id}',[PenggunaController::class, 'tampilkandata'])->name('tampilkandata');
 
+Route::get('/tampil/{id}',[PenggunaController::class, 'tampil'])->name('tampil');
+
+Route::get('/tampilriwayatpendidikan/{id}',[PenggunaController::class, 'tampilriwayatpendidikan'])->name('tampilriwayatpendidikan');
+
+Route::get('/tampilriwayatpekerjaan/{id}',[PenggunaController::class, 'tampilriwayatpekerjaan'])->name('tampilriwayatpekerjaan');
+
+Route::get('/tampilprofil/{id}',[PenggunaController::class, 'tampilprofil'])->name('tampilprofil');
+
+Route::get('/tampildokumenpendukung/{id}',[PenggunaController::class, 'tampildokumenpendukung'])->name('tampildokumenpendukung');
+
 Route::post('/updatedata/{id}',[PenggunaController::class, 'updatedata'])->name('updatedata');
 
 Route::get('/delete/{id}',[PenggunaController::class, 'delete'])->name('delete');
