@@ -39,6 +39,11 @@ return new class extends Migration
             $table->string('Years')->nullable();
             $table->string('deskripsis')->nullable();
 
+            $table->string('skill');
+            $table->enum('level',['novice', 'intermediate']);
+
+            $table->string('document_name')->nullable(); 
+            $table->text('document_path')->nullable(); 
             
             $table->timestamps();
         });
