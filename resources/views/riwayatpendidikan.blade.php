@@ -34,13 +34,13 @@
                           </div>
                           <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Tahun*</label>
-                            <input type="number" name="tahunPendidikan" class="form-control" id="exampleInputPassword1">
+                            <input type="text" name="tahunPendidikan" class="form-control" id="exampleInputPassword1">
                         </div>
                         </div>
                       </div>
-                      <button onclick="prevSlide(1)">Kembali</button>
+                      {{-- <button onclick="prevSlide(1)">Kembali</button>
                       <button id="tambahRiwayat">Tambah Riwayat</button>    
-                      <button onclick="nextSlide(2)">Selanjutnya</button>
+                      <button onclick="nextSlide(2)">Selanjutnya</button> --}}
                 </div>
               </div>
              </div>
@@ -48,4 +48,22 @@
         </div>
       </div>            
     </div>
-    </div> 
+    </div>
+
+    <script>
+      const pendidikanFormalInput = document.querySelector('input[name="pendidikanFormal"]');
+      const jurusanInput = document.querySelector('input[name="jurusan"]');
+      const tahunPendidikanInput = document.querySelector('input[name="tahunPendidikan"]');
+      
+      pendidikanFormalInput.addEventListener('input', function() {
+          if (pendidikanFormalInput.value) {
+              jurusanInput.removeAttribute('disabled');
+              tahunPendidikanInput.removeAttribute('disabled');
+          } else {
+              jurusanInput.setAttribute('disabled', 'disabled');
+              tahunPendidikanInput.setAttribute('disabled', 'disabled');
+          }
+      });
+  </script>  
+</body>
+</html>   

@@ -29,6 +29,7 @@
     <div class="container">
         {{-- <a href="/tambahdata" class="btn btn-success">MAKE CV</a> --}}
         <div class="row">
+          <div class="top-table mb-3">
             <table class="table">
                 <thead>
                   <tr>
@@ -76,21 +77,34 @@
 
                 </tbody>
             </table>
+            <div class="tabel-pendidikan">
               <div>
                 @if ($row->pendidikanFormal)
                     <strong>Pendidikan Formal:</strong> {{ $row->pendidikanFormal}}
                 @endif
-            </div>
-            <div>
+              </div>
+              <div>
                 @if ($row->jurusan)
                     <strong>Jurusan:</strong> {{ $row->jurusan}}
                 @endif
-            </div>
-            <div>
+              </div>
+              <div>
                 @if ($row->tahunPendidikan)
                     <strong>Tahun Pendidikan:</strong> {{ $row->tahunPendidikan}}
                 @endif
+              </div>
             </div>
+
+            <div class="tabel-pekerjaan mt-3">
+              <div>
+                @if ($row->pendidikanFormal)
+                <strong>Pekerjaan:</strong> {{ $row->pekerjaan}}
+                @endif
+              </div>
+            </div>
+          </div>
+                
+          
             @endforeach
               {{-- <a href="/tambahdata" class="btn btn-success square-button">MAKE CV</a>
               <h1 class="text-center mb-4"></h1>

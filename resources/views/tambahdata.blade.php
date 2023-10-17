@@ -33,8 +33,7 @@
     @include('profil')
 </div>
 <div class="slide-form" id="slide-2">
-    @include('riwayatpendidikan') 
-</form>  
+    @include('riwayatpendidikan')   
 </div>
 <div class="slide-form" id="slide-3">
     @include('riwayatpekerjaan')
@@ -44,6 +43,7 @@
 </div>            
 <div class="slide-form" id="slide-5">
     @include('dokumenpendukung')
+</form>
 </div>
 </div>   
 

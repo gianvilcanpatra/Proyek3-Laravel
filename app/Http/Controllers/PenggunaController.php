@@ -19,6 +19,11 @@ class PenggunaController extends Controller
     public function insertdata(Request $request){
         //dd($request->all());
         pengguna::create($request->all());
+        
+        if($request->hasFile('image')) {
+            $request->file('foto')->move('fotoprofil/', $request->file('foto')->getClientOriginalName());
+            $data->foto = $request->file('foto')->getClientOriginalName();
+        }
         return redirect()->route('pengguna');
     }    
 
@@ -41,5 +46,19 @@ class PenggunaController extends Controller
         $data = pengguna::find($id);
         $data->delete();
         return redirect()->route('pengguna');
+    }
+
+    public function simpanData(Request $request)
+    {
+    $validator = Validator::make($request->all(), [
+        'tahunPendidikan' => ['required', 'regex:/^\d{4}-\d{4}$/'],
+        // ... tambahkan aturan validasi lainnya sesuai kebutuhan
+    ]);
+
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
+
+    // Lanjutkan dengan penyimpanan data jika validasi berhasil
     }
 }

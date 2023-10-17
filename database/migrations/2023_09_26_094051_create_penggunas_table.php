@@ -22,11 +22,16 @@ return new class extends Migration
             $table->date('tanggalLahir');
             $table->text('deskripsi');
             $table->string('country');
+            $table->string('image')->nullable();
+            
             // $table->enum('');
 
-            $table->string('pendidikanFormal');
-            $table->string('jurusan');
-            $table->string('tahunPendidikan');
+            $table->string('pendidikanFormal')->nullable();
+            $table->string('jurusan')->nullable();
+            $table->string('tahunPendidikan')->nullable();
+
+            $table->string('pekerjaan')->nullable();
+
             
             $table->timestamps();
         });

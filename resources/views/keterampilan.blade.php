@@ -38,8 +38,8 @@
                                 </div>
                                 </div>
                               </div>
-                              <button onclick="prevSlide(1)">Kembali</button>
-                              <button onclick="nextSlide(2)">Selanjutnya</button>
+                              {{-- <button onclick="prevSlide(1)">Kembali</button>
+                              <button onclick="nextSlide(2)">Selanjutnya</button> --}}
                         </div>
                       </div>
                      </div>

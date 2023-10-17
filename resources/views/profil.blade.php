@@ -27,6 +27,8 @@
                     <div class="profile-section">
                         <div class="profile-image">
                             <img src="path/to/profile-image.jpg">
+                            <label for="nomorTelepon" class="form-label">foto*</label>
+                            <input type="file" name="foto" class="form-control" id="exampleInputEmail1">
                         </div>
                         <div class="profile-details">
                         </div>
@@ -100,7 +102,7 @@
                         </div>
                         <div class="d-flex justify-content-between">
                           <a href="/tampilanawal" class="btn btn-danger">Previous</a>
-                          <button onclick="nextSlide(1)">Selanjutnya</button>
+                          
                       </div>
                     </div>
                   </div>
@@ -151,68 +153,8 @@
     }
 </style>
 
-<script>
-
-document.getElementById("tambahRiwayat").addEventListener("click", function() {
-    var pendidikanFormal = document.getElementById("exampleInputEmail1").value;
-    var jurusan = document.getElementById("exampleInputPassword1").value;
-    var tahunPendidikan = document.getElementById("exampleInputPassword1").value;
-
-    if (pendidikanFormal === "") {
-        // Jika input pendidikanFormal kosong, atur nilainya ke NULL atau lakukan tindakan yang sesuai.
-        pendidikanFormal = null;
-    }
-
-</script>  
 
 <script>
-
-    var nomorUrut = 2;
-
-
-
-    //var nomorUrut = 1; // Variabel untuk nomor urut
-  var dataRiwayat = []; // Array untuk menyimpan data riwayat
-
-  // Event handler untuk tombol "Tambah Riwayat"
-  document.getElementById("tambahRiwayat").addEventListener("click", function () {
-    tambahFormRiwayat();
-  });
-function tambahFormRiwayat() {
-  var formRiwayat = `
-    <div class="mb-3">
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Pendidikan Formal*</label>
-        <input type="text" name="pendidikanFormal" class="form-control" required>
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Jurusan*</label>
-        <input type="text" name="jurusan" class="form-control">
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Tahun*</label>
-        <input type="number" name="tahunPendidikan" class="form-control">
-      </div>
-    </div>
-  `;
-
-  // Tambahkan nomor urut di atas inputan pendidikan formal
-  var nomorUrutElement = `<div class="nomor-urut">${nomorUrut++}</div>`;
-  var garisPutusElement = `<div class="garis-putus"></div>`;
-
-  // Gabungkan elemen nomor urut, garis putus, dan formulir pendidikan
-  formRiwayat = nomorUrutElement + garisPutusElement + formRiwayat;
-
-  // Buat elemen div baru untuk inputan riwayat pendidikan
-  var divRiwayatBaru = document.createElement("div");
-  divRiwayatBaru.className = "riwayat"; // Tambahkan class "riwayat" untuk pembatas
-  divRiwayatBaru.innerHTML = formRiwayat;
-
-  // Tambahkan elemen div baru ke dalam container
-  document.getElementById("formRiwayatContainer").appendChild(divRiwayatBaru);
-}
-
-
 
     function validateForm() {
         var tanggalLahir = document.getElementById("tanggalLahir").value;
