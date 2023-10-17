@@ -72,10 +72,26 @@
                           <a href="/delete/{{ $row->id }}" class="btn btn-danger">Delete</a>
                         </td>  
                   </tr>    
-                
-                  @endforeach
+              
+
                 </tbody>
-              </table>
+            </table>
+              <div>
+                @if ($row->pendidikanFormal)
+                    <strong>Pendidikan Formal:</strong> {{ $row->pendidikanFormal}}
+                @endif
+            </div>
+            <div>
+                @if ($row->jurusan)
+                    <strong>Jurusan:</strong> {{ $row->jurusan}}
+                @endif
+            </div>
+            <div>
+                @if ($row->tahunPendidikan)
+                    <strong>Tahun Pendidikan:</strong> {{ $row->tahunPendidikan}}
+                @endif
+            </div>
+            @endforeach
               {{-- <a href="/tambahdata" class="btn btn-success square-button">MAKE CV</a>
               <h1 class="text-center mb-4"></h1>
               <a href="/template" class="btn btn-success square-button">TEMPLATE CV</a> --}}
