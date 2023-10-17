@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\pengguna;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PenggunaController extends Controller
 {
     public function index(){
         $data = pengguna::all();
+
+        foreach($data as $item){
+            $item->document_url = Storage::url('public/documents/'.$item->document_path);
+        }
+
         return view('datapengguna', compact('data'));   
     }
 
@@ -18,12 +24,48 @@ class PenggunaController extends Controller
 
     public function insertdata(Request $request){
         //dd($request->all());
-        pengguna::create($request->all());
+        // pengguna::create($request->all());
+
+        $data = $request->validate([
+            'firstName' => 'required|string',
+            'lastName' => 'required|string',
+            'gender' => 'required|in:Male,Female',
+            'address' => 'required|string',
+            'emailUser' => 'required|email',
+            'nomorTelepon' => 'required|numeric',
+            'tanggalLahir' => 'required|date',
+            'deskripsi' => 'required|string',
+            'country' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'pendidikanFormal' => 'nullable|string',
+            'jurusan' => 'nullable|string',
+            'tahunPendidikan' => 'nullable|string',
+            'pekerjaan' => 'nullable|string',
+            'skill' => 'required|string',
+            'level' => 'required|in:novice,intermediate',
+        ]);
         
         if($request->hasFile('image')) {
             $request->file('foto')->move('fotoprofil/', $request->file('foto')->getClientOriginalName());
             $data->foto = $request->file('foto')->getClientOriginalName();
         }
+
+        if ($request->hasFile('document')) {
+            $document = $request->file('document');
+            $documentName = $document->getClientOriginalName();
+            $documentPath = $document->store('public/documents');
+
+            $data['document_name'] = $documentName;
+            $data['document_path'] = $documentPath;
+        } else {
+            $data['document_name'] = null;
+            $data['document_path'] = null;
+        }
+
+        unset($data['document']);
+
+        pengguna::create($data);
+
         return redirect()->route('pengguna');
     }    
 

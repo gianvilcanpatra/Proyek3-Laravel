@@ -32,6 +32,11 @@ return new class extends Migration
 
             $table->string('pekerjaan')->nullable();
 
+            $table->string('skill');
+            $table->enum('level',['novice', 'intermediate']);
+
+            $table->string('document_name')->nullable(); 
+            $table->text('document_path')->nullable(); 
             
             $table->timestamps();
         });
