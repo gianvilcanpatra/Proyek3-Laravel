@@ -67,8 +67,6 @@
                         <td>{{ $row->deskripsi}}</td>
                         
                         <td>
-                          
-
                           <a href="/tampilkandata/{{ $row->id }}" class="btn btn-info">Edit</a>
                           <a href="/delete/{{ $row->id }}" class="btn btn-danger">Delete</a>
                         </td>  
@@ -76,33 +74,57 @@
               
 
                 </tbody>
-            </table>
-            <div class="tabel-pendidikan">
-              <div>
-                @if ($row->pendidikanFormal)
-                    <strong>Pendidikan Formal:</strong> {{ $row->pendidikanFormal}}
-                @endif
-              </div>
-              <div>
-                @if ($row->jurusan)
-                    <strong>Jurusan:</strong> {{ $row->jurusan}}
-                @endif
-              </div>
-              <div>
-                @if ($row->tahunPendidikan)
-                    <strong>Tahun Pendidikan:</strong> {{ $row->tahunPendidikan}}
-                @endif
-              </div>
-            </div>
-
-            <div class="tabel-pekerjaan mt-3">
-              <div>
-                @if ($row->pendidikanFormal)
-                <strong>Pekerjaan:</strong> {{ $row->pekerjaan}}
-                @endif
-              </div>
-            </div>
-          </div>
+            <table class="table">
+              @if ($row->pendidikanFormal)
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th>Pendidikan Formal:</th>
+                  <th>Jurusan:</td>
+                  <th>Tahun Pendidikan:</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">{{ $no++ }}</th>
+                  <td>{{ $row->pendidikanFormal }}</td>
+                  <td>{{ $row->jurusan }}</td>
+                  <td>{{ $row->tahunPendidikan }}</td>
+                </tr>
+              </tbody>
+              @endif
+          </table>                    
+            <table class="table">
+              @if ($row->pendidikanFormal)
+              <thead>
+                  <tr>
+                      <th scope="col">No</th>
+                      <th>Job Title</th>
+                      <th>City</th>
+                      <th>Employer</th>
+                      <th>Start Date</th>
+                      <th>Year</th>
+                      <th>End Date</th>
+                      <th>Years</th>
+                      <th>Deskripsi</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <th scope="row">{{ $no++ }}</th>
+                      <td>{{ $row->pekerjaan }}</td>
+                      <td>{{ $row->City }}</td>
+                      <td>{{ $row->Employer }}</td>
+                      <td>{{ $row->Start }}</td>
+                      <td>{{ $row->Year }}</td>
+                      <td>{{ $row->End }}</td>
+                      <td>{{ $row->Years }}</td>
+                      <td>{{ $row->deskripsis }}</td>
+                  </tr>
+              </tbody>
+              @endif
+          </table>
+          
                 
           
             @endforeach

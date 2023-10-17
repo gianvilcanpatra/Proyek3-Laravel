@@ -31,6 +31,13 @@ return new class extends Migration
             $table->string('tahunPendidikan')->nullable();
 
             $table->string('pekerjaan')->nullable();
+            $table->string('City')->nullable();
+            $table->string('Employer')->nullable();
+            $table->string('Start')->nullable();
+            $table->string('Year')->nullable();
+            $table->string('End')->nullable();
+            $table->string('Years')->nullable();
+            $table->string('deskripsis')->nullable();
 
             
             $table->timestamps();
