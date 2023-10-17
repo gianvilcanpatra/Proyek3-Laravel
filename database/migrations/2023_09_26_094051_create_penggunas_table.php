@@ -23,6 +23,10 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->string('country');
             // $table->enum('');
+
+            $table->string('pendidikanFormal');
+            $table->string('jurusan');
+            $table->string('tahunPendidikan');
             
             $table->timestamps();
         });
