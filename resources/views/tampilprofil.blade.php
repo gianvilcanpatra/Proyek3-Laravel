@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
+<!DOCTYPE html> <html lang="en"> <head>
+<!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -72,8 +70,8 @@
                                   </div>
                                   <div class="col-4 custom-col">
                                       <label for="exampleInputPassword1" class="form-label">Gender*</label>
-                                      <select class="form-select" name="gender" aria-label="Default select example" required value = "{{ $data -> gender }}">
-                                          <option value="" disabled selected></option>
+                                      <select class="form-select" name="gender" aria-label="Default select example">
+                                          <option value="{{ $data -> gender}}" disabled selected>{{ $data -> gender }}</option>
                                           <option value="Male">Male</option>
                                           <option value="Female">Female</option>
                                       </select>
@@ -81,7 +79,7 @@
                                   <div class="col-4 custom-col">
                                       <label for="country" class="form-label">Nationality*</label>
                                       <select class="form-select" name="country" aria-label="Default select example" required>
-                                          <option value="">{{ $data -> country }}</option>
+                                          <option value="{{ $data -> country }}">{{ $data -> country }}</option>
                                     
                                           <option value="Afghanistan">Afghanistan</option>
                                           <option value="Zimbabwe">Zimbabwe</option>
@@ -116,7 +114,9 @@
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--
@@ -144,9 +144,11 @@
 
     .prev-button:hover,
     .next-button:hover {
-        text-decoration: none; /* Menghapus garis bawah pada hover (opsional) */
-        color: #0056b3; /* Warna teks pada hover */
-        background: transparent; 
+        text-decoration: none;
+        /* Menghapus garis bawah pada hover (opsional) */
+        color: #0056b3;
+        /* Warna teks pada hover */
+        background: transparent;
     }
 
     .slide-form {
@@ -159,47 +161,48 @@
 
     function validateForm() {
         var tanggalLahir = document.getElementById("tanggalLahir").value;
-        
+
         // Buat objek Date dari input tanggal lahir
         var dob = new Date(tanggalLahir);
         var today = new Date();
-    
+
         // Hitung usia
         var age = today.getFullYear() - dob.getFullYear();
-    
+
         // Periksa apakah tanggal lahir valid
         if (isNaN(age) || age < 0) {
-          alert("Tanggal lahir tidak valid.");
-          return false;
+            alert("Tanggal lahir tidak valid.");
+            return false;
         }
-    
+
         return true;
     }
 
     var currentSlide = 1;
 
-function showSlide(n) {
-    var slides = document.getElementsByClassName("slide-form");
-    if (n < 1) {
-        currentSlide = 1;
+    function showSlide(n) {
+        var slides = document.getElementsByClassName("slide-form");
+        if (n < 1) {
+            currentSlide = 1;
+        }
+        if (n > slides.length) {
+            currentSlide = slides.length;
+        }
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[currentSlide - 1].style.display = "block";
     }
-    if (n > slides.length) {
-        currentSlide = slides.length;
-    }
-    for (var i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    slides[currentSlide - 1].style.display = "block";
-}
 
-function goToSlide(n) {
-    currentSlide = n;
-    showSlide(n);
-}
+    function goToSlide(n) {
+        currentSlide = n;
+        showSlide(n);
+    }
 
-showSlide(1);
+    showSlide(1);
 
 
 </script>
 </body>
+
 </html>

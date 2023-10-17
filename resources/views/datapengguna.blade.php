@@ -71,8 +71,8 @@
                             <td>{{ $row->level }}</td>
                             <td><a href="{{ $row->document_url }}">Download</a></td>
                             <td>
-                                <a href="/tampil/{{ $row->id }}" class="btn btn-info">Edit</a>
                                 <a href="/delete/{{ $row->id }}" class="btn btn-danger">Delete</a>
+                                <a href="/tampil/{{ $row->id }}" class="btn btn-info">Edit</a>
                             </td>
                         </tr>
                     @endforeach
