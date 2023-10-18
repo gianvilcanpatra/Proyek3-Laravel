@@ -20,12 +20,9 @@
             </a>
         </div>
     </nav>
-<<<<<<< HEAD
     <h1 class="text-center mb-4">Isi Data Profil </h1>
-=======
-    <h1 class="text-center mb-4">Isi Data Profil</h1>
 
->>>>>>> a2bb8156e50d673e684f02229845adc51b8cc15b
+
     <div class="container">
         <div class="row">
         <table class="table" style="margin-left: 10px; margin-right: 10px;">
@@ -56,7 +53,7 @@
                         $no = 1;
                     @endphp
                     @foreach ($data as $row)
-<<<<<<< HEAD
+
                     <tr>
                         <th scope="row">{{ $no++ }}</th>
                         <td>{{ $row->firstName}} </td>
