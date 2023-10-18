@@ -20,9 +20,14 @@
             </a>
         </div>
     </nav>
+<<<<<<< HEAD
     <h1 class="text-center mb-4">Isi Data Profil </h1>
 
 
+=======
+    <h1 class="text-center mb-4">Isi Data Profil</h1>
+
+>>>>>>> 626b7c23bbb90dae64d8a81954b6f5bf0d03de18
     <div class="container">
         <div class="row">
         <table class="table" style="margin-left: 10px; margin-right: 10px;">
@@ -53,6 +58,7 @@
                         $no = 1;
                     @endphp
                     @foreach ($data as $row)
+<<<<<<< HEAD
 
                     <tr>
                         <th scope="row">{{ $no++ }}</th>
@@ -183,6 +189,8 @@
               <a href="/template" class="btn btn-success square-button">TEMPLATE CV</a> --}}
               <div class="buttonPreview">
 
+=======
+>>>>>>> 626b7c23bbb90dae64d8a81954b6f5bf0d03de18
                         <tr>
                             <th scope="row">{{ $no++ }}</th>
                             <td>{{ $row->firstName }}</td>
@@ -202,8 +210,8 @@
                             <td>{{ $row->level }}</td>
                             <td><a href="{{ $row->document_url }}">Download</a></td>
                             <td>
-                                <a href="/delete/{{ $row->id }}" class="btn btn-danger">Delete</a>
                                 <a href="/tampil/{{ $row->id }}" class="btn btn-info">Edit</a>
+                                <a href="/delete/{{ $row->id }}" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     @endforeach
@@ -211,7 +219,6 @@
             </table>
 
             <!-- <div class="buttonPreview">
-
                 <div class="textPreview">
                     <a href="{{ route('preview') }}" class="btn btn-primary">Preview</a>
                 </div>

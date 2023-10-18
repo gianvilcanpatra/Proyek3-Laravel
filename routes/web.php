@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PenggunaController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,11 +17,13 @@ Route::get('/', function () {
     return view('tampilanawal');
 })->name('home');
 
-Route::get('/pengguna', [PenggunaController::class, 'index'])->name('pengguna');
+Route::get('/pengguna',[PenggunaController::class, 'index'])->name('pengguna');
 
-Route::get('/tambahdata', [PenggunaController::class, 'tambahdata'])->name('tambahdata');
+Route::get('/oneuser',[PenggunaController::class, 'oneuser'])->name('oneuser');
 
-Route::post('/insertdata', [PenggunaController::class, 'insertdata'])->name('insertdata');
+Route::get('/tambahdata',[PenggunaController::class, 'tambahdata'])->name('tambahdata');
+
+Route::post('/insertdata',[PenggunaController::class, 'insertdata'])->name('insertdata');
 
 // Route::get('/tampilanawal',[PenggunaController::class, 'tampilanawal'])->name('tampilanwal');
 Route::get('/tampilanawal', function () {
@@ -37,18 +38,23 @@ Route::get('/templatecv', function () {
     return view('templatecv');
 })->name('templatecv');
 
-Route::get('/tampilkandata/{id}', [PenggunaController::class, 'tampilkandata'])->name('tampilkandata');
+Route::get('/edit', function () {
+    $userData = session('userData')[count(session('userData')) - 1]; // Retrieve the last data from the session
+    return view('tambahdata', compact('userData'));
+})->name('edit');
 
-Route::get('/tampil/{id}', [PenggunaController::class, 'tampil'])->name('tampil');
+Route::get('/tampilkandata/{id}',[PenggunaController::class, 'tampilkandata'])->name('tampilkandata');
 
-Route::get('/tampilriwayatpendidikan/{id}', [PenggunaController::class, 'tampilriwayatpendidikan'])->name('tampilriwayatpendidikan');
+Route::get('/tampil/{id}',[PenggunaController::class, 'tampil'])->name('tampil');
 
-Route::get('/tampilriwayatpekerjaan/{id}', [PenggunaController::class, 'tampilriwayatpekerjaan'])->name('tampilriwayatpekerjaan');
+Route::get('/tampilriwayatpendidikan/{id}',[PenggunaController::class, 'tampilriwayatpendidikan'])->name('tampilriwayatpendidikan');
 
-Route::get('/tampilprofil/{id}', [PenggunaController::class, 'tampilprofil'])->name('tampilprofil');
+Route::get('/tampilriwayatpekerjaan/{id}',[PenggunaController::class, 'tampilriwayatpekerjaan'])->name('tampilriwayatpekerjaan');
 
-Route::get('/tampildokumenpendukung/{id}', [PenggunaController::class, 'tampildokumenpendukung'])->name('tampildokumenpendukung');
+Route::get('/tampilprofil/{id}',[PenggunaController::class, 'tampilprofil'])->name('tampilprofil');
 
-Route::post('/updatedata/{id}', [PenggunaController::class, 'updatedata'])->name('updatedata');
+Route::get('/tampildokumenpendukung/{id}',[PenggunaController::class, 'tampildokumenpendukung'])->name('tampildokumenpendukung');
 
-Route::get('/delete/{id}', [PenggunaController::class, 'delete'])->name('delete');
+Route::post('/updatedata/{id}',[PenggunaController::class, 'updatedata'])->name('updatedata');
+
+Route::get('/delete/{id}',[PenggunaController::class, 'delete'])->name('delete');
