@@ -20,12 +20,8 @@
             </a>
         </div>
     </nav>
-<<<<<<< HEAD
-    <h1 class="text-center mb-4">Isi Data Profil </h1>
-=======
     <h1 class="text-center mb-4">Isi Data Profil</h1>
 
->>>>>>> a2bb8156e50d673e684f02229845adc51b8cc15b
     <div class="container">
         <div class="row">
         <table class="table" style="margin-left: 10px; margin-right: 10px;">
@@ -56,136 +52,6 @@
                         $no = 1;
                     @endphp
                     @foreach ($data as $row)
-<<<<<<< HEAD
-                    <tr>
-                        <th scope="row">{{ $no++ }}</th>
-                        <td>{{ $row->firstName}} </td>
-                        <td>{{ $row->lastName}}</td>
-                        <td>{{ $row->gender}}</td>
-                        <td>{{ $row->address}}</td>
-                        <td>{{ $row->nomorTelepon}}</td>
-                        <td>{{ $row->emailUser}}</td>
-                        <td>{{ $row->tanggalLahir}}</td>
-                        <td>{{ $row->country}}</td>
-                        
-                        {{-- <td>{{ $row->tanggalLahir}}</td> --}}
-                        <td>{{ $row->deskripsi}}</td>
-                        
-                        <td>
-                          <a href="/tampilkandata/{{ $row->id }}" class="btn btn-info">Edit</a>
-                          <a href="/delete/{{ $row->id }}" class="btn btn-danger">Delete</a>
-                        </td>  
-                  </tr>    
-              
-
-                </tbody>
-           <table class="table">
-              @if ($row->pendidikanFormal)
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th>Pendidikan Formal:</th>
-                  <th>Jurusan:</td>
-                  <th>Tahun Pendidikan:</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">{{ $no++ }}</th>
-                  <td>{{ $row->pendidikanFormal }}</td>
-                  <td>{{ $row->jurusan }}</td>
-                  <td>{{ $row->tahunPendidikan }}</td>
-                </tr>
-              </tbody>
-              @endif
-          </table>  
-
-            <table class="table riwayat pekerjaan">
-              @if ($row->pendidikanFormal)
-              <thead>
-                  <tr>
-                      <th scope="col">No</th>
-                      <th>Job Title</th>
-                      <th>City</th>
-                      <th>Employer</th>
-                      <th>Start Date</th>
-                      <th>Year</th>
-                      <th>End Date</th>
-                      <th>Years</th>
-                      <th>Description</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <th scope="row">{{ $no++ }}</th>
-                      <td>{{ $row->pekerjaan }}</td>
-                      <td>{{ $row->jurusan}}</td>
-                      <td>{{ $row->tahunPendidikan }}</td>
-                      <td>{{ $row->pekerjaan }}</td>
-                      <td>{{ $row->jurusan }}</td>
-                      <td>{{ $row->tahunPendidikan }}</td>
-                      <td>{{ $row->tahunPendidikan }}</td>
-                      <td>{{ $row->jurusan }}</td>
-                  </tr>
-              </tbody>
-              @endif
-          </table>
-
-        </table>                    
-        <table class="table Skill">
-          @if ($row->pendidikanFormal)
-          <thead>
-              <tr>
-                  <th scope="col">No</th>
-                  <th>Pekerjaan</th>
-                  <th>Skill:</th>
-                  <th>Level</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <th scope="row">{{ $no++ }}</th>
-                  <td>{{ $row->pekerjaan }}</td>
-                  <td>{{ $row->skill}}</td>
-                  <td>{{ $row->level }}</td>      
-              </tr>
-          </tbody>
-          @endif
-      </table>
-      
-      <table class="table Skill">
-        @if ($row->pendidikanFormal)
-      <thead>
-        <tr>
-            <th scope="col">No</th>
-            <th scope="col">Nama Dokumen</th>
-            <th scope="col">Dokumen</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">{{ $no++ }}</th>
-            <td>Dokumen 1</td>
-            <td>
-                <a href="{{ $row->document_url }}" class="btn btn-primary">Download</a>
-            </td>
-        </tr>
-      </tbody>
-      @endif
-  </table>
-
-  
-        
-        <!-- Tambahkan baris-baris tambahan sesuai kebutuhan -->
-    </tbody>
-</table>
-
-            @endforeach
-              {{-- <a href="/tambahdata" class="btn btn-success square-button">MAKE CV</a>
-              <h1 class="text-center mb-4"></h1>
-              <a href="/template" class="btn btn-success square-button">TEMPLATE CV</a> --}}
-              <div class="buttonPreview">
-
                         <tr>
                             <th scope="row">{{ $no++ }}</th>
                             <td>{{ $row->firstName }}</td>
@@ -205,8 +71,8 @@
                             <td>{{ $row->level }}</td>
                             <td><a href="{{ $row->document_url }}">Download</a></td>
                             <td>
-                                <a href="/delete/{{ $row->id }}" class="btn btn-danger">Delete</a>
                                 <a href="/tampil/{{ $row->id }}" class="btn btn-info">Edit</a>
+                                <a href="/delete/{{ $row->id }}" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     @endforeach
@@ -214,7 +80,6 @@
             </table>
 
             <!-- <div class="buttonPreview">
-
                 <div class="textPreview">
                     <a href="{{ route('preview') }}" class="btn btn-primary">Preview</a>
                 </div>

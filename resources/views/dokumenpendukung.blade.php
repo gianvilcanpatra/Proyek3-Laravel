@@ -28,7 +28,7 @@
                                     </div>
                                 </div>
                                 {{-- <button onclick="prevSlide(1)">Kembali</button> --}}
-                                <button onclick="nextSlide(2)" class="btn btn-primary">Submit</button>
+                                <button onclick="nextSlide(2)">Submit</button>
                             </div>
                         </div>
                     </div>

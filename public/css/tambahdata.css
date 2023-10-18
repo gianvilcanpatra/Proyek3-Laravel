@@ -12,6 +12,16 @@ body {
     border-color: black;
 }
 
+/* Gaya untuk elemen h1 dengan teks "PROFILE" */
+h1 {
+    font-size: 36px; /* Ganti ukuran font sesuai kebutuhan */
+    font-weight: bold; /* Atur ketebalan font sesuai kebutuhan */
+    color: #333; /* Atur warna teks sesuai kebutuhan */
+    text-transform: uppercase; /* Membuat teks menjadi huruf besar semua */
+    margin-top: 50px;
+}
+
+
 .header-profil {
     font-size: 20px;
     font-weight: bold;
@@ -58,6 +68,7 @@ body {
     border-color: black;
     justify-content: center;
     min-height: 90vh;
+    margin-top: 50px;
 }
 
 .btn {
@@ -118,4 +129,34 @@ body {
     margin-left: 0px; /* Sesuaikan margin kiri sesuai kebutuhan */
     margin-right: 0px; /* Sesuaikan margin kanan sesuai kebutuhan */
 }
+
+.prev-next-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.next-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+    text-transform: uppercase;
+}
+
+.next-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Efek ketika tombol aktif */
+.next-button.active {
+    background-color: #0056b3;
+}
+
+
 
