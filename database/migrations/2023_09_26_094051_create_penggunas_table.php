@@ -32,6 +32,16 @@ return new class extends Migration
             $table->string('tahunPendidikan')->nullable();
 
             $table->string('pekerjaan')->nullable();
+            $table->string('city')->nullable();
+            $table->string('employer')->nullable();
+            $table->string('mulai')->nullable();
+            $table->integer('tahun')->nullable();
+            $table->string('terakhir')->nullable();
+            $table->integer('tambah')->nullable();
+            
+           
+            
+            
 
             $table->string('skill');
             $table->enum('level',['novice', 'intermediate']);

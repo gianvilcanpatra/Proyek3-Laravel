@@ -40,7 +40,13 @@
                         <th scope="col">Pendidikan Formal</th>
                         <th scope="col">Jurusan</th>
                         <th scope="col">Tahun Pendidikan</th>
-                        <th scope="col">Pekerjaan</th>
+                        <th scope="col">Job</th>
+                        <th scope="col">city</th>
+                        <th scope="col">Employer</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">End Date</th>
+                        <th scope="col">Year</th>
                         <th scope="col">Skill</th>
                         <th scope="col">Level</th>
                         <th scope="col">Download Document</th>
@@ -67,6 +73,12 @@
                             <td>{{ $row->jurusan }}</td>
                             <td>{{ $row->tahunPendidikan }}</td>
                             <td>{{ $row->pekerjaan }}</td>
+                            <td>{{ $row->city}}</td>
+                            <td>{{ $row->employer}}</td>
+                            <td>{{ $row->mulai}}</td>
+                            <td>{{ $row->tahun}}</td>
+                            <td>{{ $row->terakhir}}</td>
+                            <td>{{ $row->tambah}}</td>
                             <td>{{ $row->skill }}</td>
                             <td>{{ $row->level }}</td>
                             <td><a href="{{ $row->document_url }}">Download</a></td>
@@ -98,5 +110,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
-</body>
+   </body>
 </html>
