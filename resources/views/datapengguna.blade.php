@@ -22,7 +22,6 @@ session(['userData' => $data]);
           </div>
     </nav>
     <h1 class="text-center mb-4">Isi Data Profil </h1>
-
     <div class="container">
         {{-- <a href="/tambahdata" class="btn btn-success">MAKE CV</a> --}}
         <div class="row">
@@ -55,7 +54,7 @@ session(['userData' => $data]);
                         <td>{{ $row->lastName}}</td>
                         <td>{{ $row->gender}}</td>
                         <td>{{ $row->address}}</td>
-                        <td>0{{ $row->nomorTelepon}}</td>
+                        <td>{{ $row->nomorTelepon}}</td>
                         <td>{{ $row->emailUser}}</td>
                         <td>{{ $row->tanggalLahir}}</td>
                         <td>{{ $row->country}}</td>
@@ -71,8 +70,7 @@ session(['userData' => $data]);
               
 
                 </tbody>
-<<<<<<< HEAD
-            <table class="table">
+           <table class="table">
               @if ($row->pendidikanFormal)
               <thead>
                 <tr>
@@ -91,8 +89,9 @@ session(['userData' => $data]);
                 </tr>
               </tbody>
               @endif
-          </table>                    
-            <table class="table">
+          </table>  
+
+            <table class="table riwayat pekerjaan">
               @if ($row->pendidikanFormal)
               <thead>
                   <tr>
@@ -104,76 +103,74 @@ session(['userData' => $data]);
                       <th>Year</th>
                       <th>End Date</th>
                       <th>Years</th>
-                      <th>Deskripsi</th>
+                      <th>Description</th>
                   </tr>
               </thead>
               <tbody>
                   <tr>
                       <th scope="row">{{ $no++ }}</th>
                       <td>{{ $row->pekerjaan }}</td>
-                      <td>{{ $row->City }}</td>
-                      <td>{{ $row->Employer }}</td>
-                      <td>{{ $row->Start }}</td>
-                      <td>{{ $row->Year }}</td>
-                      <td>{{ $row->End }}</td>
-                      <td>{{ $row->Years }}</td>
-                      <td>{{ $row->deskripsis }}</td>
+                      <td>{{ $row->jurusan}}</td>
+                      <td>{{ $row->tahunPendidikan }}</td>
+                      <td>{{ $row->pekerjaan }}</td>
+                      <td>{{ $row->jurusan }}</td>
+                      <td>{{ $row->tahunPendidikan }}</td>
+                      <td>{{ $row->tahunPendidikan }}</td>
+                      <td>{{ $row->jurusan }}</td>
                   </tr>
               </tbody>
               @endif
           </table>
-          
-                
-          
-=======
-            </table>
-            <div class="tabel-pendidikan">
-              <div>
-                @if ($row->pendidikanFormal)
-                    <strong>Pendidikan Formal:</strong> {{ $row->pendidikanFormal}}
-                @endif
-              </div>
-              <div>
-                @if ($row->jurusan)
-                    <strong>Jurusan:</strong> {{ $row->jurusan}}
-                @endif
-              </div>
-              <div>
-                @if ($row->tahunPendidikan)
-                    <strong>Tahun Pendidikan:</strong> {{ $row->tahunPendidikan}}
-                @endif
-              </div>
-            </div>
 
-            <div class="tabel-pekerjaan mt-3">
-              <div>
-                @if ($row->pendidikanFormal)
-                <strong>Pekerjaan:</strong> {{ $row->pekerjaan}}
-                @endif
-              </div>
-            </div>
-          </div>
+        </table>                    
+        <table class="table Skill">
+          @if ($row->pendidikanFormal)
+          <thead>
+              <tr>
+                  <th scope="col">No</th>
+                  <th>Pekerjaan</th>
+                  <th>Skill:</th>
+                  <th>Level</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <th scope="row">{{ $no++ }}</th>
+                  <td>{{ $row->pekerjaan }}</td>
+                  <td>{{ $row->skill}}</td>
+                  <td>{{ $row->level }}</td>      
+              </tr>
+          </tbody>
+          @endif
+      </table>
+      
+      <table class="table Skill">
+        @if ($row->pendidikanFormal)
+      <thead>
+        <tr>
+            <th scope="col">No</th>
+            <th scope="col">Nama Dokumen</th>
+            <th scope="col">Dokumen</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">{{ $no++ }}</th>
+            <td>Dokumen 1</td>
+            <td>
+                <a href="{{ $row->document_url }}" class="btn btn-primary">Download</a>
+            </td>
+        </tr>
+      </tbody>
+      @endif
+  </table>
 
-          <div class="tabel-keterampilan">
-              <div>
-                @if ($row->skill)
-                    <strong>Skill:</strong> {{ $row->skill}}
-                @endif
-              </div>
-              <div>
-                @if ($row->level)
-                    <strong>Level:</strong> {{ $row->level}}
-                @endif
-              </div>
-          </div>
+  
+        
+        <!-- Tambahkan baris-baris tambahan sesuai kebutuhan -->
+    </tbody>
+</table>
 
-          <div class="tabel-document">
-              <div>
-                    <a href="{{ $row->document_url }}">Download</a>
-              </div>
-          </div>
-
->>>>>>> 9c38d0aea9575e16b97f75d5d2a8ca88345cb3e3
             @endforeach
               {{-- <a href="/tambahdata" class="btn btn-success square-button">MAKE CV</a>
               <h1 class="text-center mb-4"></h1>

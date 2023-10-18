@@ -23,7 +23,7 @@
                 <div class="card border-primary mb-4">
                     <img class="card-img-top" src="image/gambarCV1.jpg" alt="Card image cap">
                     <div class="card-body text-primary">
-                        <a href="#" class="btn btn-primary">Create CV</a>
+                        <a href="{{ route('tambahdata') }}" class="btn btn-primary">Create CV</a>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                 <div class="card border-primary mb-4">
                     <img class="card-img-top" src="image/gambarCV2.jpg" alt="Card image cap">
                     <div class="card-body text-primary">
-                        <a href="#" class="btn btn-primary">Create CV</a>
+                        <a href="{{ route('tambahdata') }}" class="btn btn-primary">Create CV</a>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                 <div class="card border-primary mb-4">
                     <img class="card-img-top" src="image/gambarCV3.jpg" alt="Card image cap">
                     <div class="card-body text-primary">
-                        <a href="#" class="btn btn-primary">Create CV</a>
+                        <a href="{{ route('tambahdata') }}" class="btn btn-primary">Create CV</a>
                     </div>
                 </div>
             </div>
