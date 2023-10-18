@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
+<!DOCTYPE html> <html lang="en"> <head>
+<!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,14 +13,14 @@
 <body>
 
 <h1 class="center">PROFILE</h1>
-<div class="container" >
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
-                    <!-- <h2 class="header-profil">PERSONAL DETAIL</h2>
-                    <hr style="margin-top: 0px; margin-bottom: 20px; color:#000000;"> -->
-                  <div class="container mb-4" >
+                    <h2 class="header-profil">PERSONAL DETAIL</h2>
+                    <hr style="margin-top: 0px; margin-bottom: 20px; color:#000000;">
+                  <div class="container mb-4">
                   <div class="row-1">
                     <div class="profile-section">
                         <div class="profile-image">
@@ -37,11 +35,12 @@
                         <div class="fn-ln">   
                           <div class="mb-3">
                               <label for="exampleInputEmail1" class="form-label">First Name*</label>
-                              <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                              <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required
+                              value = "{{ $data -> firstName }}">
                           </div>
                           <div class="mb-3">
                               <label for="exampleInputPassword1" class="form-label">Last Name*</label>
-                              <input type="text" name="lastName" class="form-control" id="exampleInputPassword1">
+                              <input type="text" name="lastName" class="form-control" id="exampleInputPassword1" value = "{{ $data -> lastName }}">
                           </div>
                         </div>
                       </div> 
@@ -51,13 +50,13 @@
                           <div class="col-md-6">
                               <div class="mb-3">
                                   <label for="nomorTelepon" class="form-label">Nomor Handphone*</label>
-                                  <input type="number" name="nomorTelepon" class="form-control" id="nomorTelepon" required>
+                                  <input type="number" name="nomorTelepon" class="form-control" id="nomorTelepon" required value = "{{ $data -> nomorTelepon }}">
                               </div>
                           </div>
                           <div class="col-md-6">
                               <div class="mb-3">
                                   <label for="emailUser" class="form-label">Email*</label>
-                                  <input type="email" name="emailUser" class="form-control" id="emailUser" required>
+                                  <input type="email" name="emailUser" class="form-control" id="emailUser" required value = "{{ $data -> emailUser }}">
                               </div>
                           </div>
                         </div>                      
@@ -67,12 +66,12 @@
                               <div class="row mb-3">
                                   <div class="col-4 custom-col">
                                       <label for="tanggalLahir" class="form-label">Birthdate*</label>
-                                      <input type="date" name="tanggalLahir" class="form-control" id="tanggalLahir" required>
+                                      <input type="date" name="tanggalLahir" class="form-control" id="tanggalLahir" required value = "{{ $data -> tanggalLahir }}">
                                   </div>
                                   <div class="col-4 custom-col">
                                       <label for="exampleInputPassword1" class="form-label">Gender*</label>
-                                      <select class="form-select" name="gender" aria-label="Default select example" required>
-                                          <option value="" disabled selected>Select Gender</option>
+                                      <select class="form-select" name="gender" aria-label="Default select example">
+                                          <option value="{{ $data -> gender}}" disabled selected>{{ $data -> gender }}</option>
                                           <option value="Male">Male</option>
                                           <option value="Female">Female</option>
                                       </select>
@@ -80,7 +79,7 @@
                                   <div class="col-4 custom-col">
                                       <label for="country" class="form-label">Nationality*</label>
                                       <select class="form-select" name="country" aria-label="Default select example" required>
-                                          <option value=""></option>
+                                          <option value="{{ $data -> country }}">{{ $data -> country }}</option>
                                     
                                           <option value="Afghanistan">Afghanistan</option>
                                           <option value="Zimbabwe">Zimbabwe</option>
@@ -92,13 +91,13 @@
                       
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Address*</label>
-                            <input type="text" name="address" class="form-control" id="exampleInputPassword1" required>
+                            <input type="text" name="address" class="form-control" id="exampleInputPassword1" required value = "{{ $data -> address }}">
                         </div>
                       
                         
                         <div class="mb-3">
                             <label for="deskripsi" class="form-label">Description</label>
-                            <input type="text" name="deskripsi" class="form-control" id="deskripsi">
+                            <input type="text" name="deskripsi" class="form-control" id="deskripsi" value = "{{ $data -> deskripsi }}">
                         </div>
                         <div class="d-flex justify-content-between">
                           <a href="/tampilanawal" class="btn btn-danger">Previous</a>
@@ -115,7 +114,9 @@
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--
@@ -143,9 +144,11 @@
 
     .prev-button:hover,
     .next-button:hover {
-        text-decoration: none; /* Menghapus garis bawah pada hover (opsional) */
-        color: #0056b3; /* Warna teks pada hover */
-        background: transparent; 
+        text-decoration: none;
+        /* Menghapus garis bawah pada hover (opsional) */
+        color: #0056b3;
+        /* Warna teks pada hover */
+        background: transparent;
     }
 
     .slide-form {
@@ -158,47 +161,48 @@
 
     function validateForm() {
         var tanggalLahir = document.getElementById("tanggalLahir").value;
-        
+
         // Buat objek Date dari input tanggal lahir
         var dob = new Date(tanggalLahir);
         var today = new Date();
-    
+
         // Hitung usia
         var age = today.getFullYear() - dob.getFullYear();
-    
+
         // Periksa apakah tanggal lahir valid
         if (isNaN(age) || age < 0) {
-          alert("Tanggal lahir tidak valid.");
-          return false;
+            alert("Tanggal lahir tidak valid.");
+            return false;
         }
-    
+
         return true;
     }
 
     var currentSlide = 1;
 
-function showSlide(n) {
-    var slides = document.getElementsByClassName("slide-form");
-    if (n < 1) {
-        currentSlide = 1;
+    function showSlide(n) {
+        var slides = document.getElementsByClassName("slide-form");
+        if (n < 1) {
+            currentSlide = 1;
+        }
+        if (n > slides.length) {
+            currentSlide = slides.length;
+        }
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[currentSlide - 1].style.display = "block";
     }
-    if (n > slides.length) {
-        currentSlide = slides.length;
-    }
-    for (var i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    slides[currentSlide - 1].style.display = "block";
-}
 
-function goToSlide(n) {
-    currentSlide = n;
-    showSlide(n);
-}
+    function goToSlide(n) {
+        currentSlide = n;
+        showSlide(n);
+    }
 
-showSlide(1);
+    showSlide(1);
 
 
 </script>
 </body>
+
 </html>
