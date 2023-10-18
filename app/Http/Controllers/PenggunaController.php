@@ -49,8 +49,9 @@ class PenggunaController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $request->file('foto')->move('fotoprofil/', $request->file('foto')->getClientOriginalName());
-            $data->foto = $request->file('foto')->getClientOriginalName();
+            $request->file('image')->move('fotoprofil/', $request->file('image')->getClientOriginalName());
+            $data->foto = $request->file('image')->getClientOriginalName();
+            
         }
 
         if ($request->hasFile('document')) {

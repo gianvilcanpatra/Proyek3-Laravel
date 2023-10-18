@@ -67,7 +67,7 @@
                               <div class="row mb-3">
                                   <div class="col-4 custom-col">
                                       <label for="tanggalLahir" class="form-label">Birthdate*</label>
-                                      <input type="date" name="tanggalLahir" class="form-control" id="tanggalLahir" required>
+                                      <input type="date" name="tanggalLahir" class="form-control" id="tanggalLahir" required max="<?php echo date('Y-m-d'); ?>">
                                   </div>
                                   <div class="col-4 custom-col">
                                       <label for="exampleInputPassword1" class="form-label">Gender*</label>

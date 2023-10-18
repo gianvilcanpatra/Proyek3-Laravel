@@ -72,8 +72,8 @@
                                   </div>
                                   <div class="col-4 custom-col">
                                       <label for="exampleInputPassword1" class="form-label">Gender*</label>
-                                      <select class="form-select" name="gender" aria-label="Default select example" required value = "{{ $data -> gender }}">
-                                          <option value="" disabled selected></option>
+                                      <select class="form-select" name="gender" aria-label="Default select example" value = ">{{ $data -> gender }}">
+                                          <option value="Female">{{ $data -> gender }}</option>
                                           <option value="Male">Male</option>
                                           <option value="Female">Female</option>
                                       </select>
@@ -81,7 +81,7 @@
                                   <div class="col-4 custom-col">
                                       <label for="country" class="form-label">Nationality*</label>
                                       <select class="form-select" name="country" aria-label="Default select example" required>
-                                          <option value="">{{ $data -> country }}</option>
+                                          value="">{{ $data -> country }}
                                     
                                           <option value="Afghanistan">Afghanistan</option>
                                           <option value="Zimbabwe">Zimbabwe</option>

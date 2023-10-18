@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->string('country');
             $table->string('image')->nullable();
+            $table->text('image_path')->nullable();
             
             // $table->enum('');
 

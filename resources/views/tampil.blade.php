@@ -11,13 +11,13 @@
     <title>Add Data</title>
 </head>
 <body>    
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="image/home.png" width="50" height="50">
-        </a>
-    </div>
-</nav>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ route('home') }}">
+                <img src="image/home.png" width="50" height="50">
+            </a>
+        </div>
+    </nav>
 <div class="prev-next-buttons">
     <button onclick="goToSlide(1)" class="next-button">Profil</button>
     <button onclick="goToSlide(2)" class="next-button">Riwayat Pendidikan</button>
