@@ -16,7 +16,7 @@ class PenggunaController extends Controller
             $item->document_url = Storage::url('public/documents/' . $item->document_path);
         }
 
-        return view('datapengguna', compact('data'));
+        return view('dataoneuser', compact('data'));
     }
 
     public function tambahdata()
