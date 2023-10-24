@@ -38,7 +38,7 @@ return new class extends Migration
             $table->integer('tahun')->nullable();
             $table->string('terakhir')->nullable();
             $table->integer('tambah')->nullable();
-            
+            $table->string('deskripsis')->nullable();
            
             
             

@@ -211,6 +211,10 @@
                               </div>
                         </div>
                       </div>
+                      <div class="mb-3">
+                        <label for="deskripsi" class="form-label">Description</label>
+                        <input type="text" name="deskripsis" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
                   </div>
                   </div>
                       {{-- <button onclick="prevSlide(1)">Kembali</button>

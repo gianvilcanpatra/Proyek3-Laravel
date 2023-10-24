@@ -47,6 +47,7 @@
                         <th scope="col">Year</th>
                         <th scope="col">End Date</th>
                         <th scope="col">Year</th>
+                        <th scope="col">Description</th>
                         <th scope="col">Skill</th>
                         <th scope="col">Level</th>
                         <th scope="col">Download Document</th>
@@ -79,6 +80,7 @@
                             <td>{{ $row->tahun}}</td>
                             <td>{{ $row->terakhir}}</td>
                             <td>{{ $row->tambah}}</td>
+                            <td>{{ $row->deskripsis }}</td>
                             <td>{{ $row->skill }}</td>
                             <td>{{ $row->level }}</td>
                             <td><a href="{{ $row->document_url }}">Download</a></td>

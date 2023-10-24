@@ -50,6 +50,7 @@ class PenggunaController extends Controller
             'tahun' => 'required|string',
             'terakhir' => 'required|string',
             'tambah' => 'required|string',
+            'deskripsis' => 'required|string',
             
             'level' => 'required|in:novice,intermediate',
             'skill' => 'required|string',
