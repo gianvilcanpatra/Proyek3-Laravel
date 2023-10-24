@@ -44,6 +44,14 @@ class PenggunaController extends Controller
             'jurusan' => 'nullable|string',
             'tahunPendidikan' => 'nullable|string',
             'pekerjaan' => 'nullable|string',
+            'city' => 'nullable|string',
+            'employer' => 'nullable|string',
+            'mulai' => 'required|string',
+            'tahun' => 'required|string',
+            'terakhir' => 'required|string',
+            'tambah' => 'required|string',
+            
+            'level' => 'required|in:novice,intermediate',
             'skill' => 'required|string',
             'level' => 'required|in:novice,intermediate',
         ]);
@@ -158,6 +166,8 @@ class PenggunaController extends Controller
             'pekerjaan',
             'skill',
             'level',
+            'city',
+            'employer',
         ]));
 
         $data->save(); // Simpan perubahan ke database
