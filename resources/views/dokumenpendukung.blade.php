@@ -19,7 +19,6 @@
                     <div class="card-body">
                         <div class="container mb-4">
                             <div class="row-1">
-                                @csrf
                                 <div class="mb-3">
                                     <label for="document" class="form-label">Dokumen</label>
                                     <div class="custom-file">

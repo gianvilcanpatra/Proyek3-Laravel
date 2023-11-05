@@ -21,7 +21,6 @@
           <div class="card-body">
             <div class="container mb-4">
               <div class="row-1">
-                @csrf
                 <div class="mb-3">
                   <label for="skill" class="form-label">Keahlian</label>
                   <input type="text" name="skill" class="form-control" id="skill" aria-describedby="emailHelp">

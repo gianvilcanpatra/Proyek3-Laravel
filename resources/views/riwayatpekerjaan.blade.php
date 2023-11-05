@@ -40,7 +40,7 @@
                                                                          
                             <div class="col-3">  
                              <label for="exampleInputPassword1" class="form-label">Start Date*</label>
-                             <select class="form-select" name="mulai" aria-label="Default select example" required>
+                             <select class="form-select" name="mulai" aria-label="Default select example">
                                 <option value="" disabled selected></option>
                                 <option value="January">January</option>
                                 <option value="February">February</option>
@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-3">       
                             <label for="exampleInputPassword1" class="form-label">Year*</label>
-                             <select class="form-select" name="tahun" aria-label="Default select example" required>
+                             <select class="form-select" name="tahun" aria-label="Default select example">
                                 <option value="" disabled selected></option>
                                 <option value="1960">1961</option>
                                 <option value="1962">1962</option>
@@ -125,7 +125,7 @@
                             </div>
                             <div class="col-3">  
                               <label for="exampleInputPassword1" class="form-label">End Date*</label>
-                              <select class="form-select" name="terakhir" aria-label="Default select example" required>
+                              <select class="form-select" name="terakhir" aria-label="Default select example">
                                  <option value="" disabled selected></option>
                                  <option value="January">January</option>
                                  <option value="February">February</option>
@@ -143,7 +143,7 @@
                              </div>
                              <div class="col-3">      
                               <label for="exampleInputPassword1" class="form-label">Year*</label>
-                               <select class="form-select" name="tambah" aria-label="Default select example" required>
+                               <select class="form-select" name="tambah" aria-label="Default select example">
                                   <option value="" disabled selected></option>
                                   <option value="1960">1961</option>
                                   <option value="1962">1962</option>

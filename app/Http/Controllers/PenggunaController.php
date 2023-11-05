@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dokumen;
 use App\Models\pengguna;
+use App\Models\Pekerjaan;
+use App\Models\Pendidikan;
+use App\Models\Keterampilan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class PenggunaController extends Controller
 {
     public function index()
     {
-        $data = pengguna::all();
+
+        $data = Pengguna::with('pendidikan','pekerjaan','keterampilan', 'dokumen')->get();
+        
 
         foreach ($data as $item) {
             $item->document_url = Storage::url('public/documents/' . $item->document_path);
@@ -26,67 +33,112 @@ class PenggunaController extends Controller
 
     public function insertdata(Request $request)
     {
-        //dd($request->all());
-        // pengguna::create($request->all());
+    // Validasi data input
+    $validator = Validator::make($request->all(), [
+        'firstName' => 'required|string',
+        'lastName' => 'required|string',
+        'gender' => 'required|in:Male,Female',
+        'address' => 'required|string',
+        'emailUser' => 'required|email',
+        'nomorTelepon' => 'required|numeric',
+        'tanggalLahir' => 'required|date',
+        'deskripsi' => 'required|string',
+        'country' => 'required|string',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+        'pendidikanFormal' => 'nullable|string',
+        'jurusan' => 'nullable|string',
+        'tahunPendidikan' => 'nullable|string',
+        'pekerjaan' => 'nullable|string',
+        'city' => 'nullable|string',
+        'employer' => 'nullable|string',
+        'mulai' => 'nullable|string',
+        'tahun' => 'nullable|string',
+        'terakhir' => 'nullable|string',
+        'tambah' => 'nullable|string',
+        'deskripsis' => 'nullable|string',
+        'level' => 'nullable|in:novice,intermediate',
+        'skill' => 'nullable|string',
+        'document' => 'nullable|file',
+    ]);
 
-        $data = $request->validate([
-            'firstName' => 'required|string',
-            'lastName' => 'required|string',
-            'gender' => 'required|in:Male,Female',
-            'address' => 'required|string',
-            'emailUser' => 'required|email',
-            'nomorTelepon' => 'required|numeric',
-            'tanggalLahir' => 'required|date',
-            'deskripsi' => 'required|string',
-            'country' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-            'pendidikanFormal' => 'nullable|string',
-            'jurusan' => 'nullable|string',
-            'tahunPendidikan' => 'nullable|string',
-            'pekerjaan' => 'nullable|string',
-            'city' => 'nullable|string',
-            'employer' => 'nullable|string',
-            'mulai' => 'required|string',
-            'tahun' => 'required|string',
-            'terakhir' => 'required|string',
-            'tambah' => 'required|string',
-            'deskripsis' => 'required|string',
-            
-            'level' => 'required|in:novice,intermediate',
-            'skill' => 'required|string',
-            'level' => 'required|in:novice,intermediate',
-        ]);
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
+    }
 
-        if ($request->hasFile('image')) {
-            $request->file('image')->move('fotoprofil/', $request->file('image')->getClientOriginalName());
-            $data->foto = $request->file('image')->getClientOriginalName();
-            
-        }
+    // Simpan gambar jika diunggah
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('fotoprofil', 'public');
+    }
 
-        if ($request->hasFile('document')) {
-            $document = $request->file('document');
-            $documentName = $document->getClientOriginalName();
-            $documentPath = $document->store('public/documents');
+    // Simpan dokumen jika diunggah
+    if ($request->hasFile('document')) {
+        $document = $request->file('document');
+        $documentPath = $document->store('public/documents');
+    } else {
+        $documentPath = null;
+    }
 
-            $data['document_name'] = $documentName;
-            $data['document_path'] = $documentPath;
-        } else {
-            $data['document_name'] = null;
-            $data['document_path'] = null;
-        }
+    // Buat entri pengguna
+    $pengguna = Pengguna::create([
+        'firstName' => $request->input('firstName'),
+        'lastName' => $request->input('lastName'),
+        'gender' => $request->input('gender'),
+        'address' => $request->input('address'),
+        'emailUser' => $request->input('emailUser'),
+        'nomorTelepon' => $request->input('nomorTelepon'),
+        'tanggalLahir' => $request->input('tanggalLahir'),
+        'deskripsi' => $request->input('deskripsi'),
+        'country' => $request->input('country'),
+    ]);
 
-        unset($data['document']);
+    // Buat entri pendidikan terkait
+    $pendidikanData = [
+        'pengguna_id' => $pengguna->id,
+        'pendidikanFormal' => $request->input('pendidikanFormal'),
+        'jurusan' => $request->input('jurusan'),
+        'tahunPendidikan' => $request->input('tahunPendidikan'),
+    ];
 
-        pengguna::create($data);
+    $pekerjaanData = [
+        'pengguna_id' => $pengguna->id,
+        'pekerjaan' => $request->input('pekerjaan'),
+        'city' => $request->input('city'),
+        'employer' => $request->input('employer'),
+        'mulai' => $request->input('mulai'),
+        'tahun' => $request->input('tahun'),
+        'terakhir' => $request->input('terakhir'),
+        'tambah' => $request->input('tambah'),
+        'deskripsis' => $request->input('deskripsis'),
 
-        return redirect()->route('pengguna');
+    ];
+
+    $keterampilanData = [
+        'pengguna_id' => $pengguna->id,
+        'level' => $request->input('level'),
+        'skill' => $request->input('skill'),
+    ];
+
+    $dokumenData = [
+        'pengguna_id' => $pengguna->id,
+        'document_name' => $documentPath,
+    ];
+
+    Pendidikan::create($pendidikanData);
+    Pekerjaan::create($pekerjaanData);
+    Keterampilan::create($keterampilanData);
+    Dokumen::create($dokumenData);
+    
+
+
+
+    return redirect()->route('pengguna');
     }
 
     public function tampilkandata($id)
     {
         // dd($id);
         $data = pengguna::find($id);
-        // dd($data);
+        
 
         return view('tampildata', compact('data'));
     }
@@ -95,7 +147,7 @@ class PenggunaController extends Controller
     {
         // dd($id);
         $data = pengguna::find($id);
-        // dd($data);
+        
 
         return view('tampil', compact('data'));
     }

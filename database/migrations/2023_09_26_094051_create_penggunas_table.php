@@ -25,30 +25,6 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->text('image_path')->nullable();
             
-            // $table->enum('');
-
-            $table->string('pendidikanFormal')->nullable();
-            $table->string('jurusan')->nullable();
-            $table->string('tahunPendidikan')->nullable();
-
-            $table->string('pekerjaan')->nullable();
-            $table->string('city')->nullable();
-            $table->string('employer')->nullable();
-            $table->string('mulai')->nullable();
-            $table->integer('tahun')->nullable();
-            $table->string('terakhir')->nullable();
-            $table->integer('tambah')->nullable();
-            $table->string('deskripsis')->nullable();
-           
-            
-            
-
-            $table->string('skill');
-            $table->enum('level',['novice', 'intermediate']);
-
-            $table->string('document_name')->nullable(); 
-            $table->text('document_path')->nullable(); 
-            
             $table->timestamps();
         });
     }
