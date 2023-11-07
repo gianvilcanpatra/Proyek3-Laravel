@@ -81,7 +81,6 @@
                                   <div class="col-4 custom-col">
                                       <label for="country" class="form-label">Nationality*</label>
                                       <select class="form-select" name="country" aria-label="Default select example" required>
-                                          value="">{{ $data -> country }}
                                           <option selected> {{ $data -> country }} </option>
                                     
                                           <option value="Afghanistan">Afghanistan</option>

@@ -41,6 +41,12 @@
                         <th scope="col">Jurusan</th>
                         <th scope="col">Tahun Pendidikan</th>
                         <th scope="col">Pekerjaan</th>
+                        <th scope="col">Kota</th>
+                        <th scope="col">Employee</th>
+                        <th scope="col">Mulai</th>
+                        <th scope="col">Terakhir</th>
+                        <th scope="col">Tambah</th>
+                        <th scope="col">Deskripsi</th>
                         <th scope="col">Skill</th>
                         <th scope="col">Level</th>
                         <th scope="col">Download Document</th>
@@ -67,6 +73,12 @@
                             <td>{{ optional($row->pendidikan)->jurusan }}</td>
                             <td>{{ optional($row->pendidikan)->tahunPendidikan }}</td>
                             <td>{{ optional($row->pekerjaan)->pekerjaan }}</td>
+                            <td>{{ optional($row->pekerjaan)->city }}</td>
+                            <td>{{ optional($row->pekerjaan)->employer }}</td>
+                            <td>{{ optional($row->pekerjaan)->mulai }}</td>
+                            <td>{{ optional($row->pekerjaan)->terakhir }}</td>
+                            <td>{{ optional($row->pekerjaan)->tambah }}</td>
+                            <td>{{ optional($row->pekerjaan)->deskripsis }}</td>
                             <td>{{ optional($row->keterampilan)->skill }}</td>
                             <td>{{ optional($row->keterampilan)->level }}</td>
                             <td><a href="{{ $row->document_url }}">Download</a></td>

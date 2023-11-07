@@ -26,15 +26,15 @@
                         <div class="mb-3">   
                           <div class="mb-3">
                               <label for="exampleInputEmail1" class="form-label">Pendidikan Formal*</label>
-                              <input type="text" name="pendidikanFormal" class="form-control" id="exampleInputEmail1" value = "{{ $data -> pendidikanFormal }}">
+                              <input type="text" name="pendidikanFormal" class="form-control" id="exampleInputEmail1" value = "{{ $pendidikan -> pendidikanFormal }}">
                           </div>
                           <div class="mb-3">
                               <label for="exampleInputPassword1" class="form-label">Jurusan*</label>
-                              <input type="text" name="jurusan" class="form-control" id="exampleInputPassword1" value = "{{ $data -> jurusan }}">
+                              <input type="text" name="jurusan" class="form-control" id="exampleInputPassword1" value = "{{ $pendidikan -> jurusan }}">
                           </div>
                           <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Tahun*</label>
-                            <input type="text" name="tahunPendidikan" class="form-control" id="exampleInputPassword1" value = "{{ $data -> tahunPendidikan }}">
+                            <input type="text" name="tahunPendidikan" class="form-control" id="exampleInputPassword1" value = "{{ $pendidikan -> tahunPendidikan }}">
                         </div>
                         </div>
                       </div>

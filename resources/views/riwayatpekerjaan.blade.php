@@ -24,23 +24,23 @@
                         <div class="mb-3">   
                           <div class="mb-3">
                               <label for="exampleInputEmail1" class="form-label">Job Title*</label>
-                              <input type="text" name="pekerjaan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                              <input type="text" name="pekerjaan" class="form-control" id="pekerjaan" aria-describedby="emailHelp">
                           </div>
                           <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">City*</label>
-                            <input type="text" name="city" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input type="text" name="city" class="form-control" id="city" aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Employer*</label>
-                          <input type="text" name="employer" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          <input type="text" name="employer" class="form-control" id="employer" aria-describedby="emailHelp">
                       </div>
 
                       <div class="justify-content-center">
                       <div class="row mb-3">
                                                                          
                             <div class="col-3">  
-                             <label for="exampleInputPassword1" class="form-label">Start Date*</label>
-                             <select class="form-select" name="mulai" aria-label="Default select example">
+                             <label for="mulai" class="form-label">Start Date*</label>
+                             <select class="form-select" name="mulai" id="mulai" aria-label="Default select example">
                                 <option value="" disabled selected></option>
                                 <option value="January">January</option>
                                 <option value="February">February</option>
@@ -57,8 +57,8 @@
                              </select>
                             </div>
                             <div class="col-3">       
-                            <label for="exampleInputPassword1" class="form-label">Year*</label>
-                             <select class="form-select" name="tahun" aria-label="Default select example">
+                            <label for="tahun" class="form-label">Year*</label>
+                             <select class="form-select" name="tahun" id="tahun" aria-label="Default select example">
                                 <option value="" disabled selected></option>
                                 <option value="1960">1961</option>
                                 <option value="1962">1962</option>
@@ -124,8 +124,8 @@
                               </select>
                             </div>
                             <div class="col-3">  
-                              <label for="exampleInputPassword1" class="form-label">End Date*</label>
-                              <select class="form-select" name="terakhir" aria-label="Default select example">
+                              <label for="terakhir" class="form-label">End Date*</label>
+                              <select class="form-select" name="terakhir" id="terakhir" aria-label="Default select example">
                                  <option value="" disabled selected></option>
                                  <option value="January">January</option>
                                  <option value="February">February</option>
@@ -142,8 +142,8 @@
                               </select>
                              </div>
                              <div class="col-3">      
-                              <label for="exampleInputPassword1" class="form-label">Year*</label>
-                               <select class="form-select" name="tambah" aria-label="Default select example">
+                              <label for="tambah" class="form-label">Year*</label>
+                               <select class="form-select" name="tambah" id="tambah" aria-label="Default select example">
                                   <option value="" disabled selected></option>
                                   <option value="1960">1961</option>
                                   <option value="1962">1962</option>
@@ -212,8 +212,8 @@
                         </div>
                       </div>
                       <div class="mb-3">
-                        <label for="deskripsi" class="form-label">Description</label>
-                        <input type="text" name="deskripsis" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <label for="deskripsis" class="form-label">Description</label>
+                        <input type="text" name="deskripsis" class="form-control" id="deskripsis" aria-describedby="emailHelp">
                     </div>
                   </div>
                   </div>

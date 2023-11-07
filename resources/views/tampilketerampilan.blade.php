@@ -24,12 +24,12 @@
                 @csrf
                 <div class="mb-3">
                   <label for="skill" class="form-label">Keahlian</label>
-                  <input type="text" name="skill" class="form-control" id="skill" aria-describedby="emailHelp" value = "{{ $data -> skill }}">
+                  <input type="text" name="skill" class="form-control" id="skill" aria-describedby="emailHelp" value = "{{ $keterampilan -> skill }}">
                 </div>
                 <div class="mb-3">
                   <label for="level" class="form-label">Level Keahlian</label>
-                  <select class="form-select" name="level" id="level" aria-label="Default select example">
-                    <option selected>{{ $data -> level }}</option>
+                  <select class="form-select" name="level" id="level" aria-label="Default select example" value = "{{ $keterampilan -> level }}">
+                    <option selected>{{ $keterampilan -> level }}</option>
                     <option value="novice">Novice</option>
                     <option value="intermediate">Intermediate</option>
                   </select>
