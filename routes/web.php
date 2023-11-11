@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,7 @@ use App\Http\Controllers\PenggunaController;
 */
 
 Route::get('/', function () {
-    return view('tampilanawal');
+    return view('login');
 })->name('home');
 
 Route::get('/pengguna',[PenggunaController::class, 'index'])->name('pengguna');
@@ -58,3 +59,10 @@ Route::get('/tampildokumenpendukung/{id}',[PenggunaController::class, 'tampildok
 Route::post('/updatedata/{id}',[PenggunaController::class, 'updatedata'])->name('updatedata');
 
 Route::get('/delete/{id}',[PenggunaController::class, 'delete'])->name('delete');
+
+Route::get('/login',[LoginController::class,'login'])->name('login');
+Route::post('/loginproses',[LoginController::class,'loginproses'])->name('loginproses');
+
+
+Route::get('/register',[LoginController::class,'register'])->name('register');
+Route::post('/registeruser',[LoginController::class,'registeruser'])->name('registeruser');
