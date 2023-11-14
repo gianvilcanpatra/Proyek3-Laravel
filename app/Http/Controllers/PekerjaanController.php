@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 class PekerjaanController extends Controller
 {
+    public function index()
+    {
+
+        $data = Pekerjaan::all();
+
+        return view('datapengguna', compact('data'));
+    }
 
     public function tambahdatapekerjaan()
     {
@@ -34,7 +41,7 @@ class PekerjaanController extends Controller
 
 
     // Buat entri pendidikan terkait
-    $data = Pekerjaan::create([
+    $dataPekerjaan = Pekerjaan::create([
         'pengguna_id' => 1,
         'pekerjaan' => $request->input('pekerjaan'),
         'city' => $request->input('city'),

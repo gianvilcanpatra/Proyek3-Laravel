@@ -305,7 +305,6 @@
                             <input type="text" name="deskripsi" class="form-control" id="deskripsi">
                         </div>
                         <div class="d-flex justify-content-between">
-                          <a href="/tampilanawal" class="btn btn-danger">Previous</a>
                           <button class="btn btn-info" type="submit">Submit</button>
                           
                       </div>

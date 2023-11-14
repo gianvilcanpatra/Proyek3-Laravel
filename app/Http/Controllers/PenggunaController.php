@@ -18,8 +18,10 @@ class PenggunaController extends Controller
 
     $data = Pengguna::all();
     $dataPendidikan = Pendidikan::all();
+    $dataPekerjaan = Pekerjaan::all();
+    $dataKeterampilan = Keterampilan::all();
     
-    return view('datapengguna', compact('data', 'dataPendidikan'));
+    return view('datapengguna', compact('data', 'dataPendidikan', 'dataPekerjaan', 'dataKeterampilan'));
     }
 
     public function profil()

@@ -10,7 +10,7 @@ class Pendidikan extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'pengguna_id', 'pendidikanformal', 'jurusan', 'tahunPendidikan'];
+        'pengguna_id', 'pendidikanFormal', 'jurusan', 'tahunPendidikan'];
 
     public function pengguna()
     {

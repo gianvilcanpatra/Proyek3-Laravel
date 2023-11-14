@@ -69,18 +69,28 @@
                             <td>{{ $row->tanggalLahir }}</td>
                             <td>{{ $row->country }}</td>
                             <td>{{ $row->deskripsi }}</td>
-                            <td>{{ $row->pendidikanFormal }}</td>
-                            <td>{{ $row->jurusan }}</td>
-                            <td>{{ $row->tahunPendidikan }}</td>
-                            <td>{{ $row->pekerjaan }}</td>
-                            <td>{{ $row->city }}</td>
-                            <td>{{ $row->employer }}</td>
-                            <td>{{ $row->mulai }}</td>
-                            <td>{{ $row->terakhir }}</td>
-                            <td>{{ $row->tambah }}</td>
-                            <td>{{ $row->deskripsis }}</td>
-                            <td>{{ $row->skill }}</td>
-                            <td>{{ $row->level }}</td>
+                    @endforeach        
+                        
+                    @foreach ($dataPendidikan as $rowpen)
+                        
+                            <td>{{ $rowpen->pendidikanFormal }}</td>
+                            <td>{{ $rowpen->jurusan }}</td>
+                            <td>{{ $rowpen->tahunPendidikan }}</td>
+
+                    @foreach ($dataPekerjaan as $rowpek)
+                            <td>{{ $rowpek->pekerjaan }}</td>
+                            <td>{{ $rowpek->city }}</td>
+                            <td>{{ $rowpek->employer }}</td>
+                            <td>{{ $rowpek->mulai }}</td>
+                            <td>{{ $rowpek->terakhir }}</td>
+                            <td>{{ $rowpek->tambah }}</td>
+                            <td>{{ $rowpek->deskripsis }}</td>
+                    @endforeach
+                    
+                    @foreach ($dataKeterampilan as $rowket)
+                            <td>{{ $rowket->skill }}</td>
+                            <td>{{ $rowket->level }}</td>
+                    @endforeach
                             <td><a href="{{ $row->document_url }}">Download</a></td>
                             <td>
                                 <a href="/tampil/{{ $row->id }}" class="btn btn-info">Edit</a>

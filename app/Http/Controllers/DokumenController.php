@@ -34,6 +34,18 @@ class DokumenController extends Controller
         return back()->withErrors($validator)->withInput();
     }
 
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('fotoprofil', 'public');
+    }
+
+    // Simpan dokumen jika diunggah
+    if ($request->hasFile('document')) {
+        $document = $request->file('document');
+        $documentPath = $document->store('public/documents');
+    } else {
+        $documentPath = null;
+    }
+
 
     // Buat entri pendidikan terkait
     $data = Dokumen::create([

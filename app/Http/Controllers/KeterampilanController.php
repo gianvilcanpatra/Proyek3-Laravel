@@ -13,14 +13,9 @@ class KeterampilanController extends Controller
     public function index()
     {
 
-        $data = Pengguna::with('Pengguna','Pendidikan', 'Pekerjaan', 'Keterampilan')->get();
-        
+        $data = Keterampilan::all();
 
-        foreach ($data as $item) {
-            $item->document_url = Storage::url('public/documents/' . $item->document_path);
-        }
-
-        return view('datapengguna', compact('data'))->with('i',(request()->input('page',1)-1));
+        return view('datapengguna', compact('data'));
     }
 
     public function tambahdataketerampilan()
