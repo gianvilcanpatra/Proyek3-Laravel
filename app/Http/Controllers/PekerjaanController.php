@@ -18,7 +18,8 @@ class PekerjaanController extends Controller
     public function tambahdatapekerjaan()
     {
 
-        return view('riwayatpekerjaan');
+        $data = Pekerjaan::all();
+        return view('riwayatpekerjaan', compact('data'));
     }
 
     public function insertdatapekerjaan(Request $request)
@@ -53,7 +54,7 @@ class PekerjaanController extends Controller
         'deskripsis' => $request->input('deskripsis'),
     ]);;
 
-    return redirect()->route('tambahdataketerampilan')->with('success', 'Data Berhasil di Simpan');
+    return redirect()->route('tambahdatapekerjaan')->with('success', 'Data Berhasil di Simpan');
 }
 
     /**

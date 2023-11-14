@@ -20,8 +20,8 @@ class KeterampilanController extends Controller
 
     public function tambahdataketerampilan()
     {
-
-        return view('keterampilan');
+        $data = Keterampilan::all();
+        return view('keterampilan', compact('data'));
     }
 
     public function insertdataketerampilan(Request $request)
@@ -44,7 +44,7 @@ class KeterampilanController extends Controller
         'skill' => $request->input('skill'),
     ]);;
 
-    return redirect()->route('tambahdatadokumen')->with('success', 'Data Berhasil di Simpan');
+    return redirect()->route('tambahdataketerampilan')->with('success', 'Data Berhasil di Simpan');
 }
 
     /**

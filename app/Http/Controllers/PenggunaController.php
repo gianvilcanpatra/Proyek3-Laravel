@@ -26,7 +26,8 @@ class PenggunaController extends Controller
 
     public function profil()
     {
-        return view('profil');
+        $data = Pengguna::all();
+        return view('profil', compact('data'));
     }
 
     public function insertdata(Request $request)
@@ -54,6 +55,8 @@ class PenggunaController extends Controller
         $imagePath = $request->file('image')->store('fotoprofil', 'public');
     }
 
+    
+
 
     // Buat entri pengguna
     $pengguna = Pengguna::create([
@@ -72,7 +75,9 @@ class PenggunaController extends Controller
     // $data = $request->all();
 
     // Buat entri pendidikan terkait
-    return redirect()->route('tambahdatapendidikan', ['id' => $dataId] )->with('success', 'Data Berhasil di Simpan');
+    // return redirect()->route('tambahdatapendidikan', ['id' => $dataId] )->with('success', 'Data Berhasil di Simpan');
+    // return redirect()->route('tambahdatapendidikan')->with('success', 'Data Berhasil di Simpan');
+    return redirect()->route('profil')->with('success', 'Data berhasil disimpan');
     }
 
     public function tampilkandata($id)

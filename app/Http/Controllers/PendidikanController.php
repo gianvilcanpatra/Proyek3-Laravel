@@ -20,8 +20,8 @@ class PendidikanController extends Controller
 
     public function tambahdatapendidikan()
     {
-
-        return view('riwayatpendidikan');
+        $data = Pendidikan::all();
+        return view('riwayatpendidikan', compact('data'));
     }
 
     public function insertdatapendidikan(Request $request)
@@ -46,7 +46,7 @@ class PendidikanController extends Controller
         'tahunPendidikan' => $request->input('tahunPendidikan'),
     ]);;
     
-    return redirect()->route('tambahdatapekerjaan')->with('success', 'Data Berhasil di Simpan');
+    return redirect()->route('tambahdatapendidikan')->with('success', 'Data Berhasil di Simpan');
 }
 
     /**

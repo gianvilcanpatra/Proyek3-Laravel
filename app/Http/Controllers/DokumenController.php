@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Dokumen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 class DokumenController extends Controller
 {
     public function index()
     {
+        $data = Dokumen::all();
 
         foreach ($data as $item) {
             $item->document_url = Storage::url('public/documents/' . $item->document_path);
@@ -19,8 +21,8 @@ class DokumenController extends Controller
 
     public function tambahdatadokumen()
     {
-
-        return view('dokumenpendukung');
+        $data = Dokumen::all();
+        return view('dokumenpendukung', compact('data'));
     }
 
     public function insertdatadokumen(Request $request)
@@ -52,7 +54,8 @@ class DokumenController extends Controller
         'pengguna_id' => 1,
         'document_name' => $documentPath,
     ]);;
-    return redirect()->route('pengguna')->with('success', 'Data Berhasil di Simpan');
+    return redirect()->route('tambahdatadokumen')->with('success', 'Data Berhasil di Simpan');
+    // return redirect()->route('pengguna')->with('success', 'Data Berhasil di Simpan');
 }
 
 
