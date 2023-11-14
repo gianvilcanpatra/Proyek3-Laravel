@@ -26,22 +26,22 @@ class pengguna extends Model
 
     public function pendidikan()
     {
-        return $this->hasOne(Pendidikan::class);
+        return $this->hasMany(Pendidikan::class, 'pengguna_id', 'id');
     } 
 
     public function pekerjaan()
     {
-        return $this->hasOne(Pekerjaan::class);
+        return $this->hasMany(Pekerjaan::class);
     } 
 
     public function keterampilan()
     {
-        return $this->hasOne(Keterampilan::class);
+        return $this->hasMany(Keterampilan::class);
     } 
 
     public function dokumen()
     {
-        return $this->hasOne(Dokumen::class);
+        return $this->hasMany(Dokumen::class);
     } 
 
 

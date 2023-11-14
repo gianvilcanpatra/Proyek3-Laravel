@@ -1,8 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DokumenController;
+use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\PekerjaanController;
+use App\Http\Controllers\PendidikanController;
+use App\Http\Controllers\KeterampilanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,12 +23,43 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/pengguna',[PenggunaController::class, 'index'])->name('pengguna');
-
 Route::get('/oneuser',[PenggunaController::class, 'oneuser'])->name('oneuser');
-
-Route::get('/tambahdata',[PenggunaController::class, 'tambahdata'])->name('tambahdata');
-
+Route::get('/profil',[PenggunaController::class, 'profil'])->name('profil');
 Route::post('/insertdata',[PenggunaController::class, 'insertdata'])->name('insertdata');
+
+
+Route::get('/riwayatpendidikan', [PendidikanController::class, 'tambahdatapendidikan'])->name('tambahdatapendidikan');
+Route::post('/insertdatapendidikan', [PendidikanController::class, 'insertdatapendidikan'])->name('insertdatapendidikan');
+
+Route::get('/riwayatpekerjaan', [PekerjaanController::class, 'tambahdatapekerjaan'])->name('tambahdatapekerjaan');
+Route::post('/insertdatapekerjaan', [PekerjaanController::class, 'insertdatapekerjaan'])->name('insertdatapekerjaan');
+
+Route::get('/keterampilan', [KeterampilanController::class, 'tambahdataketerampilan'])->name('tambahdataketerampilan');
+Route::post('/insertdataketerampilan', [KeterampilanController::class, 'insertdataketerampilan'])->name('insertdataketerampilan');
+
+Route::get('/dokumenpendukung', [DokumenController::class, 'tambahdatadokumen'])->name('tambahdatadokumen');
+Route::post('/insertdatadokumen', [DokumenController::class, 'insertdatadokumen'])->name('insertdatadokumen');
+//pendidikan
+// Route::get('/riwayatpendidikan', [PendidikanController::class, 'tambahdatapendidikan'])->name('riwayat-pendidikan');
+// Route::get('/riwayatpendidikan/store', [PendidikanController::class, 'insertpendidikan'])->name('tambahdatapendidikan.store');
+// Route::post('/insertdatapendidikan', [PendidikanController::class, 'insertdatapendidikan'])->name('insertdatapendidikan');
+// Route::get('/editdatapendidikan/{id}', [PendidikanController::class, 'editdatapendidikan'])->name('editdatapendidikan');
+// Route::post('/updatependidikan/{id}', [PendidikanController::class, 'updatependidikan'])->name('updatependidikan');
+// Route::get('/deletependidikan/{id}', [PendidikanController::class, 'deletependidikan'])->name('deletependidikan');
+
+//pekerjaan
+// Route::get('/riwayatpekerjaan', [PekerjaanController::class, 'tambahdatapekerjaan'])->name('riwayat-pekerjaan');
+// Route::get('/riwayatpekerjaan', [PekerjaanController::class, 'insertdatapekerjaan'])->name('tambahdatapekerjaan');
+// Route::post('/insertdatapendidikan', [PekerjaanController::class, 'insertdatapekerjaan'])->name('insertdatapekerjaan');
+// Route::get('/editdatapendidikan/{id}', [PekerjaanController::class, 'editdatapendidikan'])->name('editdatapendidikan');
+// Route::post('/updatependidikan/{id}', [PekerjaanController::class, 'updatependidikan'])->name('updatependidikan');
+// Route::get('/deletependidikan/{id}', [PekerjaanController::class, 'deletependidikan'])->name('deletependidikan');
+
+Route::get('/keterampilan', [KeterampilanController::class, 'tambahdataketerampilan'])->name('tambahdataketerampilan');
+Route::post('/insertdataketerampilan', [KeterampilanController::class, 'insertdataketerampilan'])->name('insertdataketerampilan');
+
+// Route::get('/tambahdatapendidikan', [DokumenController::class, 'tambahdatadokumen'])->name('tambahdatadokumen');
+// Route::post('/insertdatapendidikan', [DokumenController::class, 'insertdatadokumen'])->name('insertdatadokumen');
 
 // Route::get('/tampilanawal',[PenggunaController::class, 'tampilanawal'])->name('tampilanwal');
 Route::get('/tampilanawal', function () {

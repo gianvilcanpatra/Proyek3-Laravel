@@ -23,7 +23,7 @@
           <a class="nav-link active" aria-current="page" href="{{ route('templatecv') }}">CV TEMPLATES</a>
         </li>
         <li class="nav-item dropdown mx-5">
-          <a class="nav-link active" aria-current="page" href="/tambahdata">CREATE CV</a>
+          <a class="nav-link active" aria-current="page" href="/profil">CREATE CV</a>
         </li>
         <!-- <li class="nav-item mx-5">
           <a class="nav-link active" aria-current="page" href="{{ route('preview') }}">EDIT CV</a>

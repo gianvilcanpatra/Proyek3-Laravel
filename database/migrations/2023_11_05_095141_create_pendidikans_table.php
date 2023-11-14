@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('pendidikans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pengguna_id')->constrained('penggunas')->onDelete('cascade');
-            $table->string('pendidikanFormal')->nullbable();
+            $table->foreignId('pengguna_id')->references('id')->on('penggunas')->onDelete('cascade');
+            $table->string('pendidikanFormal')->nullable();
             $table->string('jurusan')->nullable();
             $table->string('tahunPendidikan')->nullable();
             

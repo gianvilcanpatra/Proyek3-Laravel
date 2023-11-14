@@ -13,12 +13,15 @@
     <title>Add Data</title>
 </head>
 <body>
+  
 <h1 class="center">RIWAYAT PEKERJAAN</h1>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
+                  <form action="/insertdatapekerjaan" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                    @csrf
                   <div class="container mb-4">
                   <div class="row-1">
                         <div class="mb-3">   
@@ -216,9 +219,13 @@
                         <input type="text" name="deskripsis" class="form-control" id="deskripsis" aria-describedby="emailHelp">
                     </div>
                   </div>
+                  <button class="btn btn-info" type="submit">Submit</button>
                   </div>
                       {{-- <button onclick="prevSlide(1)">Kembali</button>
                       <button onclick="nextSlide(2)">Selanjutnya</button> --}}
+                      
+
+                </form>
                 </div>
               </div>
              </div>

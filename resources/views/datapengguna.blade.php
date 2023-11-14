@@ -69,18 +69,18 @@
                             <td>{{ $row->tanggalLahir }}</td>
                             <td>{{ $row->country }}</td>
                             <td>{{ $row->deskripsi }}</td>
-                            <td>{{ optional($row->pendidikan)->pendidikanFormal }}</td>
-                            <td>{{ optional($row->pendidikan)->jurusan }}</td>
-                            <td>{{ optional($row->pendidikan)->tahunPendidikan }}</td>
-                            <td>{{ optional($row->pekerjaan)->pekerjaan }}</td>
-                            <td>{{ optional($row->pekerjaan)->city }}</td>
-                            <td>{{ optional($row->pekerjaan)->employer }}</td>
-                            <td>{{ optional($row->pekerjaan)->mulai }}</td>
-                            <td>{{ optional($row->pekerjaan)->terakhir }}</td>
-                            <td>{{ optional($row->pekerjaan)->tambah }}</td>
-                            <td>{{ optional($row->pekerjaan)->deskripsis }}</td>
-                            <td>{{ optional($row->keterampilan)->skill }}</td>
-                            <td>{{ optional($row->keterampilan)->level }}</td>
+                            <td>{{ $row->pendidikanFormal }}</td>
+                            <td>{{ $row->jurusan }}</td>
+                            <td>{{ $row->tahunPendidikan }}</td>
+                            <td>{{ $row->pekerjaan }}</td>
+                            <td>{{ $row->city }}</td>
+                            <td>{{ $row->employer }}</td>
+                            <td>{{ $row->mulai }}</td>
+                            <td>{{ $row->terakhir }}</td>
+                            <td>{{ $row->tambah }}</td>
+                            <td>{{ $row->deskripsis }}</td>
+                            <td>{{ $row->skill }}</td>
+                            <td>{{ $row->level }}</td>
                             <td><a href="{{ $row->document_url }}">Download</a></td>
                             <td>
                                 <a href="/tampil/{{ $row->id }}" class="btn btn-info">Edit</a>

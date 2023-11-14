@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Pendidikan extends Model
 {
     use HasFactory;
-    protected $guarded = [];
-    protected $primaryKey = "id";
+    protected $fillable = [
+        'pengguna_id', 'pendidikanformal', 'jurusan', 'tahunPendidikan'];
 
     public function pengguna()
     {
-        return $this->hasOne(pengguna::class);
+        return $this->hasOne(pengguna::class,'pengguna_id', 'id');
     }
 }

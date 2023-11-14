@@ -19,6 +19,8 @@
       <div class="col-8">
         <div class="card">
           <div class="card-body">
+            <form action="/insertdataketerampilan" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+              @csrf
             <div class="container mb-4">
               <div class="row-1">
                 <div class="mb-3">
@@ -36,7 +38,9 @@
               </div>
               {{-- <button onclick="prevSlide(1)">Kembali</button>
               <button onclick="nextSlide(2)">Selanjutnya</button> --}}
+              <button class="btn btn-info" type="submit">Submit</button>
             </div>
+          </form>
           </div>
         </div>
       </div>

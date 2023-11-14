@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Pekerjaan extends Model
 {
     use HasFactory;
-    protected $guarded = [];
-    protected $primaryKey = "id";
+    
+    protected $fillable = ['pengguna_id', 'pekerjaan','city','employer','mulai','tahun','terakhir','tambah','deskripsis'];
 
     public function pengguna()
     {

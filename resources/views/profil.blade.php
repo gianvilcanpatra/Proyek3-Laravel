@@ -13,6 +13,14 @@
     <title>Add Data</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ route('home') }}">
+                <img src="image/home.png" width="50" height="50">
+            </a>
+        </div>
+    </nav>
+
 
 <h1 class="center">PROFILE</h1>
 <div class="container" >
@@ -20,8 +28,10 @@
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
-                    <!-- <h2 class="header-profil">PERSONAL DETAIL</h2>
-                    <hr style="margin-top: 0px; margin-bottom: 20px; color:#000000;"> -->
+                    <form action="/insertdata" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                        @csrf
+                    <h2 class="header-profil">PERSONAL DETAIL</h2>
+                    <hr style="margin-top: 0px; margin-bottom: 20px; color:#000000;">
                   <div class="container mb-4" >
                   <div class="row-1">
                     <div class="profile-section">
@@ -296,9 +306,11 @@
                         </div>
                         <div class="d-flex justify-content-between">
                           <a href="/tampilanawal" class="btn btn-danger">Previous</a>
+                          <button class="btn btn-info" type="submit">Submit</button>
                           
                       </div>
                     </div>
+                    </form>
                   </div>
                 </div>
             </div>

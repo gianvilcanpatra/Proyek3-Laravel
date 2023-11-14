@@ -13,12 +13,16 @@
     <title>Add Data</title>
 </head>
 <body>
+
+  
     <h1 class="center">RIWAYAT PENDIDIKAN</h1>
     <div class="container">
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
+                  <form action="/insertdatapendidikan" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                    @csrf
                   <div class="container mb-4">
                   <div class="row-1">
                     <div id="formRiwayatContainer">
@@ -36,34 +40,18 @@
                             <label for="exampleInputPassword1" class="form-label">Tahun*</label>
                             <input type="text" name="tahunPendidikan" class="form-control" id="exampleInputPassword1">
                         </div>
+                        
                         </div>
                       </div>
-                      {{-- <button onclick="prevSlide(1)">Kembali</button>
-                      <button id="tambahRiwayat">Tambah Riwayat</button>    
-                      <button onclick="nextSlide(2)">Selanjutnya</button> --}}
+                      <button class="btn btn-info" type="submit">Submit</button>
                 </div>
               </div>
+            </form>
              </div>
           </div>
         </div>
       </div>            
-    </div>
-    </div>
 
-    <script>
-      const pendidikanFormalInput = document.querySelector('input[name="pendidikanFormal"]');
-      const jurusanInput = document.querySelector('input[name="jurusan"]');
-      const tahunPendidikanInput = document.querySelector('input[name="tahunPendidikan"]');
-      
-      pendidikanFormalInput.addEventListener('input', function() {
-          if (pendidikanFormalInput.value) {
-              jurusanInput.removeAttribute('disabled');
-              tahunPendidikanInput.removeAttribute('disabled');
-          } else {
-              jurusanInput.setAttribute('disabled', 'disabled');
-              tahunPendidikanInput.setAttribute('disabled', 'disabled');
-          }
-      });
-  </script>  
+
 </body>
 </html>   

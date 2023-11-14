@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('keterampilans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pengguna_id')->constrained('penggunas')->onDelete('cascade');
+            $table->foreignId('pengguna_id')->references('id')->on('penggunas')->onDelete('cascade');
             $table->string('skill')->nullable();
             $table->enum('level',['novice', 'intermediate'])->nullable();
             $table->timestamps();

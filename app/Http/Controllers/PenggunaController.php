@@ -16,19 +16,15 @@ class PenggunaController extends Controller
     public function index()
     {
 
-        $data = Pengguna::with('pendidikan','pekerjaan','keterampilan', 'dokumen')->get();
-        
-
-        foreach ($data as $item) {
-            $item->document_url = Storage::url('public/documents/' . $item->document_path);
-        }
-
-        return view('datapengguna', compact('data'));
+    $data = Pengguna::all();
+    $dataPendidikan = Pendidikan::all();
+    
+    return view('datapengguna', compact('data', 'dataPendidikan'));
     }
 
-    public function tambahdata()
+    public function profil()
     {
-        return view('tambahdata');
+        return view('profil');
     }
 
     public function insertdata(Request $request)
@@ -45,20 +41,6 @@ class PenggunaController extends Controller
         'deskripsi' => 'required|string',
         'country' => 'required|string',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-        'pendidikanFormal' => 'nullable|string',
-        'jurusan' => 'nullable|string',
-        'tahunPendidikan' => 'nullable|string',
-        'pekerjaan' => 'nullable|string',
-        'city' => 'nullable|string',
-        'employer' => 'nullable|string',
-        'mulai' => 'nullable|string',
-        'tahun' => 'nullable|string',
-        'terakhir' => 'nullable|string',
-        'tambah' => 'nullable|string',
-        'deskripsis' => 'nullable|string',
-        'level' => 'nullable|in:novice,intermediate',
-        'skill' => 'nullable|string',
-        'document' => 'nullable|file',
     ]);
 
     if ($validator->fails()) {
@@ -70,13 +52,6 @@ class PenggunaController extends Controller
         $imagePath = $request->file('image')->store('fotoprofil', 'public');
     }
 
-    // Simpan dokumen jika diunggah
-    if ($request->hasFile('document')) {
-        $document = $request->file('document');
-        $documentPath = $document->store('public/documents');
-    } else {
-        $documentPath = null;
-    }
 
     // Buat entri pengguna
     $pengguna = Pengguna::create([
@@ -90,45 +65,12 @@ class PenggunaController extends Controller
         'deskripsi' => $request->input('deskripsi'),
         'country' => $request->input('country'),
     ]);
+    $dataId = $pengguna->id;
+
+    // $data = $request->all();
 
     // Buat entri pendidikan terkait
-    $pendidikanData = [
-        'pengguna_id' => $pengguna->id,
-        'pendidikanFormal' => $request->input('pendidikanFormal'),
-        'jurusan' => $request->input('jurusan'),
-        'tahunPendidikan' => $request->input('tahunPendidikan'),
-    ];
-
-    $pekerjaanData = [
-        'pengguna_id' => $pengguna->id,
-        'pekerjaan' => $request->input('pekerjaan'),
-        'city' => $request->input('city'),
-        'employer' => $request->input('employer'),
-        'mulai' => $request->input('mulai'),
-        'tahun' => $request->input('tahun'),
-        'terakhir' => $request->input('terakhir'),
-        'tambah' => $request->input('tambah'),
-        'deskripsis' => $request->input('deskripsis'),
-
-    ];
-
-    $keterampilanData = [
-        'pengguna_id' => $pengguna->id,
-        'level' => $request->input('level'),
-        'skill' => $request->input('skill'),
-    ];
-
-    $dokumenData = [
-        'pengguna_id' => $pengguna->id,
-        'document_name' => $documentPath,
-    ];
-
-    Pendidikan::create($pendidikanData);
-    Pekerjaan::create($pekerjaanData);
-    Keterampilan::create($keterampilanData);
-    Dokumen::create($dokumenData);
-
-    return redirect()->route('pengguna');
+    return redirect()->route('tambahdatapendidikan', ['id' => $dataId] )->with('success', 'Data Berhasil di Simpan');
     }
 
     public function tampilkandata($id)
