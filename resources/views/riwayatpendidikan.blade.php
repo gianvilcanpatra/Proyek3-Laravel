@@ -48,15 +48,15 @@
                     <div class="mb-3">
                       <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Pendidikan Formal*</label>
-                        <input type="text" name="pendidikanFormal" class="form-control" id="exampleInputEmail1" value="{{ old('pendidkanFormal', $data->first()->pendidikanFormal ?? '') }}">
+                        <input type="text" name="pendidikanFormal" class="form-control" id="exampleInputEmail1">
                       </div>
                       <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Jurusan*</label>
-                        <input type="text" name="jurusan" class="form-control" id="exampleInputPassword1" value="{{ old('jurusan', $data->first()->jurusan ?? '') }}">
+                        <input type="text" name="jurusan" class="form-control" id="exampleInputPassword1">
                       </div>
                       <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Tahun*</label>
-                        <input type="text" name="tahunPendidikan" class="form-control" id="exampleInputPassword1" value="{{ old('tahunPendidikan', $data->first()->tahunPendidikan ?? '') }}">
+                        <input type="text" name="tahunPendidikan" class="form-control" id="exampleInputPassword1">
                       </div>
 
                     </div>
@@ -68,6 +68,46 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+        <table class="table" style="margin-left: 10px; margin-right: 10px;">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Pendidikan Formal</th>
+                        <th scope="col">Jurusan</th>
+                        <th scope="col">Tahun Pendidikan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $no = 1;
+                    @endphp      
+                        
+                    @foreach ($data as $rowpen)
+                    <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $rowpen->pendidikanFormal }}</td>
+                            <td>{{ $rowpen->jurusan }}</td>
+                            <td>{{ $rowpen->tahunPendidikan }}</td>
+                            <td>
+                                <a href="/tampilriwayatpendidikan/{{ $rowpen->id }}" class="btn btn-info">Edit</a>
+                                <a href="/deletependidikan/{{ $rowpen->id }}" class="btn btn-danger">Delete</a>
+                            </td>
+
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+            <!-- <div class="buttonPreview">
+                <div class="textPreview">
+                    <a href="{{ route('preview') }}" class="btn btn-primary">Preview</a>
+                </div>
+            </div> -->
+        </div>
     </div>
     <script>
       function validateProfileAndNavigate(targetUrl) {

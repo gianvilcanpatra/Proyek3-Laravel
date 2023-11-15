@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Keterampilan;
+use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 class KeterampilanController extends Controller
@@ -24,6 +25,14 @@ class KeterampilanController extends Controller
         return view('keterampilan', compact('data'));
     }
 
+    public function tampilketerampilan($id)
+    {
+        // dd($id);
+        $data = Keterampilan::find($id);
+
+        return view('tampilketerampilan', compact('data'));
+    }
+
     public function insertdataketerampilan(Request $request)
     {
     // Validasi data input
@@ -36,15 +45,17 @@ class KeterampilanController extends Controller
         return back()->withErrors($validator)->withInput();
     }
 
+    $pengguna = Pengguna::first();
+    $id = $pengguna->id;
 
     // Buat entri pendidikan terkait
     $data = Keterampilan::create([
-        'pengguna_id' => 1,
-        'level' => $request->input('level'),
+        'pengguna_id' => $id,
         'skill' => $request->input('skill'),
-    ]);;
+        'level' => $request->input('level'),
+    ]);
 
-    return redirect()->route('tambahdataketerampilan')->with('success', 'Data Berhasil di Simpan');
+    return redirect()->route('tambahdataketerampilan');
 }
 
     /**
@@ -82,9 +93,32 @@ class KeterampilanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function updatedata(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'level' => 'nullable|in:novice,intermediate',
+            'skill' => 'nullable|string',
+        ]);
+    
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $data = Keterampilan::find($id);
+        $data->update([
+            'skill' => $request->input('skill'),
+            'level' => $request->input('level'),
+        ]);
+
+        return redirect()->route('tambahdataketerampilan')->with('success', 'Data Berhasil di Simpan');
+
+    }
+
+    public function delete($id)
+    {
+        $data = Keterampilan::find($id);
+        $data->delete();
+        return redirect()->route('tambahdataketerampilan');
     }
 
     /**

@@ -42,15 +42,15 @@
                         <div class="mb-3">   
                           <div class="mb-3">
                               <label for="exampleInputEmail1" class="form-label">Job Title*</label>
-                              <input type="text" name="pekerjaan" class="form-control" id="pekerjaan" aria-describedby="emailHelp" value="{{ old('pekerjaan', $data->first()->pekerjaan ?? '') }}">
+                              <input type="text" name="pekerjaan" class="form-control" id="pekerjaan" aria-describedby="emailHelp">
                           </div>
                           <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">City*</label>
-                            <input type="text" name="city" class="form-control" id="city" aria-describedby="emailHelp" value="{{ old('city', $data->first()->city ?? '') }}">
+                            <input type="text" name="city" class="form-control" id="city" aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Employer*</label>
-                          <input type="text" name="employer" class="form-control" id="employer" aria-describedby="emailHelp" value="{{ old('employer', $data->first()->employer ?? '') }}">
+                          <input type="text" name="employer" class="form-control" id="employer" aria-describedby="emailHelp" >
                       </div>
 
                       <div class="justify-content-center">
@@ -59,7 +59,7 @@
                             <div class="col-3">  
                              <label for="mulai" class="form-label">Start Date*</label>
                              <select class="form-select" name="mulai" id="mulai" aria-label="Default select example">
-                                <option value="{{ old('mulai', $data->first()->mulai ?? '') }}" disabled selected>{{ old('mulai', $data->first()->mulai ?? '') }}</option>
+                                <option value="" disabled selected></option>
                                 <option value="January">January</option>
                                 <option value="February">February</option>
                                 <option value="March">March</option>
@@ -77,7 +77,7 @@
                             <div class="col-3">       
                             <label for="tahun" class="form-label">Year*</label>
                              <select class="form-select" name="tahun" id="tahun" aria-label="Default select example">
-                                <option value="{{ old('tahun', $data->first()->tahun ?? '') }}" disabled selected>{{ old('tahun', $data->first()->tahun ?? '') }}</option>
+                                <option value="" disabled selected></option>
                                 <option value="1960">1961</option>
                                 <option value="1962">1962</option>
                                 <option value="1963">1963</option>
@@ -144,7 +144,7 @@
                             <div class="col-3">  
                               <label for="terakhir" class="form-label">End Date*</label>
                               <select class="form-select" name="terakhir" id="terakhir" aria-label="Default select example">
-                                 <option value="{{ old('terakhir', $data->first()->terakhir ?? '') }}" disabled selected>{{ old('terakhir', $data->first()->terakhir ?? '') }}</option>
+                                 <option value="" disabled selected></option>
                                  <option value="January">January</option>
                                  <option value="February">February</option>
                                  <option value="March">March</option>
@@ -162,7 +162,7 @@
                              <div class="col-3">      
                               <label for="tambah" class="form-label">Year*</label>
                                <select class="form-select" name="tambah" id="tambah" aria-label="Default select example">
-                                  <option value="{{ old('tambah', $data->first()->tambah ?? '') }}" disabled selected>{{ old('tambah', $data->first()->tambah ?? '') }}</option>
+                                  <option value="" disabled selected></option>
                                   <option value="1960">1961</option>
                                   <option value="1962">1962</option>
                                   <option value="1963">1963</option>
@@ -231,7 +231,7 @@
                       </div>
                       <div class="mb-3">
                         <label for="deskripsis" class="form-label">Description</label>
-                        <input type="text" name="deskripsis" class="form-control" id="deskripsis" aria-describedby="emailHelp" value="{{ old('deskripsis', $data->first()->deskripsis ?? '') }}">
+                        <input type="text" name="deskripsis" class="form-control" id="deskripsis" aria-describedby="emailHelp">
                     </div>
                   </div>
                   <button class="btn btn-info" type="submit">Submit</button>
@@ -246,4 +246,52 @@
              </div>
           </div>
         </div>
-      </div>       
+      </div>    
+      
+      <div class="container">
+        <div class="row">
+        <table class="table" style="margin-left: 10px; margin-right: 10px;">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Pekerjaan</th>
+                        <th scope="col">Kota</th>
+                        <th scope="col">Employee</th>
+                        <th scope="col">Mulai</th>
+                        <th scope="col">Terakhir</th>
+                        <th scope="col">Tambah</th>
+                        <th scope="col">Deskripsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($data as $rowpek)
+                        <tr>
+                    
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $rowpek->pekerjaan }}</td>
+                            <td>{{ $rowpek->city }}</td>
+                            <td>{{ $rowpek->employer }}</td>
+                            <td>{{ $rowpek->mulai }}</td>
+                            <td>{{ $rowpek->terakhir }}</td>
+                            <td>{{ $rowpek->tambah }}</td>
+                            <td>{{ $rowpek->deskripsis }}</td>
+                            <td>
+                                <a href="/tampilriwayatpekerjaan/{{ $rowpek->id }}" class="btn btn-info">Edit</a>
+                                <a href="/deletepekerjaan/{{ $rowpek->id }}" class="btn btn-danger">Delete</a>
+                            </td>
+                    
+                        </tr>
+                        @endforeach
+                </tbody>
+            </table>
+
+            <!-- <div class="buttonPreview">
+                <div class="textPreview">
+                    <a href="{{ route('preview') }}" class="btn btn-primary">Preview</a>
+                </div>
+            </div> -->
+        </div>
+    </div>

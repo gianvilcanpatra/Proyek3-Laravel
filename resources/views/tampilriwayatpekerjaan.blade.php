@@ -13,34 +13,53 @@
     <title>Add Data</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ route('home') }}">
+        <img src="image/home.png" width="50" height="50">
+      </a>
+    </div>
+  </nav>
+  <div class="prev-next-buttons">
+    <a href="/profil" class="next-button">Profil</a>
+    <a href="/riwayatpendidikan" class="next-button">Riwayat Pendidikan</a>
+    <a href="/riwayatpekerjaan" class="next-button">Riwayat Pekerjaan</a>
+    <a href="/keterampilan" class="next-button">Keterampilan</a>
+    <a href="/dokumenpendukung" class="next-button">Dokumen Pendukung</a>
+    <a href="/pengguna" class="next-button">Tampil CV</a>
+  </div>
+  
 <h1 class="center">RIWAYAT PEKERJAAN</h1>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
+                  <form action="/updatedata/{{ $data->id }}" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                    @csrf
                   <div class="container mb-4">
                   <div class="row-1">
                         <div class="mb-3">   
                           <div class="mb-3">
                               <label for="exampleInputEmail1" class="form-label">Job Title*</label>
-                              <input type="text" name="pekerjaan" class="form-control" id="pekerjaan" aria-describedby="emailHelp" value = "{{ $pekerjaan -> pekerjaan }}">
+                              <input type="text" name="pekerjaan" class="form-control" id="pekerjaan" aria-describedby="emailHelp" value = "{{ $data->pekerjaan }}">
                           </div>
                           <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">City*</label>
-                            <input type="text" name="city" class="form-control" id="city" aria-describedby="emailHelp" value = "{{ $pekerjaan -> city }}">
+                            <input type="text" name="city" class="form-control" id="city" aria-describedby="emailHelp" value = "{{ $data->city }}">
                         </div>
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Employer*</label>
-                          <input type="text" name="employer" class="form-control" id="employer" aria-describedby="emailHelp" value = "{{ $pekerjaan -> employer }}">
+                          <input type="text" name="employer" class="form-control" id="employer" aria-describedby="emailHelp" value = "{{ $data->employer }}">
                       </div>
 
                       <div class="justify-content-center">
-                      <div class="row mb-3">                                                                         
+                      <div class="row mb-3">
+                                                                         
                             <div class="col-3">  
                              <label for="mulai" class="form-label">Start Date*</label>
-                             <select class="form-select" name="mulai" id="mulai" aria-label="Default select example" value = "{{ $pekerjaan -> mulai }}">
-                                <option selected>{{ $pekerjaan -> mulai }}</option>
+                             <select class="form-select" name="mulai" id="mulai" aria-label="Default select example">
+                                <option value = "{{ $data->mulai }}" disabled selected>{{ $data->mulai }}</option>
                                 <option value="January">January</option>
                                 <option value="February">February</option>
                                 <option value="March">March</option>
@@ -57,8 +76,8 @@
                             </div>
                             <div class="col-3">       
                             <label for="tahun" class="form-label">Year*</label>
-                             <select class="form-select" name="tahun" id="tahun" aria-label="Default select example" value = "{{ $pekerjaan -> tahun }}">
-                                <option selected>{{ $pekerjaan -> tahun }}</option>
+                             <select class="form-select" name="tahun" id="tahun" aria-label="Default select example">
+                                <option value = "{{ $data->tahun }}" disabled selected>{{ $data->tahun }}</option>
                                 <option value="1960">1961</option>
                                 <option value="1962">1962</option>
                                 <option value="1963">1963</option>
@@ -124,8 +143,8 @@
                             </div>
                             <div class="col-3">  
                               <label for="terakhir" class="form-label">End Date*</label>
-                              <select class="form-select" name="terakhir" id="terakhir" aria-label="Default select example" value = "{{ $pekerjaan -> terakhir }}">
-                                 <option selected>{{ $pekerjaan -> terakhir }}</option>
+                              <select class="form-select" name="terakhir" id="terakhir" aria-label="Default select example">
+                                 <option value = "{{ $data->terakhir }}" disabled selected>{{ $data->terakhir }}</option>
                                  <option value="January">January</option>
                                  <option value="February">February</option>
                                  <option value="March">March</option>
@@ -142,8 +161,8 @@
                              </div>
                              <div class="col-3">      
                               <label for="tambah" class="form-label">Year*</label>
-                               <select class="form-select" name="tambah" id="tambah" aria-label="Default select example" value = "{{ $pekerjaan -> tambah}}">
-                                  <option selected>{{ $pekerjaan -> tambah }}</option>
+                               <select class="form-select" name="tambah" id="tambah" aria-label="Default select example">
+                                  <option value="value = {{ $data->tambah }}" disabled selected> {{ $data->tambah }} </option>
                                   <option value="1960">1961</option>
                                   <option value="1962">1962</option>
                                   <option value="1963">1963</option>
@@ -212,15 +231,21 @@
                       </div>
                       <div class="mb-3">
                         <label for="deskripsis" class="form-label">Description</label>
-                        <input type="text" name="deskripsis" class="form-control" id="deskripsis" aria-describedby="emailHelp" value = "{{ $pekerjaan -> deskripsis }}">
+                        <input type="text" name="deskripsis" class="form-control" id="deskripsis" aria-describedby="emailHelp" value = "{{ $data->deskripsis }}">
                     </div>
                   </div>
+                  <button class="btn btn-info" type="submit">Submit</button>
                   </div>
                       {{-- <button onclick="prevSlide(1)">Kembali</button>
                       <button onclick="nextSlide(2)">Selanjutnya</button> --}}
+                      
+
+                </form>
                 </div>
               </div>
              </div>
           </div>
         </div>
-      </div>       
+      </div>    
+      
+      

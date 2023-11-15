@@ -44,12 +44,12 @@
                 <div class="row-1">
                   <div class="mb-3">
                     <label for="skill" class="form-label">Keahlian</label>
-                    <input type="text" name="skill" class="form-control" id="skill" aria-describedby="emailHelp" value="{{ old('skill', $data->first()->skill ?? '') }}">
+                    <input type="text" name="skill" class="form-control" id="skill" aria-describedby="emailHelp">
                   </div>
                   <div class="mb-3">
                     <label for="level" class="form-label">Level Keahlian</label>
-                    <select class="form-select" name="level" id="level" aria-label="Default select example" value="{{ old('level', $data->first()->level ?? '') }}">
-                      <option selected>{{ old('level', $data->first()->level ?? '') }}</option>
+                    <select class="form-select" name="level" id="level" aria-label="Default select example">
+                      <option selected></option>
                       <option value="novice">Novice</option>
                       <option value="intermediate">Intermediate</option>
                     </select>
@@ -65,6 +65,44 @@
       </div>
     </div>
   </div>
+
+  <div class="container">
+        <div class="row">
+        <table class="table" style="margin-left: 10px; margin-right: 10px;">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Skill</th>
+                        <th scope="col">Level</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($data as $rowket)
+                    <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $rowket->skill }}</td>
+                            <td>{{ $rowket->level }}</td>
+                            <td>
+                                <a href="/tampilketerampilan/{{ $rowket->id }}" class="btn btn-info">Edit</a>
+                                <a href="/deleteketerampilan/{{ $rowket->id }}" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+            <!-- <div class="buttonPreview">
+                <div class="textPreview">
+                    <a href="{{ route('preview') }}" class="btn btn-primary">Preview</a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+  
   <script>
     function validateProfileAndNavigate(targetUrl) {
       // Add additional validation logic here
