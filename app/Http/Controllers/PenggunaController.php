@@ -31,6 +31,13 @@ class PenggunaController extends Controller
 
     public function insertdata(Request $request)
     {
+        $data = pengguna::create($request->all());
+
+        if ($request->hasFile('image')) {
+            $request->file('image')->move('fotoprofil/', $request->file('image')->getClientOriginalName());
+            $data->image = $request->file('image')->getClientOriginalName();
+            $data->save();
+        }
     // Validasi data input
     $validator = Validator::make($request->all(), [
         'firstName' => 'required|string',
@@ -65,6 +72,7 @@ class PenggunaController extends Controller
         'tanggalLahir' => $request->input('tanggalLahir'),
         'deskripsi' => $request->input('deskripsi'),
         'country' => $request->input('country'),
+        'image' => $request->input('image'),
     ]);
 
     if($existingUser == null){

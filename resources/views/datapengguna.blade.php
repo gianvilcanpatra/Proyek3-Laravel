@@ -28,6 +28,7 @@
                 <thead>
                     <tr>
                         <th scope="col">No</th>
+                        <th scope="col">Image</th>
                         <th scope="col">First Name</th>
                         <th scope="col">Last Name</th>
                         <th scope="col">Gender</th>
@@ -60,6 +61,9 @@
                     @foreach ($data as $row)
                         <tr>
                             <th scope="row">{{ $no++ }}</th>
+                            <td>
+                                <img src="{{ asset('fotoprofil/'. $row->image)}}" alt="" style="width: 40px;">
+                            </td>
                             <td>{{ $row->firstName }}</td>
                             <td>{{ $row->lastName }}</td>
                             <td>{{ $row->gender }}</td>

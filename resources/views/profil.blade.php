@@ -52,11 +52,12 @@
                                         <div class="profile-image">
                                             <img src="path/to/profile-image.jpg">
                                             <label for="nomorTelepon" class="form-label">foto*</label>
-                                            <input type="file" name="foto" class="form-control" id="exampleInputEmail1">
+                                            <input type="file" name="image" class="form-control" id="exampleInputEmail1">
                                         </div>
                                         <div class="profile-details">
                                         </div>
                                     </div>
+
 
                                     <div class="fn-ln">
                                         <div class="mb-3">
