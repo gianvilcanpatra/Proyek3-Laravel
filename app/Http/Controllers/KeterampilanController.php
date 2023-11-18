@@ -49,11 +49,13 @@ class KeterampilanController extends Controller
     $id = $pengguna->id;
 
     // Buat entri pendidikan terkait
-    $data = Keterampilan::create([
-        'pengguna_id' => $id,
-        'skill' => $request->input('skill'),
-        'level' => $request->input('level'),
+    foreach ($request->Keterampilan as $keterampilan) {
+        Keterampilan::updateOrCreate([
+        'pengguna_id' => 1,
+        'skill' => $keterampilan['skill'],
+        'level' => $keterampilan['level'],
     ]);
+}
 
     return redirect()->route('tambahdataketerampilan');
 }

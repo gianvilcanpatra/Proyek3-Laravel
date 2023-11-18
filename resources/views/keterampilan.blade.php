@@ -40,33 +40,33 @@
             <form action="/insertdataketerampilan" method="POST" enctype="multipart/form-data"
               onsubmit="return validateForm()">
               @csrf
-              <div class="container mb-4">
-                <div class="row-1">
-                  <div class="mb-3">
-                    <label for="skill" class="form-label">Keahlian</label>
-                    <input type="text" name="skill" class="form-control" id="skill" aria-describedby="emailHelp">
-                  </div>
-                  <div class="mb-3">
-                    <label for="level" class="form-label">Level Keahlian</label>
-                    <select class="form-select" name="level" id="level" aria-label="Default select example">
-                      <option selected></option>
-                      <option value="novice">Novice</option>
-                      <option value="intermediate">Intermediate</option>
-                    </select>
-                  </div>
-                </div>
+
+              <div class="mb-3">
+                <label for="Keteramapilan" class="form-label"></label>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Keahlian</th>
+                            <th>Level</th>
+                        </tr>
+                    </thead>
+                    <tbody id="Keterampilan">
+                        <tr>
+                            <td><input type="text" class="form-control" name="Keterampilan[0][skill]" placeholder="Keahlian"></td>
+                            <td><select class="form-select" name="Keterampilan[0][level]">
+                              <option value="Novice">Novice</option>
+                              <option value="Intermediate">Intermediate</option>
+                          </select></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button type="button" class="btn btn-secondary" id="tambahKeterampilan">Tambah</button>
                 {{-- <button onclick="prevSlide(1)">Kembali</button>
                 <button onclick="nextSlide(2)">Selanjutnya</button> --}}
-                <button class="btn btn-info" type="submit">Submit</button>
-              </div>
+                <button class="btn btn-info" style="float:right" type="submit">Submit</button>
+              
             </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
         <div class="row">
         <table class="table" style="margin-left: 10px; margin-right: 10px;">
                 <thead>
@@ -101,27 +101,44 @@
                 </div>
             </div> -->
         </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  </div>
   
   <script>
-    function validateProfileAndNavigate(targetUrl) {
-      // Add additional validation logic here
-      var firstName = document.getElementsByName("firstName")[0].value;
-      var lastName = document.getElementsByName("lastName")[0].value;
-      var nomorTelepon = document.getElementsByName("nomorTelepon")[0].value;
-      var emailUser = document.getElementsByName("emailUser")[0].value;
-      var tanggalLahir = document.getElementById("tanggalLahir").value;
-      var gender = document.getElementsByName("gender")[0].value;
-      var country = document.getElementsByName("country")[0].value;
-      var address = document.getElementsByName("address")[0].value;
+    let KeterampilanIndex = 1;
 
-      // Check if any of the required fields are empty
-      if (firstName === '' || lastName === '' || nomorTelepon === '' || emailUser === '' || tanggalLahir === '' || gender === '' || country === '' || address === '') {
-        alert("Please fill in all required fields in the profile section before proceeding.");
-      } else {
-        // If all required fields are filled, navigate to the target URL
-        window.location.href = targetUrl;
-      }
-    }
+  document.getElementById('tambahKeterampilan').addEventListener('click', function() {
+  let newRow = document.createElement('tr');
+  newRow.innerHTML = `
+                      <tr>
+                      <td><input type="text" class="form-control" name="Keterampilan[${KeterampilanIndex}][skill]" placeholder="Keahlian"></td>
+                      <td><select class="form-select" name="Keterampilan[${KeterampilanIndex}][level]">
+                        <option value="Novice">Novice</option>
+                        <option value="Intermediate">Intermediate</option>
+                      </select></td>
+                      </tr>
+                      `;
+  document.getElementById('Keterampilan').appendChild(newRow);
+  riwayatPekerjaanIndex++;
+  });
   </script>
+
+  <script src="{{ asset('admin') }}/vendors/base/vendor.bundle.base.js"></script>
+  <script src="{{ asset('admin') }}/vendors/chart.js/Chart.min.js"></script>
+  <script src="{{ asset('admin') }}/vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="{{ asset('admin') }}/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="{{ asset('admin') }}/js/off-canvas.js"></script>
+  <script src="{{ asset('admin') }}/js/hoverable-collapse.js"></script>
+  <script src="{{ asset('admin') }}/js/template.js"></script>
+  <script src="{{ asset('admin') }}/js/dashboard.js"></script>
+  <script src="{{ asset('admin') }}/js/data-table.js"></script>
+  <script src="{{ asset('admin') }}/js/jquery.dataTables.js"></script>
+  <script src="{{ asset('admin') }}/js/dataTables.bootstrap4.js"></script>
+  <script src="{{ asset('admin') }}/js/jquery.cookie.js" type="text/javascript">
+  </script>
+
 </body>
