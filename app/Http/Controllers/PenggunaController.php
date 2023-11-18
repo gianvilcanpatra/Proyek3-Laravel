@@ -31,7 +31,7 @@ class PenggunaController extends Controller
 
     public function insertdata(Request $request)
     {
-        $data = pengguna::create($request->all());
+        // $data = pengguna::create($request->all());
 
         if ($request->hasFile('image')) {
             $request->file('image')->move('fotoprofil/', $request->file('image')->getClientOriginalName());
@@ -56,55 +56,48 @@ class PenggunaController extends Controller
         return back()->withErrors($validator)->withInput();
     }
 
+    $existingUser = Pengguna::find(1);
+
     // Simpan gambar jika diunggah
     if ($request->hasFile('image')) {
         $imagePath = $request->file('image')->store('fotoprofil', 'public');
     }
 
-    $existingUser = Pengguna::find(1);
-    $pengguna = Pengguna::create([
-        'firstName' => $request->input('firstName'),
-        'lastName' => $request->input('lastName'),
-        'gender' => $request->input('gender'),
-        'address' => $request->input('address'),
-        'emailUser' => $request->input('emailUser'),
-        'nomorTelepon' => $request->input('nomorTelepon'),
-        'tanggalLahir' => $request->input('tanggalLahir'),
-        'deskripsi' => $request->input('deskripsi'),
-        'country' => $request->input('country'),
-        'image' => $request->input('image'),
-    ]);
+    if ($existingUser) {
+        // Update existing user
+        $existingUser->update([
+            'firstName' => $request->input('firstName'),
+            'lastName' => $request->input('lastName'),
+            'gender' => $request->input('gender'),
+            'address' => $request->input('address'),
+            'emailUser' => $request->input('emailUser'),
+            'nomorTelepon' => $request->input('nomorTelepon'),
+            'tanggalLahir' => $request->input('tanggalLahir'),
+            'deskripsi' => $request->input('deskripsi'),
+            'country' => $request->input('country'),
+            'image' => $request->hasFile('image') ? $request->file('image')->hashName() : $existingUser->image,
+        ]);
 
-    if($existingUser == null){
+        return redirect()->route('profil')->with('success', 'Data berhasil diperbarui');
+    } else {
+        // If the user with ID 1 does not exist, create a new user
+        Pengguna::create([
+            'id' => 1,
+            'firstName' => $request->input('firstName'),
+            'lastName' => $request->input('lastName'),
+            'gender' => $request->input('gender'),
+            'address' => $request->input('address'),
+            'emailUser' => $request->input('emailUser'),
+            'nomorTelepon' => $request->input('nomorTelepon'),
+            'tanggalLahir' => $request->input('tanggalLahir'),
+            'deskripsi' => $request->input('deskripsi'),
+            'country' => $request->input('country'),
+            'image' => $request->hasFile('image') ? $request->file('image')->hashName() : null,
+        ]);
+
         return redirect()->route('profil')->with('success', 'Data berhasil disimpan');
-    }else return redirect()->route('pengguna')->with('success', 'Data berhasil disimpan');
-    // }else{
-    //     $existingUser->update([
-    //         'firstName' => $request->input('firstName'),
-    //         'lastName' => $request->input('lastName'),
-    //         'gender' => $request->input('gender'),
-    //         'address' => $request->input('address'),
-    //         'emailUser' => $request->input('emailUser'),
-    //         'nomorTelepon' => $request->input('nomorTelepon'),
-    //         'tanggalLahir' => $request->input('tanggalLahir'),
-    //         'deskripsi' => $request->input('deskripsi'),
-    //         'country' => $request->input('country'),
-    //     ]);
-    //     return redirect()->route('pengguna')->with('success', 'Data berhasil disimpan');
-    // }
-
-
-
-    // Buat entri pengguna
-
-    // $data = $request->all();
-
-    // Buat entri pendidikan terkait
-    // return redirect()->route('tambahdatapendidikan', ['id' => $dataId] )->with('success', 'Data Berhasil di Simpan');
-    // return redirect()->route('tambahdatapendidikan')->with('success', 'Data Berhasil di Simpan');
-    // return redirect()->route('profil')->with('success', 'Data berhasil disimpan');
     }
-
+    }
     public function tampilkandata($id)
     {
         // dd($id);
@@ -157,7 +150,7 @@ class PenggunaController extends Controller
     public function tampilprofil($id)
     {
         // dd($id);
-        $data = pengguna::find($id);
+        $data = pengguna::find(1);
         // dd($data);
 
         return view('tampilprofil', compact('data'));

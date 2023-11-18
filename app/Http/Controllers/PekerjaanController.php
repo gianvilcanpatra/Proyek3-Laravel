@@ -54,20 +54,22 @@ class PekerjaanController extends Controller
 
 
     // Buat entri pendidikan terkait
-    $dataPekerjaan = Pekerjaan::create([
-        'pengguna_id' => $id,
-        'pekerjaan' => $request->input('pekerjaan'),
-        'city' => $request->input('city'),
-        'employer' => $request->input('employer'),
-        'mulai' => $request->input('mulai'),
-        'tahun' => $request->input('tahun'),
-        'terakhir' => $request->input('terakhir'),
-        'tambah' => $request->input('tambah'),
-        'deskripsis' => $request->input('deskripsis'),
+    foreach ($request->riwayatPekerjaan as $pekerjaan) {
+        Pekerjaan::updateOrCreate([
+        'pengguna_id' => 1,
+        'pekerjaan' => $pekerjaan['pekerjaan'],
+        'city' => $pekerjaan['city'],
+        'employer' => $pekerjaan['employer'],
+        'mulai' => $pekerjaan['mulai'],
+        'tahun' => $pekerjaan['tahun'],
+        'terakhir' => $pekerjaan['terakhir'],
+        'tambah' => $pekerjaan['tambah'],
+        'deskripsis' => $pekerjaan['deskripsis'],
     ]);;
+    }
 
     return redirect()->route('tambahdatapekerjaan')->with('success', 'Data Berhasil di Simpan');
-}
+    }
 
     /**
      * Show the form for creating a new resource.

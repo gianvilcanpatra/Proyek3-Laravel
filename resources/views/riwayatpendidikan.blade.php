@@ -46,61 +46,67 @@
                   <div id="formRiwayatContainer">
 
                     <div class="mb-3">
-                      <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Pendidikan Formal*</label>
-                        <input type="text" name="pendidikanFormal" class="form-control" id="exampleInputEmail1">
-                      </div>
-                      <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Jurusan*</label>
-                        <input type="text" name="jurusan" class="form-control" id="exampleInputPassword1">
-                      </div>
-                      <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Tahun*</label>
-                        <input type="text" name="tahunPendidikan" class="form-control" id="exampleInputPassword1">
-                      </div>
-
-                    </div>
+                      <label for="riwayatPendidikan" class="form-label"></label>
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>Nama Sekolah/Universitas</th>
+                                  <th>Jurusan</th>
+                                  <th>Tahun</th>
+                              </tr>
+                          </thead>
+                          <tbody id="Pendidikan">
+                              <tr>
+                                  <td><input type="text" class="form-control" name="riwayatPendidikan[0][pendidikanFormal]" placeholder="Nama Sekolah/Universitas" required></td>
+                                  <td><input type="text" class="form-control" name="riwayatPendidikan[0][jurusan]" placeholder="jurusan" required></td>
+                                  <td><input type="text" class="form-control" name="riwayatPendidikan[0][tahunPendidikan]" placeholder="periode tahun"></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      <button type="button" class="btn btn-secondary" id="tambahRiwayatPendidikan">Tambah Riwayat Pendidikan</button>
+                  </div>
+          
                   </div>
                   <button class="btn btn-info" type="submit">Submit</button>
                 </div>
+                <div class="row">
+                  <table class="table" style="margin-left: 10px; margin-right: 10px;">
+                          <thead>
+                              <tr>
+                                  <th scope="col">No</th>
+                                  <th scope="col">Pendidikan Formal</th>
+                                  <th scope="col">Jurusan</th>
+                                  <th scope="col">Tahun Pendidikan</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              @php
+                                  $no = 1;
+                              @endphp      
+                                  
+                              @foreach ($data as $rowpen)
+                              <tr>
+                                      <td>{{ $no++ }}</td>
+                                      <td>{{ $rowpen->pendidikanFormal }}</td>
+                                      <td>{{ $rowpen->jurusan }}</td>
+                                      <td>{{ $rowpen->tahunPendidikan }}</td>
+                                      <td>
+                                          <a href="/tampilriwayatpendidikan/{{ $rowpen->id }}" class="btn btn-info">Edit</a>
+                                          <a href="/deletependidikan/{{ $rowpen->id }}" class="btn btn-danger">Delete</a>
+                                      </td>
+          
+                              </tr>
+                              @endforeach
+                          </tbody>
+                      </table>
               </div>
             </form>
+            
           </div>
+          
         </div>
       </div>
     </div>
-
-    <div class="container">
-        <div class="row">
-        <table class="table" style="margin-left: 10px; margin-right: 10px;">
-                <thead>
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Pendidikan Formal</th>
-                        <th scope="col">Jurusan</th>
-                        <th scope="col">Tahun Pendidikan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @php
-                        $no = 1;
-                    @endphp      
-                        
-                    @foreach ($data as $rowpen)
-                    <tr>
-                            <td>{{ $no++ }}</td>
-                            <td>{{ $rowpen->pendidikanFormal }}</td>
-                            <td>{{ $rowpen->jurusan }}</td>
-                            <td>{{ $rowpen->tahunPendidikan }}</td>
-                            <td>
-                                <a href="/tampilriwayatpendidikan/{{ $rowpen->id }}" class="btn btn-info">Edit</a>
-                                <a href="/deletependidikan/{{ $rowpen->id }}" class="btn btn-danger">Delete</a>
-                            </td>
-
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
 
             <!-- <div class="buttonPreview">
                 <div class="textPreview">
@@ -110,25 +116,31 @@
         </div>
     </div>
     <script>
-      function validateProfileAndNavigate(targetUrl) {
-        // Add additional validation logic here
-        var firstName = document.getElementsByName("firstName")[0].value;
-        var lastName = document.getElementsByName("lastName")[0].value;
-        var nomorTelepon = document.getElementsByName("nomorTelepon")[0].value;
-        var emailUser = document.getElementsByName("emailUser")[0].value;
-        var tanggalLahir = document.getElementById("tanggalLahir").value;
-        var gender = document.getElementsByName("gender")[0].value;
-        var country = document.getElementsByName("country")[0].value;
-        var address = document.getElementsByName("address")[0].value;
+      let riwayatPendidikanIndex = 1;
 
-        // Check if any of the required fields are empty
-        if (firstName === '' || lastName === '' || nomorTelepon === '' || emailUser === '' || tanggalLahir === '' || gender === '' || country === '' || address === '') {
-          alert("Please fill in all required fields in the profile section before proceeding.");
-        } else {
-          // If all required fields are filled, navigate to the target URL
-          window.location.href = targetUrl;
-        }
-      }
+    document.getElementById('tambahRiwayatPendidikan').addEventListener('click', function() {
+    let newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][pendidikanFormal]" placeholder="Nama Sekolah/Universitas"></td>
+        <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][jurusan]" placeholder=""></td>
+        <td><input type="number" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][tahunPendidikan]" placeholder=""></td>
+    `;
+    document.getElementById('Pendidikan').appendChild(newRow);
+    riwayatPekerjaanIndex++;
+    });
+    </script>
+    <script src="{{ asset('admin') }}/vendors/base/vendor.bundle.base.js"></script>
+    <script src="{{ asset('admin') }}/vendors/chart.js/Chart.min.js"></script>
+    <script src="{{ asset('admin') }}/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="{{ asset('admin') }}/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="{{ asset('admin') }}/js/off-canvas.js"></script>
+    <script src="{{ asset('admin') }}/js/hoverable-collapse.js"></script>
+    <script src="{{ asset('admin') }}/js/template.js"></script>
+    <script src="{{ asset('admin') }}/js/dashboard.js"></script>
+    <script src="{{ asset('admin') }}/js/data-table.js"></script>
+    <script src="{{ asset('admin') }}/js/jquery.dataTables.js"></script>
+    <script src="{{ asset('admin') }}/js/dataTables.bootstrap4.js"></script>
+    <script src="{{ asset('admin') }}/js/jquery.cookie.js" type="text/javascript">
     </script>
 
 

@@ -38,20 +38,10 @@
                         <th scope="col">Birthdate</th>
                         <th scope="col">Country</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Pendidikan Formal</th>
-                        <th scope="col">Jurusan</th>
-                        <th scope="col">Tahun Pendidikan</th>
-                        <th scope="col">Pekerjaan</th>
-                        <th scope="col">Kota</th>
-                        <th scope="col">Employee</th>
-                        <th scope="col">Mulai</th>
-                        <th scope="col">Terakhir</th>
-                        <th scope="col">Tambah</th>
-                        <th scope="col">Deskripsi</th>
                         <th scope="col">Skill</th>
                         <th scope="col">Level</th>
                         <th scope="col">Download Document</th>
-                        <th scope="col">Actions</th>
+                       
                     </tr>
                 </thead>
                 <tbody>
@@ -74,14 +64,40 @@
                             <td>{{ $row->country }}</td>
                             <td>{{ $row->deskripsi }}</td>
                     @endforeach        
-                        
-                    @foreach ($dataPendidikan as $rowpen)
-                        
-                            <td>{{ $rowpen->pendidikanFormal }}</td>
-                            <td>{{ $rowpen->jurusan }}</td>
-                            <td>{{ $rowpen->tahunPendidikan }}</td>
+                    
+                    @foreach ($dataKeterampilan as $rowket)
+                            <td>{{ $rowket->skill }}</td>
+                            <td>{{ $rowket->level }}</td>
+                    @endforeach
+                            <td><a href="{{ $row->document_url }}">Download</a></td>
+                            <td>
+                            </td>
+                        </tr>
+                    
+                </tbody>
+            </table>
 
+            <table class="table" style="margin-left: 10px; margin-right: 10px;">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Pekerjaan</th>
+                        <th scope="col">Kota</th>
+                        <th scope="col">Employee</th>
+                        <th scope="col">Mulai</th>
+                        <th scope="col">Terakhir</th>
+                        <th scope="col">Tambah</th>
+                        <th scope="col">Deskripsi</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $no = 1;
+                    @endphp
                     @foreach ($dataPekerjaan as $rowpek)
+                            <th scope="row">{{ $no++ }}</th>
+                            @foreach ($dataPekerjaan as $rowpek)
                             <td>{{ $rowpek->pekerjaan }}</td>
                             <td>{{ $rowpek->city }}</td>
                             <td>{{ $rowpek->employer }}</td>
@@ -90,20 +106,37 @@
                             <td>{{ $rowpek->tambah }}</td>
                             <td>{{ $rowpek->deskripsis }}</td>
                     @endforeach
-                    
-                    @foreach ($dataKeterampilan as $rowket)
-                            <td>{{ $rowket->skill }}</td>
-                            <td>{{ $rowket->level }}</td>
+                        </tr>
                     @endforeach
-                            <td><a href="{{ $row->document_url }}">Download</a></td>
-                            <td>
-                                <a href="/tampil/{{ $row->id }}" class="btn btn-info">Edit</a>
-                                <a href="/delete/{{ $row->id }}" class="btn btn-danger">Delete</a>
+                </tbody>
+            </table>
+            <table class="table" style="margin-left: 10px; margin-right: 10px;">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Pendidikan Formal</th>
+                        <th scope="col">Jurusan</th>
+                        <th scope="col">Tahun Pendidikan</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($dataPendidikan as $rowpen)
+                            <th scope="row">{{ $no++ }}</th>
+                            <td>{{ $rowpen->pendidikanFormal }}</td>
+                            <td>{{ $rowpen->jurusan }}</td>
+                            <td>{{ $rowpen->tahunPendidikan }}</td>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            
+            <a href="/tampil/{{ $row->id }}" class="btn btn-info float:right">Edit</a>
+            <a href="/delete/{{ $row->id }}" class="btn btn-danger float:right width:50px">Delete</a>
 
             <!-- <div class="buttonPreview">
                 <div class="textPreview">

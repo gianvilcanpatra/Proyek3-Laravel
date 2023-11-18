@@ -52,12 +52,14 @@ class PendidikanController extends Controller
     
 
     // Buat entri pendidikan terkait
-    $dataPendidikan = Pendidikan::create([
-        'pengguna_id' => $id,
-        'pendidikanFormal' => $request->input('pendidikanFormal'),
-        'jurusan' => $request->input('jurusan'),
-        'tahunPendidikan' => $request->input('tahunPendidikan'),
+    foreach ($request->riwayatPendidikan as $pendidikan) {
+        Pendidikan::updateOrCreate([
+        'pengguna_id' => 1,
+        'pendidikanFormal' => $pendidikan['pendidikanFormal'],
+        'jurusan' => $pendidikan['jurusan'],
+        'tahunPendidikan' => $pendidikan['tahunPendidikan'],
     ]);;
+    }
     
     return redirect()->route('tambahdatapendidikan')->with('success', 'Data Berhasil di Simpan');
 }

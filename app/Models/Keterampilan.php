@@ -10,7 +10,7 @@ class Keterampilan extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $primaryKey = "id";
+    //protected $primaryKey = "id";
 
     public function pengguna()
     {
