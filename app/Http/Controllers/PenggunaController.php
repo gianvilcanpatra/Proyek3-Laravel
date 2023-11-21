@@ -25,13 +25,15 @@ class PenggunaController extends Controller
 
     public function profil()
     {
-        $data = Pengguna::all();
+        $data = pengguna::all();
         return view('profil', compact('data'));
     }
 
     public function insertdata(Request $request)
     {
-        // $data = pengguna::create($request->all());
+        $data = pengguna::create($request->all());
+        $data->id = 1; // or any other value you want to set for 'id'
+        // $data->save();
 
         if ($request->hasFile('image')) {
             $request->file('image')->move('fotoprofil/', $request->file('image')->getClientOriginalName());
@@ -66,6 +68,7 @@ class PenggunaController extends Controller
     if ($existingUser) {
         // Update existing user
         $existingUser->update([
+            'id' => $pengguna->id,
             'firstName' => $request->input('firstName'),
             'lastName' => $request->input('lastName'),
             'gender' => $request->input('gender'),
@@ -82,7 +85,7 @@ class PenggunaController extends Controller
     } else {
         // If the user with ID 1 does not exist, create a new user
         Pengguna::create([
-            'id' => 1,
+            'id' => $pengguna->id,
             'firstName' => $request->input('firstName'),
             'lastName' => $request->input('lastName'),
             'gender' => $request->input('gender'),

@@ -8,34 +8,40 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="{{ asset('css/tambahdata.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}"> 
 
     <title>Add Data</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="{{ route('home') }}">
-        <img src="image/home.png" width="50" height="50">
-      </a>
-    </div>
+  <body class="d-flex">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ route('home') }}">
+                <img src="image/home.png" width="50" height="50" alt="Home">
+            </a>
+        </div>
+    
+   
+    <nav id="sidebar" style="text-align: left;">
+        <ul class="prev-next-list">
+            <li><a href="/profil" class="next-button" style="color: black; font-size: 19px;">Profil</a></li>
+            <li><a href="/riwayatpendidikan" class="next-button" style="color: black; font-size: 19px;">Riwayat Pendidikan</a></li>
+            <li><a href="/riwayatpekerjaan" class="next-button" style="color: black; font-size: 19px;">Riwayat Pekerjaan</a></li>
+            <li><a href="/keterampilan" class="next-button" style="color: black; font-size: 19px;">Keterampilan</a></li>
+            <li><a href="/dokumenpendukung" class="next-button" style="color: black; font-size: 19px;">Dokumen Pendukung</a></li>
+            <li><a href="/pengguna" class="next-button" style="color: black; font-size: 19px;">Tampil CV</a></li>
+        </ul>
+    </nav>
   </nav>
-  <div class="prev-next-buttons">
-    <a href="/profil" class="next-button">Profil</a>
-    <a href="/riwayatpendidikan" class="next-button">Riwayat Pendidikan</a>
-    <a href="/riwayatpekerjaan" class="next-button">Riwayat Pekerjaan</a>
-    <a href="/keterampilan" class="next-button">Keterampilan</a>
-    <a href="/dokumenpendukung" class="next-button">Dokumen Pendukung</a>
-    <a href="/pengguna" class="next-button">Tampil CV</a>
-  </div>
-  
-<h1 class="center">RIWAYAT PEKERJAAN</h1>
-<div class="container">
+    
+  <div class="container">
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
                   <form action="/insertdatapekerjaan" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                    <h2 class="header-profil">RIWAYAT PEKERJA</h2>
+                    <hr style="margin-top: 0px; margin-bottom: 20px; color:#000000;">
                     @csrf
                   <div class="container mb-1">
                   <div class="row-1" id="Pekerjaan">

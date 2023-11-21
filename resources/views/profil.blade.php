@@ -15,27 +15,28 @@
     <title>Add Data</title>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+
+<body class="d-flex">
+    <nav class="navbar-expand-md navbar-light bg-light" style="width: 250px;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('home') }}">
+            <a class="navbar-brand" href="/tampilanawal">
                 <img src="image/home.png" width="50" height="50">
             </a>
         </div>
-    </nav>
-    <div class="prev-next-buttons">
-        <a href="/profil" class="next-button">Profil</a>
-        <a href="javascript:void(0);" class="next-button"
-            onclick="validateProfileAndNavigate('/riwayatpendidikan')">Riwayat Pendidikan</a>
-        <a href="javascript:void(0);" class="next-button"
-            onclick="validateProfileAndNavigate('/riwayatpekerjaan')">Riwayat Pekerjaan</a>
-        <a href="javascript:void(0);" class="next-button"
-            onclick="validateProfileAndNavigate('/keterampilan')">Keterampilan</a>
-        <a href="javascript:void(0);" class="next-button"
-            onclick="validateProfileAndNavigate('/dokumenpendukung')">Dokumen Pendukung</a>
-        <a href="/pengguna" class="next-button">Tampil CV</a>
-    </div>
-    <h1 class="center">PROFILE</h1>
+   
+   
+    <nav id="sidebar" style="text-align: left;">
+    <ul class="prev-next-list">
+        <li><a href="/profil" class="next-button">Profil</a></li>
+        <li><a href="javascript:void(0);" class="next-button" onclick="validateProfileAndNavigate('/riwayatpendidikan')">Riwayat Pendidikan</a></li>
+        <li><a href="javascript:void(0);" class="next-button" onclick="validateProfileAndNavigate('/riwayatpekerjaan')">Riwayat Pekerjaan</a></li>
+        <li><a href="javascript:void(0);" class="next-button" onclick="validateProfileAndNavigate('/keterampilan')">Keterampilan</a></li>
+        <li><a href="javascript:void(0);" class="next-button" onclick="validateProfileAndNavigate('/dokumenpendukung')">Dokumen Pendukung</a></li>
+        <li><a href="/pengguna" class="next-button">Tampil CV</a></li>
+    </ul>
+</nav>
+</nav>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-8">
@@ -44,8 +45,8 @@
                         <form action="/insertdata" method="POST" enctype="multipart/form-data"
                             onsubmit="return validateForm()" id="profileForm">
                             @csrf
-                            <h2 class="header-profil">PERSONAL DETAIL</h2>
-                            <hr style="margin-top: 0px; margin-bottom: 20px; color:#000000;">
+                            <h2 class="header-profil">PROFIL</h2>
+                            <hr style="margin-top: 0px; margin-bottom: 30px; color:#000000;">
                             <div class="container mb-4">
                                 <div class="row-1">
                                     <div class="profile-section">

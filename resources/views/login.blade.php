@@ -20,7 +20,23 @@
   
     <div class="card-body">
       <p class="login-box-msg">Sign in to your account</p>
+      @if(session('login_error'))
+            <div class="alert alert-danger"  style="color: red;">
+              {{ session('login_error') }}
+            </div>
+          @endif
 
+          @if(session('email_error'))
+            <div class="alert alert-danger" style="color: red;">
+              {{ session('email_error') }}
+            </div>
+          @endif
+
+          @if(session('password_error'))
+            <div class="alert alert-danger" style="color: red;">
+              {{ session('password_error') }}
+            </div>
+          @endif
       <form action="/loginproses" method="post">
       @csrf
         <div class="input-group mb-3">
@@ -31,16 +47,19 @@
               </div>
             </div>
           </div>
-          
+          @error('email')
+              <div class="alert alert-danger" style="color: red;">{{ $message }}</div>
+            @enderror
           <div class="input-group mb-3" style="margin-top: 10px;"> <!-- Atur margin-top sesuai keinginan Anda -->
             <input type="password" class="form-control" name="password" placeholder="Password">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
               </div>
-            </div>
-        
-          
+            </div>  
+            @error('password')
+              <div class="alert alert-danger" style="color: red;">{{ $message }}</div>
+            @enderror
     </div>
   </div>
   <div class="col-4">
