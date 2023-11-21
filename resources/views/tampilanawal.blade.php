@@ -14,10 +14,10 @@
 
 <body class="bg-transparent">
 
-  <div class="sidebar" style="width: 180px;" >
+  <div class="sidebar">
     <div class="welcome-container">
-      <a class="navbar-brand" href="/tampilanawal" style="float: left;"></a>
-      <h1 class="dropdown-item" style="float: left; font-size: 28px">Hello, {{ session('name') }}!
+      <a class="navbar-brand" href="/tampilanawal" style="float: right;"></a>
+      <h1 class="welcome-heading">HELLO, {{ session('name') }}!
       </h1>
   </div>
   
@@ -34,9 +34,6 @@
     <ul class="navbar-nav">
       <li class="nav-item mx-3">
         <a class="dropdown-item" aria-current="page" href="/profil">CREATE CV</a>
-      </li>
-      <li class="nav-item mx-3">
-        <a class="dropdown-item" aria-current="page" href="{{ route('pengguna') }}">ADMIN</a>
       </li>
     </ul>
   

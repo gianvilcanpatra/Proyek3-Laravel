@@ -19,7 +19,7 @@
     <div class="form">
   
     <div class="card-body">
-      <p class="login-box-msg">Sign in to your account</p>
+      <p class="login-box-msg">SIGN IN TO YOUR ACCOUNT</p>
       @if(session('login_error'))
             <div class="alert alert-danger"  style="color: red;">
               {{ session('login_error') }}
@@ -64,10 +64,10 @@
   </div>
   <div class="col-4">
     <div class="signin-container">
-      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      <button type="submit" class="btn btn-primary btn-block">SIGN IN</button>
       <p class="signup-link">
         No account?
-        <a href="/register">Sign up</a>
+        <a href="/register">SIGN UP</a>
       </p>
     </div>
   </div>

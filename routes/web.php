@@ -62,9 +62,8 @@ Route::get('/tampilanawal', function () {
     return view('tampilanawal');
 });
 
-Route::get('/preview', function () {
-    return view('preview');
-})->name('preview');
+Route::get('/preview', [PenggunaController::class, 'tampilcv'])->name('tampilcv');
+
 
 Route::get('/templatecv', function () {
     return view('templatecv');

@@ -204,6 +204,15 @@ class PenggunaController extends Controller
         return redirect()->route('tambahdatapendidikan');
     }
     
+    public function tampilcv()
+    {
+        $pengguna = Pengguna::all();
+        $pendidikan = Pendidikan::all();
+        $pekerjaan = Pekerjaan::all();
+        $keterampilan = Keterampilan::all();
+
+        return view('preview', compact('pengguna', 'pendidikan', 'pekerjaan', 'keterampilan'));
+    }
 
 
     public function delete($id)

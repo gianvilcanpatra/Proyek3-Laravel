@@ -17,25 +17,29 @@
 
 
 <body class="d-flex">
-    <nav class="navbar-expand-md navbar-light bg-light" style="width: 250px;">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/tampilanawal">
                 <img src="image/home.png" width="50" height="50">
             </a>
         </div>
-   
-   
-    <nav id="sidebar" style="text-align: left;">
-    <ul class="prev-next-list">
-        <li><a href="/profil" class="next-button">Profil</a></li>
-        <li><a href="javascript:void(0);" class="next-button" onclick="validateProfileAndNavigate('/riwayatpendidikan')">Riwayat Pendidikan</a></li>
-        <li><a href="javascript:void(0);" class="next-button" onclick="validateProfileAndNavigate('/riwayatpekerjaan')">Riwayat Pekerjaan</a></li>
-        <li><a href="javascript:void(0);" class="next-button" onclick="validateProfileAndNavigate('/keterampilan')">Keterampilan</a></li>
-        <li><a href="javascript:void(0);" class="next-button" onclick="validateProfileAndNavigate('/dokumenpendukung')">Dokumen Pendukung</a></li>
-        <li><a href="/pengguna" class="next-button">Tampil CV</a></li>
-    </ul>
-</nav>
-</nav>
+
+
+        <nav id="sidebar" style="text-align: left;">
+            <ul class="prev-next-list">
+                <li><a href="/profil" class="next-button">Profil</a></li>
+                <li><a href="javascript:void(0);" class="next-button"
+                        onclick="validateProfileAndNavigate('/riwayatpendidikan')">Riwayat Pendidikan</a></li>
+                <li><a href="javascript:void(0);" class="next-button"
+                        onclick="validateProfileAndNavigate('/riwayatpekerjaan')">Riwayat Pekerjaan</a></li>
+                <li><a href="javascript:void(0);" class="next-button"
+                        onclick="validateProfileAndNavigate('/keterampilan')">Keterampilan</a></li>
+                <li><a href="javascript:void(0);" class="next-button"
+                        onclick="validateProfileAndNavigate('/dokumenpendukung')">Dokumen Pendukung</a></li>
+                <li><a href="/preview" class="next-button">Tampil CV</a></li>
+            </ul>
+        </nav>
+    </nav>
 
     <div class="container">
         <div class="row justify-content-center">
@@ -53,7 +57,8 @@
                                         <div class="profile-image">
                                             <img src="path/to/profile-image.jpg">
                                             <label for="nomorTelepon" class="form-label">foto*</label>
-                                            <input type="file" name="image" class="form-control" id="exampleInputEmail1">
+                                            <input type="file" name="image" class="form-control"
+                                                id="exampleInputEmail1">
                                         </div>
                                         <div class="profile-details">
                                         </div>
