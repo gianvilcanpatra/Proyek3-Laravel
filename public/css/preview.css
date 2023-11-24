@@ -81,6 +81,7 @@ h1 {
     justify-content: center;
     min-height: 90vh;
     margin-top: 50px;
+    margin-left:50px;
 }
 
 .profile-section {
@@ -174,6 +175,7 @@ h1 {
     font-weight: 400;
     word-wrap: break-word;
     width: 300px;
+    font-weight: bold;
 }
 
 .text-profile{
@@ -223,6 +225,7 @@ h1 {
     font-family: Inter;
     font-weight: 400;
     word-wrap: break-word;
+    font-weight: bold;
 }
 
 .content {
@@ -308,6 +311,19 @@ h1 {
     position: absolute;
 }
 
+.download{
+    margin-top:500px;
+    margin-right:25px;
+}
+
+#btn-print-this {
+    width: auto;
+    height: auto;
+    text-align: center;
+    /* atau */
+    /* width: auto; */ /* Gunakan width:auto agar tombol menyesuaikan ukuran dengan teks */
+}
+
 .education-container {
     width: 791px;
     height: 237px;
@@ -319,15 +335,15 @@ h1 {
 .pekerjaan-container {
     width: 791px;
     height: 237px;
-    left: 0px;
-    top: 725px;
+    left: 10px;
+    top: 750px;
     position: absolute;
 }
 
 .keterampilan-container {
     width: 791px;
     height: 237px;
-    left: 0px;
+    left: 10px;
     top: 955px;
     position: absolute;
 }

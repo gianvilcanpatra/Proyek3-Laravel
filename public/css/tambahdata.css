@@ -41,10 +41,33 @@ h1 {
     border: 1px solid #ccc; /* Opsional: Tambahkan garis tepi jika diperlukan */
 }
 
-.profile-image {
+.profile-section .form-label {
+    font-size: 12px; /* Sesuaikan dengan ukuran yang diinginkan */
+}
+
+.profile-section .form-control {
+    width: 100%; /* Mengisi lebar form-control sesuai lebar profile-section */
+    margin-top: 5px; /* Sesuaikan dengan jarak yang diinginkan antara label dan input */
+}
+
+.profile-image img {
+    max-width: 100%; /* Membuat gambar tidak melebihi lebar parent (.profile-section) */
+    max-height: 100%; /* Membuat gambar tidak melebihi tinggi parent (.profile-section) */
+    width: auto; /* Menjaga aspek ratio gambar */
+    height: auto; /* Menjaga aspek ratio gambar */
+}
+
+.profile- img {
+    max-width: 100%; /* Membuat gambar tidak melebihi lebar parent (.profile-section) */
+    max-height: 100%; /* Membuat gambar tidak melebihi tinggi parent (.profile-section) */
+    width: auto; /* Menjaga aspek ratio gambar */
+    height: auto; /* Menjaga aspek ratio gambar */
+}
+
+/* .profile-image {
     margin-top: 40%;
     
-}
+} */
 
 .center {
     display: flex;
@@ -91,6 +114,7 @@ h1 {
     background-size: cover !important;
     transition: all 200ms ease-in-out;
     box-shadow: 0px 0px 3px 0px #d3cfcf;
+    margin-bottom: 100px;
 }
 
 .fn-ln {
@@ -123,6 +147,14 @@ h1 {
 
 .col-2 {
     width: 50%;
+}
+
+.tengah-container{
+    margin-top: 500px;
+}
+
+.row.justify-content-center {
+    justify-content: initial !important;
 }
 
 .custom-col {

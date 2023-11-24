@@ -20,199 +20,207 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/tampilanawal">
-          <img src="image/home.png" width="50" height="50" alt="Home">
-        </a>
-      </div>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/tampilanawal">
+                <img src="image/home.png" width="50" height="50" alt="Home">
+            </a>
+        </div>
 
 
-      <nav id="sidebar" style="text-align: left;">
-        <ul class="prev-next-list">
-          <li><a href="/profil" class="next-button" style="color: black; font-size: 19px;">Profil</a></li>
-          <li><a href="/riwayatpendidikan" class="next-button" style="color: black; font-size: 19px;">Riwayat
-              Pendidikan</a></li>
-          <li><a href="/riwayatpekerjaan" class="next-button" style="color: black; font-size: 19px;">Riwayat
-              Pekerjaan</a></li>
-          <li><a href="/keterampilan" class="next-button" style="color: black; font-size: 19px;">Keterampilan</a></li>
-          <li><a href="/dokumenpendukung" class="next-button" style="color: black; font-size: 19px;">Dokumen
-              Pendukung</a></li>
-          <li><a href="/preview" class="next-button" style="color: black; font-size: 19px;">Tampil CV</a></li>
-        </ul>
-      </nav>
+        <nav id="sidebar" style="text-align: left;">
+            <ul class="prev-next-list">
+                <li><a href="/profil" class="next-button" style="color: black; font-size: 19px;">Profil</a></li>
+                <li><a href="/riwayatpendidikan" class="next-button" style="color: black; font-size: 19px;">Riwayat
+                        Pendidikan</a></li>
+                <li><a href="/riwayatpekerjaan" class="next-button" style="color: black; font-size: 19px;">Riwayat
+                        Pekerjaan</a></li>
+                <li><a href="/keterampilan" class="next-button" style="color: black; font-size: 19px;">Keterampilan</a>
+                </li>
+                <li><a href="/dokumenpendukung" class="next-button" style="color: black; font-size: 19px;">Dokumen
+                        Pendukung</a></li>
+                <li><a href="/preview" class="next-button" style="color: black; font-size: 19px;">Tampil CV</a></li>
+            </ul>
+        </nav>
     </nav>
 
     <h1 class="center">PREVIEW CV</h1>
     @if ($pengguna->count() > 0)
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-8">
-                <!-- <div class="card">
+        <div id="cv-downloads">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <!-- <div class="card">
                     <div class="card-body">
 
                         <div class="container mb-4"> -->
-                <div class="cv-container ">
-                    <div class="cv">
+                    <div class="cv-container " id="cv-download">
+                        <div class="cv">
 
-                        @foreach ($pengguna as $dataPengguna)
-                        <div class="profile-container">
-                            <div class="profile-info">
-                                <div class="profile-image">
-                                    <img src="{{ asset('fotoprofil/'. $dataPengguna->image)}}" alt="">
-                                </div>
-                                <div class="text-profile">
-                                    <div class="name-info"> {{ $dataPengguna->firstName }} {{
-                                        $dataPengguna->lastName }}
+                            @foreach ($pengguna as $dataPengguna)
+                            <div class="profile-container">
+                                <div class="profile-info">
+                                    <div class="profile-image">
+                                        <img src="{{ asset('fotoprofil/'. $dataPengguna->image)}}" alt="">
                                     </div>
-                                    <div class="role-info">Pelajar</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="pengguna-container">
-                            <div class="header">
-                                <div class="header-background"></div>
-                                <div class="header-text">PROFIL</div>
-                            </div>
-                            <div class="content">
-                                <div class="content-pengguna">
-                                    <div class="info">
-                                        <div class="info-label">Nama</div>
-                                        <div class="info-value">{{ $dataPengguna->firstName }} {{
-                                            $dataPengguna->lastName }}</div>
-                                    </div>
-                                    <div class="info">
-                                        <div class="info-label">Nomor Handphone</div>
-                                        <div class="info-value">0{{ $dataPengguna->nomorTelepon }}</div>
-                                    </div>
-                                    <div class="info">
-                                        <div class="info-label">Email</div>
-                                        <div class="info-value">{{ $dataPengguna->emailUser }}</div>
-                                    </div>
-                                    <div class="info">
-                                        <div class="info-label">Tanggal Lahir</div>
-                                        <div class="info-value">{{ $dataPengguna->tanggalLahir }}</div>
-                                    </div>
-                                    <div class="info">
-                                        <div class="info-label">Jenis Kelamin</div>
-                                        <div class="info-value">{{ $dataPengguna->gender }}</div>
-                                    </div>
-                                    <div class="info">
-                                        <div class="info-label">Negara</div>
-                                        <div class="info-value">{{ $dataPengguna->country }}</div>
+                                    <div class="text-profile">
+                                        <div class="name-info"> {{ $dataPengguna->firstName }} {{
+                                            $dataPengguna->lastName }}
+                                        </div>
+                                        <div class="role-info">Pelajar</div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="d-container">
-                            <div class="description-container">
-                                <div class="description-text">
-                                    {{ $dataPengguna->deskripsi }}
+                            <div class="pengguna-container">
+                                <div class="header">
+                                    <div class="header-background"></div>
+                                    <div class="header-text">PRIBADI</div>
                                 </div>
-                            </div>
-                            <div class="header">
-                                <div class="header-background"></div>
-                                <div class="header-text">Deskripsi</div>
-                            </div>
-                        </div>
-                        @endforeach
-
-                        @php
-                        $index = 0;
-                        $totalPendidikan = count($pendidikan);
-                        $marginValue = 10;
-                        @endphp
-
-                        @while ($index < $totalPendidikan) <div class="education-container">
-                            <div class="content">
-                                <div class="education-box" style="margin-top: {{ $marginValue }}px;">
-                                    <div class="info">
-                                        <div class="info-label">D3</div>
-                                        <div class="info-value-pendidikan">{{
-                                            $pendidikan[$index]->tahunPendidikan }}</div>
-                                    </div>
-                                    <div class="info">
-                                        <div class="info-label">{{ $pendidikan[$index]->jurusan }}</div>
-                                    </div>
-                                    <div class="info">
-                                        <div class="info-label">{{ $pendidikan[$index]->pendidikanFormal }}
+                                <div class="content">
+                                    <div class="content-pengguna">
+                                        <div class="info">
+                                            <div class="info-label">Nama</div>
+                                            <div class="info-value">{{ $dataPengguna->firstName }} {{
+                                                $dataPengguna->lastName }}</div>
+                                        </div>
+                                        <div class="info">
+                                            <div class="info-label">Nomor Handphone</div>
+                                            <div class="info-value">0{{ $dataPengguna->nomorTelepon }}</div>
+                                        </div>
+                                        <div class="info">
+                                            <div class="info-label">Email</div>
+                                            <div class="info-value">{{ $dataPengguna->emailUser }}</div>
+                                        </div>
+                                        <div class="info">
+                                            <div class="info-label">Tanggal Lahir</div>
+                                            <div class="info-value">{{ $dataPengguna->tanggalLahir }}</div>
+                                        </div>
+                                        <div class="info">
+                                            <div class="info-label">Jenis Kelamin</div>
+                                            <div class="info-value">{{ $dataPengguna->gender }}</div>
+                                        </div>
+                                        <div class="info">
+                                            <div class="info-label">Negara</div>
+                                            <div class="info-value">{{ $dataPengguna->country }}</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="d-container">
+                                <div class="description-container">
+                                    <div class="description-text">
+                                        {{ $dataPengguna->deskripsi }}
+                                    </div>
+                                </div>
+                                <div class="header">
+                                    <div class="header-background"></div>
+                                    <div class="header-text">PROFIL</div>
+                                </div>
+                            </div>
+                            @endforeach
+
+                            @php
+                            $index = 0;
+                            $totalPendidikan = count($pendidikan);
+                            $marginValue = 10;
+                            @endphp
+
+                            @while ($index < $totalPendidikan) <div class="education-container">
+                                <div class="content">
+                                    <div class="education-box" style="margin-top: {{ $marginValue }}px;">
+                                        <div class="info">
+                                            <div class="info-label">{{ $pendidikan[$index]->jurusan }}</div>
+                                            <div class="info-value-pendidikan">{{
+                                                $pendidikan[$index]->tahunPendidikan }}</div>
+                                        </div>
+                                        <div class="info">
+                                            <div class="info-label">{{ $pendidikan[$index]->pendidikanFormal }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="header">
+                                    <div class="header-background"></div>
+                                    <div class="header-text">RIWAYAT PENDIDIKAN</div>
+                                </div>
+                        </div>
+                        @php
+                        $index++;
+                        $marginValue += 75;
+                        @endphp
+                        @endwhile
+
+                        @php
+                        $index = 0;
+                        $totalPekerjaan = count($pekerjaan);
+                        $marginValue = 10;
+                        @endphp
+                        @while ($index < $totalPekerjaan) <div class="pekerjaan-container">
+                            <div class="content">
+                                <div class="pekerjaan-box" style="margin-top: {{ $marginValue }}px;">
+                                    <div class="info">
+                                        <div class="info-label">{{ $pekerjaan[$index]->pekerjaan }}</div>
+                                        <div class="info-value-pendidikan">{{ $pekerjaan[$index]->mulai }} {{
+                                            $pekerjaan[$index]->tahun }} - {{ $pekerjaan[$index]->terakhir }} {{
+                                            $pekerjaan[$index]->tambah }}</div>
+                                    </div>
+                                    <div class="info">
+                                        <div class="info-label">{{ $pekerjaan[$index]->employer }}</div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="header">
                                 <div class="header-background"></div>
-                                <div class="header-text">Riwayat Pendidikan</div>
+                                <div class="header-text">RIWAYAT PEKERJAAN</div>
                             </div>
                     </div>
                     @php
                     $index++;
-                    $marginValue += 100;
+                    $marginValue += 55;
                     @endphp
                     @endwhile
 
                     @php
                     $index = 0;
-                    $totalPekerjaan = count($pekerjaan);
+                    $totalKeterampilan = count($keterampilan);
                     $marginValue = 10;
                     @endphp
-                    @while ($index < $totalPekerjaan) <div class="pekerjaan-container">
+                    @while ($index < $totalKeterampilan) <div class="keterampilan-container">
                         <div class="content">
-                            <div class="pekerjaan-box" style="margin-top: {{ $marginValue }}px;">
-                                <div class="info">
-                                    <div class="info-label">{{ $pekerjaan[$index]->pekerjaan }}</div>
-                                    <div class="info-value-pendidikan">{{ $pekerjaan[$index]->mulai }} {{
-                                        $pekerjaan[$index]->tahun }} - {{ $pekerjaan[$index]->terakhir }} {{
-                                        $pekerjaan[$index]->tambah }}</div>
-                                </div>
-                                <div class="info">
-                                    <div class="info-label">{{ $pekerjaan[$index]->employer }}</div>
+                            <div class="keterampilan-box">
+                                <div class="info" style="margin-top: {{ $marginValue }}px;">
+                                    <div class="info-label">{{ $keterampilan[$index]->skill }}</div>
+                                    <div class="info-value-pendidikan">{{ $keterampilan[$index]->level }}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="header">
                             <div class="header-background"></div>
-                            <div class="header-text">Riwayat Pekerjaan</div>
+                            <div class="header-text">KETERAMPILAN</div>
                         </div>
                 </div>
                 @php
                 $index++;
-                $marginValue += 55;
+                $marginValue += 25;
                 @endphp
                 @endwhile
-
-                @php
-                $index = 0;
-                $totalKeterampilan = count($keterampilan);
-                $marginValue = 10;
-                @endphp
-                @while ($index < $totalKeterampilan) <div class="keterampilan-container">
-                    <div class="content">
-                        <div class="keterampilan-box">
-                            <div class="info" style="margin-top: {{ $marginValue }}px;">
-                                <div class="info-label">{{ $keterampilan[$index]->skill }}</div>
-                                <div class="info-value-pendidikan">{{ $keterampilan[$index]->level }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="header">
-                        <div class="header-background"></div>
-                        <div class="header-text">Keterampilan</div>
-                    </div>
             </div>
-            @php
-            $index++;
-            $marginValue += 25;
-            @endphp
-            @endwhile
         </div>
     </div>
+   
     </div>
+
     <!-- </form> -->
     </div>
+    
+
     </div>
+    <div class="download">
+    <button id="btn-print-this" class="btn btn-success btn-lg">Download</button>
+    </div>
+
     </div>
     @else
     <div class="no-data-message">
@@ -231,6 +239,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{{ asset('js/printThis.js') }}"></script>
+    <script src="{{ asset('js/costum.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"></script>
+
+
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
@@ -332,7 +346,7 @@
             } else {
                 // If all required fields are filled, navigate to the target URL
                 window.location.href = targetUrl;
-            }
+        }
 
 
     </script>
