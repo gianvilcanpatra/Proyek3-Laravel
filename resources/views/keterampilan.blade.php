@@ -100,8 +100,9 @@
                             <td>{{ $rowket->skill }}</td>
                             <td>{{ $rowket->level }}</td>
                             <td>
-                                <a href="/tampilketerampilan/{{ $rowket->id }}" class="btn btn-info">Edit</a>
-                                <a href="/deleteketerampilan/{{ $rowket->id }}" class="btn btn-danger">Delete</a>
+                              <a href="/tampilketerampilan/{{ $rowket->id }}" class="btn btn-warning text-black">Edit</a>
+                              <a href="/deleteketerampilan/{{ $rowket->id }}" class="btn btn-danger">Delete</a>
+                            
                             </td>
                         </tr>
                     @endforeach

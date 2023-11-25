@@ -106,8 +106,9 @@
                                       <td>{{ $rowpen->jurusan }}</td>
                                       <td>{{ $rowpen->tahunPendidikan }}</td>
                                       <td>
-                                          <a href="/tampilriwayatpendidikan/{{ $rowpen->id }}" class="btn btn-info">Edit</a>
-                                          <a href="/deletependidikan/{{ $rowpen->id }}" class="btn btn-danger">Delete</a>
+                                        <a href="/tampilriwayatpendidikan/{{ $rowpen->id }}" class="btn btn-warning text-black">Edit</a>
+                                        <a href="/deletependidikan/{{ $rowpen->id }}" class="btn btn-danger">Delete</a>
+                                        
                                       </td>
           
                               </tr>
