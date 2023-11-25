@@ -30,7 +30,11 @@
 
           <form action="/registeruser" method="post">
             @csrf
-            <div class="input-group mb-3">
+            <label for="email" style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+              Username
+            </label>
+            
+            <div class="input-group mb-3" style="margin-top: 10px; margin-bottom: 20px;">
               <input type="text" name="name" class="form-control" placeholder="Name">
               <div class="input-group-append">
                 <div class="input-group-text">
@@ -38,11 +42,14 @@
                 </div>
               </div>
             </div>
+            
             @error('name')
               <div class="alert alert-danger" style="color: red;">{{ $message }}</div>
             @enderror
-
-            <div class="input-group mb-3" style="margin-top: 10px;">
+            <label for="email" style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+              Email
+            </label>
+            <div class="input-group mb-3" style="margin-top: 5px; margin-bottom: 20px;">
               <input type="email" name="email" class="form-control" placeholder="Email">
               <div class="input-group-append">
                 <div class="input-group-text">
@@ -53,8 +60,11 @@
             @error('email')
               <div class="alert alert-danger" style="color: red;">{{ $message }}</div>
             @enderror
-
-            <div class="input-group mb-3" style="margin-top: 10px;">
+            <label for="email" style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+              Password
+            </label>
+            <div class="input-group mb-3" style="margin-top: 5px; margin-bottom: 20px;">
+            
               <input type="password" name="password" class="form-control" placeholder="Password">
               <div class="input-group-append">
                 <div class="input-group-text">
@@ -66,8 +76,10 @@
             @error('password')
               <div class="alert alert-danger" style="color: red;">{{ $message }}</div>
             @enderror
-
-            <div class="input-group mb-3" style="margin-top: 10px;">
+            <label for="email" style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+              Confirm Password
+            </label>
+            <div class="input-group mb-3" style="margin-top: 5px; margin-bottom: 5px;">
               <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm password" required>
               <div class="input-group-append">
                 <div class="input-group-text">
@@ -78,9 +90,9 @@
 
             <div class="col-4">
               <div class="signin-container">
-                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                <button type="submit" class="btn btn-primary btn-block" style="color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Sign up</button>
                 <p class="signup-link">
-                  <a href="/login">login</a>
+                  <a href="/login"  style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">login</a>
                 </p>
               </div>
             </div>

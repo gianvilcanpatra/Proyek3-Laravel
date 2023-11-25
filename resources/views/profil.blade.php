@@ -49,7 +49,10 @@
                         <form action="/insertdata" method="POST" enctype="multipart/form-data"
                             onsubmit="return validateForm()" id="profileForm">
                             @csrf
-                            <h2 class="header-profil">PROFIL</h2>
+                            <div style="display: flex; align-items: center;">
+                                <img src="image/user-profile_.png" alt="Profil Image" style="margin-right: -5px; width: 30px;">
+                                <h2 class="header-profil">PROFIL</h2>
+                            </div>   
                             <hr style="margin-top: 0px; margin-bottom: 30px; color:#000000;">
                             <div class="container mb-4">
                                 <div class="row-1">
@@ -360,9 +363,9 @@
                                         value="{{ old('deskripsi', $data->first()->deskripsi ?? '') }}">
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <button class="btn btn-info" type="submit">Submit</button>
+                                    <button class="btn btn-success" style="float: right;" type="submit">Submit</button>
 
-                                </div>
+                               </div>
                             </div>
                         </form>
                     </div>

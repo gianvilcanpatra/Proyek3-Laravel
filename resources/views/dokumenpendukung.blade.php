@@ -17,7 +17,7 @@
 <body class="d-flex">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('home') }}">
+            <a class="navbar-brand" href="/tampilanawal">
                 <img src="image/home.png" width="50" height="50" alt="Home">
             </a>
         </div>
@@ -42,7 +42,11 @@
                 <div class="card-body">
                         <form action="/insertdatadokumen" method="POST" enctype="multipart/form-data"
                             onsubmit="return validateForm()">
-                            <h2 class="header-profil">DOKUMEN PENDUKUNG</h2>
+                            <div style="display: flex; align-items: center;">
+                                <img src="image/document-add_.png"  alt="Profil Image" style="margin-right: 15px; width: 30px;">
+                                <h2 class="header-profil">DOKUMEN PENDUKUNG</h2>
+                            </div>        
+                           
                             <hr style="margin-top: 0px; margin-bottom: 20px; color:#000000;">
                             @csrf
                             <div class="container mb-4">
@@ -55,7 +59,8 @@
                                         </div>
                                     </div>
                                     {{-- <button onclick="prevSlide(1)">Kembali</button> --}}
-                                    <button class="btn btn-info" type="submit">Submit</button>
+                                    <button class="btn btn-success" style="float: right;" type="submit">
+                                        Submit</button>
                                 </div>
                             </div>
                         </form>

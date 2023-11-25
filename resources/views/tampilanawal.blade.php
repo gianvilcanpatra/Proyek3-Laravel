@@ -24,7 +24,7 @@
     <a class="navbar-brand" href="/tampilanawal" style="float: right;"></a>
     <ul class="navbar-nav">
       <li class="nav-item mx-3">
-        <a class="dropdown-item" aria-current="page" href="{{ route('home') }}">HOME</a>
+        <a class="dropdown-item" aria-current="page" href="#">HOME</a>
       </li>
       <li class="nav-item mx-3">
         <a class="dropdown-item" aria-current="page" href="{{ route('templatecv') }}">CV TEMPLATES</a>
@@ -35,6 +35,18 @@
       <li class="nav-item mx-3">
         <a class="dropdown-item" aria-current="page" href="/profil">CREATE CV</a>
       </li>
+      <li class="nav-item mx-3">
+        <a aria-current="page" href="{{ route('login') }}" style="color: black; text-decoration: none; display: flex; align-items: center;">
+            <div style="margin-top: 250px; display: flex; align-items: center;">
+                <img src="{{ asset('image/logout.png') }}" alt="Logout" width="20" height="20" style="margin-right: 5px;">
+                <span class="dropdown-item" style="font-weight: bold; color: black; font-size: 18px; transition: color 0.20s;">
+                    Logout
+                </span>
+            </div>
+        </a>
+    </li>
+    
+    
     </ul>
   
 

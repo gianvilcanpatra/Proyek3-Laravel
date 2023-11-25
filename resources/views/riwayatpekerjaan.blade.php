@@ -15,7 +15,7 @@
   <body class="d-flex">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('home') }}">
+            <a class="navbar-brand" href="/tampilanawal">
                 <img src="image/home.png" width="50" height="50" alt="Home">
             </a>
         </div>
@@ -40,7 +40,10 @@
                 <div class="card-body">
                   <form action="/insertdatapekerjaan" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
                     @csrf
-                    <h2 class="header-profil">RIWAYAT PEKERJA</h2>
+                    <div style="display: flex; align-items: center;">
+                        <img src="image/network-enterprise_.png" alt="Profil Image" style="margin-right: 15px; width: 30px;">
+                        <h2 class="header-profil">RIWAYAT PEKERJAAN</h2>
+                    </div>
                     <hr style="margin-top: 0px; margin-bottom: 20px; color:#000000;">
                     <div class="mb-3">
                       <label for="riwayatPekerjaan" class="form-label">Riwayat Pekerjaan</label>
@@ -65,9 +68,13 @@
                           </tbody>
                       </table>
                   </div>
+                  <button type="button" class="btn btn-info" id="tambahRiwayatPekerjaan" style="width: 120px;">
+                    <img src="image/plus_.png" alt="Icon" style="vertical-align: middle; margin-right: 10px; width: 20px;">
+                    Tambah
+                  </button>
 
-                  <button type="button" class="btn btn-secondary" id="tambahRiwayatPekerjaan">Tambah</button>
-                  <button class="btn btn-info" style="float:right" type="submit">Submit</button>
+                <button class="btn btn-success" style="float: right;" type="submit">
+                    Submit</button>
                   </form>
                   <div class="row mt-5">
                     <table class="table" style="margin-left: 10px; margin-right: 10px;">
@@ -95,8 +102,8 @@
                                         <td>{{ $rowpek->mulaikerja }}</td>
                                         <td>{{ $rowpek->akhirkerja }}</td>
                                         <td>
-                                          <a href="/tampilriwayatpekerjaan/{{ $rowpek->id }}" class="btn btn-info">Edit</a>
-                                          <a href="/deletepekerjaan/{{ $rowpek->id }}" class="btn btn-danger">Delete</a>
+                                            <a href="/tampilriwayatpekerjaan/{{ $rowpek->id }}" class="btn btn-warning">Edit</a>
+                                            <a href="/deletepekerjaan/{{ $rowpek->id }}" class="btn btn-danger">Delete</a>
                                         </td>
                                 
                                     </tr>

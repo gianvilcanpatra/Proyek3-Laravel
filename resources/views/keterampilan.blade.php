@@ -18,7 +18,7 @@
 <body class="d-flex">
   <nav class="navbar navbar-expand-md navbar-light bg-light">
       <div class="container-fluid">
-          <a class="navbar-brand" href="{{ route('home') }}">
+        <a class="navbar-brand" href="/tampilanawal">
               <img src="image/home.png" width="50" height="50" alt="Home">
           </a>
       </div>
@@ -44,7 +44,10 @@
             <form action="/insertdataketerampilan" method="POST" enctype="multipart/form-data"
               onsubmit="return validateForm()">
               @csrf
-              <h2 class="header-profil">KETERAMPILAN</h2>
+              <div style="display: flex; align-items: center;">
+                <img src="image/skill-level-intermediate_.png" alt="Profil Image" style="margin-right: 15px; width: 30px;">
+                <h2 class="header-profil">KETERAMPILAN</h2>
+            </div>        
               <hr style="margin-top: 0px; margin-bottom: 20px; color:#000000;">
               
 
@@ -68,9 +71,14 @@
                     </tbody>
                 </table>
             </div>
-            <button type="button" class="btn btn-secondary" id="tambahKeterampilan">Tambah</button>
-                <button class="btn btn-info" style="float:right" type="submit">Submit</button>
-              
+  
+                <button type="button" class="btn btn-info" id="tambahKeterampilan" style="width: 120px;">
+                  <img src="image/plus_.png" alt="Icon" style="vertical-align: middle; margin-right: 10px; width: 20px;">
+                  Tambah
+                </button>
+  
+              <button class="btn btn-success" style="float: right;" type="submit">
+                  Submit</button>
             </form>
         <div class="row">
         <table class="table" style="margin-left: 10px; margin-right: 10px;">

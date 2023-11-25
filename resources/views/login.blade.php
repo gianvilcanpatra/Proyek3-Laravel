@@ -19,7 +19,14 @@
     <div class="form">
   
     <div class="card-body">
-      <p class="login-box-msg">SIGN IN TO YOUR ACCOUNT</p>
+     <p class="login-box-msg">
+        <img src="image/icon1.png" alt="Icon" style="vertical-align: middle; margin-right: 5px; width: 30px;">
+        WP4
+      </p>
+      <p class="login-box-msg1">
+
+        Welcome to our App
+      </p>
       @if(session('login_error'))
             <div class="alert alert-danger"  style="color: red;">
               {{ session('login_error') }}
@@ -39,7 +46,10 @@
           @endif
       <form action="/loginproses" method="post">
       @csrf
-        <div class="input-group mb-3">
+      <label for="email" style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+        Email
+      </label>
+        <div class="input-group mb-3"style="margin-top: 5px; margin-bottom: 15px;">
             <input type="email" class="form-control" name="email" placeholder="Email">
             <div class="input-group-append">
               <div class="input-group-text">
@@ -50,7 +60,8 @@
           @error('email')
               <div class="alert alert-danger" style="color: red;">{{ $message }}</div>
             @enderror
-          <div class="input-group mb-3" style="margin-top: 10px;"> <!-- Atur margin-top sesuai keinginan Anda -->
+            <label for="password" style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Password</label>
+          <div class="input-group mb-3"  style="margin-top: 5px; margin-bottom: 5px;"> <!-- Atur margin-top sesuai keinginan Anda -->
             <input type="password" class="form-control" name="password" placeholder="Password">
             <div class="input-group-append">
               <div class="input-group-text">
@@ -64,10 +75,10 @@
   </div>
   <div class="col-4">
     <div class="signin-container">
-      <button type="submit" class="btn btn-primary btn-block">SIGN IN</button>
-      <p class="signup-link">
+      <button type="submit" class="btn btn-primary btn-block" style="color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">SIGN IN</button>
+      <p class="signup-link" style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
         No account?
-        <a href="/register">SIGN UP</a>
+        <a href="/register" style="color: black;">SIGN UP</a>
       </p>
     </div>
   </div>
