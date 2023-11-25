@@ -29,9 +29,8 @@ class PendidikanController extends Controller
     public function tampilriwayatpendidikan($id)
     {
         // dd($id);
-        $data = Pendidikan::find($id);
-
-        return view('tampilriwayatpendidikan', compact('data'));
+        $riwayatPendidikan = Pendidikan::find($id)->get();
+        return view('tampilriwayatpendidikan', compact('riwayatPendidikan'));
     }
 
     public function insertdatapendidikan(Request $request)
@@ -99,26 +98,38 @@ class PendidikanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function updatedata(Request $request, $id)
+    public function updatedatapendidikan(Request $request, $id)
     {
+        // dd($request->all());
+        // Validasi data input
         $validator = Validator::make($request->all(), [
-            'pendidikanFormal' => 'nullable|string',
-            'jurusan' => 'nullable|string',
-            'tahunPendidikan' => 'nullable|string',
+            'pendidikan.*.pendidikanFormal' => 'nullable|string',
+            'pendidikan.*.jurusan' => 'nullable|string',
+            'pendidikan.*.tahunPendidikan' => 'nullable|string',
         ]);
     
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-
-        $data = Pendidikan::find($id);
-        $data->update([
-            'pendidikanFormal' => $request->input('pendidikanFormal'),
-            'jurusan' => $request->input('jurusan'),
-            'tahunPendidikan' => $request->input('tahunPendidikan'),
-        ]);
-
-        return redirect()->route('tambahdatapendidikan')->with('success', 'Data Berhasil di Simpan');
+    
+        // Ambil pengguna_id dari pengguna yang sedang login atau sesuaikan dengan logika aplikasi Anda
+        $pengguna = pengguna::first();
+    
+         if ($request->has('pendidikan')) {
+            foreach ($request->pendidikan as $pendidikanId => $pendidikan) {
+                Pendidikan::updateOrCreate(
+                    ['id' => $pendidikanId],
+                    [
+                        'pengguna_id' => $pengguna->id,
+                        'pendidikanFormal' => $pendidikan['pendidikanFormal'],
+                        'jurusan' => $pendidikan['jurusan'],
+                        'tahunPendidikan' => $pendidikan['tahunPendidikan'],
+                    ]
+                );
+            }
+         }
+    
+        return redirect()->route('tambahdatapendidikan')->with('success', 'Data Berhasil di Update');
     }
 
     public function delete($id)

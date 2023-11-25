@@ -17,11 +17,8 @@ return new class extends Migration
             $table->string('pekerjaan')->nullable();
             $table->string('city')->nullable();
             $table->string('employer')->nullable();
-            $table->string('mulai')->nullable();
-            $table->integer('tahun')->nullable();
-            $table->string('terakhir')->nullable();
-            $table->integer('tambah')->nullable();
-            $table->string('deskripsis')->nullable();
+            $table->date('mulaikerja')->nullable();
+            $table->date('akhirkerja')->nullable();
             $table->timestamps();
         });
     }

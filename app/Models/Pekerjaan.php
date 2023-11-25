@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Pekerjaan extends Model
 {
     use HasFactory;
-    
-    protected $fillable = ['pengguna_id', 'pekerjaan','city','employer','mulai','tahun','terakhir','tambah','deskripsis'];
+
+    protected $guarded = [];
+    // protected $fillable = ['pengguna_id', 'pekerjaan','city','employer','mulai','tahun','terakhir','tambah','deskripsis'];
 
     public function pengguna()
     {
-        return $this->hasOne(pengguna::class);
+        return $this->hasMany(pengguna::class,'pengguna_id', 'id');
     }
 }

@@ -95,25 +95,29 @@ class KeterampilanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function updatedata(Request $request, $id)
+    public function updatedataketerampilan(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'level' => 'nullable|in:novice,intermediate',
-            'skill' => 'nullable|string',
+            'Keterampilan.*.level' => 'nullable|in:Novice,Intermediate',
+            'Keterampilan.*.skill' => 'nullable|string',
         ]);
     
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-
-        $data = Keterampilan::find($id);
-        $data->update([
-            'skill' => $request->input('skill'),
-            'level' => $request->input('level'),
-        ]);
-
-        return redirect()->route('tambahdataketerampilan')->with('success', 'Data Berhasil di Simpan');
-
+    
+        foreach ($request->Keterampilan as $keterampilanId => $keterampilanData) {
+            $keterampilan = Keterampilan::find($keterampilanId);
+    
+            if ($keterampilan) {
+                $keterampilan->update([
+                    'skill' => $keterampilanData['skill'],
+                    'level' => $keterampilanData['level'],
+                ]);
+            }
+        }
+    
+        return redirect()->route('tambahdataketerampilan')->with('success', 'Data Keterampilan Berhasil di Update');
     }
 
     public function delete($id)

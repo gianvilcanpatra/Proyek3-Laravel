@@ -138,11 +138,6 @@
             <a href="/tampil/{{ $row->id }}" class="btn btn-info float:right">Edit</a>
             <a href="/delete/{{ $row->id }}" class="btn btn-danger float:right width:50px">Delete</a>
 
-            <!-- <div class="buttonPreview">
-                <div class="textPreview">
-                    <a href="{{ route('preview') }}" class="btn btn-primary">Preview</a>
-                </div>
-            </div> -->
         </div>
     </div>
 

@@ -11,7 +11,6 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/tambahdata.css') }}">
 
   <title>Add Data</title>
 </head>
@@ -19,7 +18,7 @@
 <body class="d-flex">
   <nav class="navbar navbar-expand-md navbar-light bg-light">
       <div class="container-fluid">
-          <a class="navbar-brand" href="/tampilanawal">
+          <a class="navbar-brand" href="{{ route('home') }}">
               <img src="image/home.png" width="50" height="50" alt="Home">
           </a>
       </div>
@@ -32,7 +31,7 @@
           <li><a href="/riwayatpekerjaan" class="next-button" style="color: black; font-size: 19px;">Riwayat Pekerjaan</a></li>
           <li><a href="/keterampilan" class="next-button" style="color: black; font-size: 19px;">Keterampilan</a></li>
           <li><a href="/dokumenpendukung" class="next-button" style="color: black; font-size: 19px;">Dokumen Pendukung</a></li>
-          <li><a href="/preview" class="next-button" style="color: black; font-size: 19px;">Tampil CV</a></li>
+          <li><a href="/pengguna" class="next-button" style="color: black; font-size: 19px;">Tampil CV</a></li>
       </ul>
   </nav>
 </nav>
@@ -44,12 +43,13 @@
               <div class="card-body">
             <form action="/insertdataketerampilan" method="POST" enctype="multipart/form-data"
               onsubmit="return validateForm()">
+              @csrf
               <h2 class="header-profil">KETERAMPILAN</h2>
               <hr style="margin-top: 0px; margin-bottom: 20px; color:#000000;">
-              @csrf
+              
 
               <div class="mb-3">
-                <label for="Keteramapilan" class="form-label"></label>
+                <label for="Keterampilan" class="form-label">Keterampilan</label>
                 <table class="table">
                     <thead>
                         <tr>
@@ -69,8 +69,6 @@
                 </table>
             </div>
             <button type="button" class="btn btn-secondary" id="tambahKeterampilan">Tambah</button>
-                {{-- <button onclick="prevSlide(1)">Kembali</button>
-                <button onclick="nextSlide(2)">Selanjutnya</button> --}}
                 <button class="btn btn-info" style="float:right" type="submit">Submit</button>
               
             </form>
@@ -108,39 +106,6 @@
     </div>
   </div>
   </div>
-
-  <style>
-                .prev-next-buttons {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .prev-button,
-        .next-button {
-            color: #000000;
-            border: none;
-            /* padding: 10px 20px; */
-            cursor: pointer;
-            font-size: 18px;
-            margin-right: 10px;
-            background: transparent;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
-        .prev-button:hover,
-        .next-button:hover {
-            text-decoration: none;
-            /* Menghapus garis bawah pada hover (opsional) */
-            color: #0056b3;
-            /* Warna teks pada hover */
-            background: transparent;
-        }
-
-        .slide-form {
-            display: none;
-        }
-    </style>
   
   <script>
     let KeterampilanIndex = 1;

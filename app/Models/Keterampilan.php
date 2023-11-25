@@ -14,6 +14,6 @@ class Keterampilan extends Model
 
     public function pengguna()
     {
-        return $this->hasOne(pengguna::class);
+        return $this->hasMany(pengguna::class,'pengguna_id', 'id');
     }
 }

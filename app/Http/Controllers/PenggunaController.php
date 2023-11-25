@@ -85,7 +85,7 @@ class PenggunaController extends Controller
     } else {
         // If the user with ID 1 does not exist, create a new user
         Pengguna::create([
-            'id' => $pengguna->id,
+            'id' => 1,
             'firstName' => $request->input('firstName'),
             'lastName' => $request->input('lastName'),
             'gender' => $request->input('gender'),

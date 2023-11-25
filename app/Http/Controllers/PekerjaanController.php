@@ -26,9 +26,10 @@ class PekerjaanController extends Controller
     public function tampilriwayatpekerjaan($id)
     {
         // dd($id);
-        $data = Pekerjaan::find($id);
+        $pengguna = pengguna::find(1);    
+        $riwayatPekerjaan = Pekerjaan::where('pengguna_id', $pengguna->id)->get();
 
-        return view('tampilriwayatpekerjaan', compact('data'));
+        return view('tampilriwayatpekerjaan', compact('riwayatPekerjaan'));
     }
 
     public function insertdatapekerjaan(Request $request)
@@ -38,11 +39,8 @@ class PekerjaanController extends Controller
         'pekerjaan' => 'nullable|string',
         'city' => 'nullable|string',
         'employer' => 'nullable|string',
-        'mulai' => 'nullable|string',
-        'tahun' => 'nullable|string',
-        'terakhir' => 'nullable|string',
-        'tambah' => 'nullable|string',
-        'deskripsis' => 'nullable|string',
+        'mulaikerja' => 'nullable|string',
+        'akhirkerja' => 'nullable|string',
     ]);
 
     if ($validator->fails()) {
@@ -60,11 +58,8 @@ class PekerjaanController extends Controller
         'pekerjaan' => $pekerjaan['pekerjaan'],
         'city' => $pekerjaan['city'],
         'employer' => $pekerjaan['employer'],
-        'mulai' => $pekerjaan['mulai'],
-        'tahun' => $pekerjaan['tahun'],
-        'terakhir' => $pekerjaan['terakhir'],
-        'tambah' => $pekerjaan['tambah'],
-        'deskripsis' => $pekerjaan['deskripsis'],
+        'mulaikerja' => $pekerjaan['mulaikerja'],
+        'akhirkerja' => $pekerjaan['akhirkerja'],
     ]);;
     }
 
@@ -106,36 +101,46 @@ class PekerjaanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function updatedata(Request $request, $id)
+    public function updatedatapekerjaan(Request $request, $id)
     {
+        // Validasi data input
         $validator = Validator::make($request->all(), [
-            'pekerjaan' => 'nullable|string',
-            'city' => 'nullable|string',
-            'employer' => 'nullable|string',
-            'mulai' => 'nullable|string',
-            'tahun' => 'nullable|string',
-            'terakhir' => 'nullable|string',
-            'tambah' => 'nullable|string',
+            'Pekerjaan.*.pekerjaan' => 'nullable|string',
+            'Pekerjaan.*.city' => 'nullable|string',
+            'Pekerjaan.*.employer' => 'nullable|string',
+            'Pekerjaan.*.mulaikerja' => 'nullable|string',
+            'Pekerjaan.*.akhirkerja' => 'nullable|string',
         ]);
     
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-        $data = Pekerjaan::find($id);
-        $data->update([
-            'pekerjaan' => $request->input('pekerjaan'),
-            'city' => $request->input('city'),
-            'employer' => $request->input('employer'),
-            'mulai' => $request->input('mulai'),
-            'tahun' => $request->input('tahun'),
-            'terakhir' => $request->input('terakhir'),
-            'tambah' => $request->input('tambah'),
-            'deskripsis' => $request->input('deskripsis'),
-        ]);
-
-        return redirect()->route('tambahdatapekerjaan')->with('success', 'Data Berhasil di Simpan');
+    
+        // Loop melalui data pekerjaan yang dikirimkan melalui formulir
+            // Jika pekerjaan tidak ditemukan, buat pekerjaan baru
+    
+            $pengguna = pengguna::first();
+    
+            // if ($request->has('pekerjaan')) {
+               foreach ($request->riwayatPekerjaan as $pekerjaanId => $pekerjaanData) {
+                   Pekerjaan::updateOrCreate(
+                       ['id' => $pekerjaanId],
+                [
+                'pengguna_id' => $pengguna->id,
+                'pekerjaan' => $pekerjaanData['pekerjaan'],
+                'city' => $pekerjaanData['city'],
+                'employer' => $pekerjaanData['employer'],
+                'mulaikerja' => $pekerjaanData['mulaikerja'],
+                'akhirkerja' => $pekerjaanData['akhirkerja'],
+            ]);
+        // }
     }
-
+    
+    
+        // Redirect atau kembalikan respons sesuai kebutuhan Anda
+        return redirect()->route('tambahdatapekerjaan')->with('success', 'Data Pekerjaan Berhasil di Update');
+        }
+    
     public function delete($id)
     {
         $data = Pekerjaan::find($id);

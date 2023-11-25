@@ -28,14 +28,15 @@ Route::get('/profil',[PenggunaController::class, 'profil'])->name('profil');
 Route::post('/insertdata',[PenggunaController::class, 'insertdata'])->name('insertdata');
 Route::post('/updatedata/{id}',[PenggunaController::class, 'updatedata'])->name('updatedata');
 
-Route::post('/updatedata/{id}',[PendidikanController::class, 'updatedata'])->name('updatedata');
+Route::put('/updatedatapendidikan/{id}',[PendidikanController::class, 'updatedatapendidikan'])->name('updatedata.pendidikan');
 Route::get('/tampilriwayatpendidikan/{id}',[PendidikanController::class, 'tampilriwayatpendidikan'])->name('tampilriwayatpendidikan');
 
-Route::post('/updatedata/{id}',[PekerjaanController::class, 'updatedata'])->name('updatedata');
+Route::put('/updatedatapekerjaan/{id}',[PekerjaanController::class, 'updatedatapekerjaan'])->name('updatedata.pekerjaan');
 Route::get('/tampilriwayatpekerjaan/{id}',[PekerjaanController::class, 'tampilriwayatpekerjaan'])->name('tampilriwayatpekerjaan');
 
-Route::post('/updatedata/{id}',[KeterampilanController::class, 'updatedata'])->name('updatedata');
+Route::put('/updatedataketerampilan/{id}',[KeterampilanController::class, 'updatedataketerampilan'])->name('updatedata.keterampilan');
 Route::get('/tampilketerampilan/{id}',[KeterampilanController::class, 'tampilketerampilan'])->name('tampilketerampilan');
+
 
 Route::get('/deletependidikan/{id}',[PendidikanController::class, 'delete'])->name('delete');
 Route::get('/deletepekerjaan/{id}',[PekerjaanController::class, 'delete'])->name('delete');
