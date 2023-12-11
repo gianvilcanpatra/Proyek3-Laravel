@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pekerjaan;
+use App\Models\User;
 use App\Models\Pengguna;
+use App\Models\Pekerjaan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+
 class PekerjaanController extends Controller
 {
     public function index()
@@ -19,21 +22,26 @@ class PekerjaanController extends Controller
     public function tambahdatapekerjaan()
     {
 
-        $data = Pekerjaan::all();
+        $userId = Auth::id();
+        $data = Pekerjaan::where('user_id', $userId)->get();
+
         return view('riwayatpekerjaan', compact('data'));
     }
 
     public function tampilriwayatpekerjaan($id)
     {
         // dd($id);
-        $pengguna = pengguna::find(1);    
-        $riwayatPekerjaan = Pekerjaan::where('pengguna_id', $pengguna->id)->get();
+        $userId = Auth::id();
+        $riwayatPekerjaan = Pekerjaan::where('user_id', $userId)->get();
 
         return view('tampilriwayatpekerjaan', compact('riwayatPekerjaan'));
     }
 
     public function insertdatapekerjaan(Request $request)
     {
+
+    $data = Auth::id();
+    $userId = Auth::id();
     // Validasi data input
     $validator = Validator::make($request->all(), [
         'pekerjaan' => 'nullable|string',
@@ -47,14 +55,12 @@ class PekerjaanController extends Controller
         return back()->withErrors($validator)->withInput();
     }
 
-    $pengguna = Pengguna::first();
-    $id = $pengguna->id;
-
+    $data = User::where('user_id', $userId)->first();
 
     // Buat entri pendidikan terkait
     foreach ($request->riwayatPekerjaan as $pekerjaan) {
-        Pekerjaan::updateOrCreate([
-        'pengguna_id' => 1,
+        $data = Pekerjaan::updateOrCreate([
+        'user_id' => $userId,
         'pekerjaan' => $pekerjaan['pekerjaan'],
         'city' => $pekerjaan['city'],
         'employer' => $pekerjaan['employer'],
@@ -119,14 +125,15 @@ class PekerjaanController extends Controller
         // Loop melalui data pekerjaan yang dikirimkan melalui formulir
             // Jika pekerjaan tidak ditemukan, buat pekerjaan baru
     
-            $pengguna = pengguna::first();
+            $data = Pekerjaan::find($id);
+            $user = Auth::user();
     
             // if ($request->has('pekerjaan')) {
                foreach ($request->riwayatPekerjaan as $pekerjaanId => $pekerjaanData) {
                    Pekerjaan::updateOrCreate(
                        ['id' => $pekerjaanId],
                 [
-                'pengguna_id' => $pengguna->id,
+                // 'pengguna_id' => $pengguna->id,
                 'pekerjaan' => $pekerjaanData['pekerjaan'],
                 'city' => $pekerjaanData['city'],
                 'employer' => $pekerjaanData['employer'],

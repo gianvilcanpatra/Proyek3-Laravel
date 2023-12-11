@@ -8,6 +8,7 @@ use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
 use App\Models\Keterampilan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class PenggunaController extends Controller
@@ -25,23 +26,24 @@ class PenggunaController extends Controller
 
     public function profil()
     {
-        $data = pengguna::all();
-        return view('profil', compact('data'));
+
+        $userId = Auth::id();
+        $userData = Pengguna::where('user_id', $userId)->first();
+        $data = $userData;
+        
+            return view('profil' ,compact('data'));
+        
     }
 
     public function insertdata(Request $request)
     {
-        $data = pengguna::create($request->all());
-        $data->id = 1; // or any other value you want to set for 'id'
+        
         // $data->save();
 
-        if ($request->hasFile('image')) {
-            $request->file('image')->move('fotoprofil/', $request->file('image')->getClientOriginalName());
-            $data->image = $request->file('image')->getClientOriginalName();
-            $data->save();
-        }
+
     // Validasi data input
     $validator = Validator::make($request->all(), [
+        'user_id',
         'firstName' => 'required|string',
         'lastName' => 'required|string',
         'gender' => 'required|in:Male,Female',
@@ -57,8 +59,9 @@ class PenggunaController extends Controller
     if ($validator->fails()) {
         return back()->withErrors($validator)->withInput();
     }
+    $userId = Auth::id();
 
-    $existingUser = Pengguna::find(1);
+    $existingUser = Pengguna::where('id', $userId)->first();
 
     // Simpan gambar jika diunggah
     if ($request->hasFile('image')) {
@@ -69,6 +72,7 @@ class PenggunaController extends Controller
         // Update existing user
         $existingUser->update([
             // 'id' => $pengguna->id,
+            'user_id' => Auth::id(),
             'firstName' => $request->input('firstName'),
             'lastName' => $request->input('lastName'),
             'gender' => $request->input('gender'),
@@ -84,8 +88,8 @@ class PenggunaController extends Controller
         return redirect()->route('profil')->with('success', 'Data berhasil diperbarui');
     } else {
         // If the user with ID 1 does not exist, create a new user
-        Pengguna::create([
-            'id' => 1,
+        $data = Pengguna::create([
+            'user_id' => Auth::id(),
             'firstName' => $request->input('firstName'),
             'lastName' => $request->input('lastName'),
             'gender' => $request->input('gender'),
@@ -98,7 +102,14 @@ class PenggunaController extends Controller
             'image' => $request->hasFile('image') ? $request->file('image')->hashName() : null,
         ]);
 
-        return redirect()->route('profil')->with('success', 'Data berhasil disimpan');
+        if ($request->hasFile('image')) {
+            $request->file('image')->move('fotoprofil/', $request->file('image')->getClientOriginalName());
+            $data->image = $request->file('image')->getClientOriginalName();
+            $data->save();
+        }
+
+        $userId = $data->id;
+        return redirect()->route('profil', ['id' => $userId])->with('success', 'Data berhasil disimpan');
     }
     }
     public function tampilkandata($id)
@@ -206,10 +217,26 @@ class PenggunaController extends Controller
     
     public function tampilcv()
     {
-        $pengguna = Pengguna::all();
-        $pendidikan = Pendidikan::all();
-        $pekerjaan = Pekerjaan::all();
-        $keterampilan = Keterampilan::all();
+        $user = Auth::id();
+
+        $pengguna = Pengguna::where('user_id' ,$user)->get();
+        $pendidikan = Pendidikan::where('user_id' ,$user)->get();
+        $pekerjaan = Pekerjaan::where('user_id' ,$user)->get();
+        $keterampilan = Keterampilan::where('user_id' ,$user)->get();
+
+
+        // $userId = Auth::id();
+        // $userData = Pengguna::where('user_id', $userId)->first();
+        // $pengguna = $userData;
+    
+        // $userData = Pendidikan::where('user_id', $userId)->first();
+        // $pengguna = $userData;
+    
+        // $userData = Pekerjaan::where('user_id', $userId)->first();
+        // $pengguna = $userData;
+    
+        // $userData = Keterampilan::where('user_id', $userId)->first();
+        // $pengguna = $userData;
 
         return view('preview', compact('pengguna', 'pendidikan', 'pekerjaan', 'keterampilan'));
     }

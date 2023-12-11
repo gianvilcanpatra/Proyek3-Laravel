@@ -68,10 +68,11 @@
                           
                           </td>
                       </tr>
+                      @endforeach
                   </tbody>
                 </table>
                 <button class="btn btn-info" style="float:right" type="submit">update</button>
-                @endforeach
+                
               </form>
             </div>
          </div>

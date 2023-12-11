@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pendidikan;
+use App\Models\User;
 use App\Models\Pengguna;
+use App\Models\Pendidikan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class PendidikanController extends Controller
@@ -22,46 +24,50 @@ class PendidikanController extends Controller
 
     public function tambahdatapendidikan()
     {
-        $data = Pendidikan::all();
+        $userId = Auth::id();
+        $data = Pendidikan::where('user_id', $userId)->get();
+
         return view('riwayatpendidikan', compact('data'));
     }
 
     public function tampilriwayatpendidikan($id)
     {
         // dd($id);
-        $riwayatPendidikan = Pendidikan::find($id)->get();
+        $userId = Auth::id();
+        $riwayatPendidikan = Pendidikan::where('user_id', $userId)->get();
         return view('tampilriwayatpendidikan', compact('riwayatPendidikan'));
     }
 
     public function insertdatapendidikan(Request $request)
     {
-    // Validasi data input
-    $validator = Validator::make($request->all(), [
-        'pendidikanFormal' => 'nullable|string',
-        'jurusan' => 'nullable|string',
-        'tahunPendidikan' => 'nullable|string',
-    ]);
-
-    if ($validator->fails()) {
-        return back()->withErrors($validator)->withInput();
-    }
-
-    $pengguna = Pengguna::first();
-    $id = $pengguna->id;
+        $data = Auth::id();
+        $userId = Auth::id();
+        // Validasi data input
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'pendidikanFormal' => 'nullable|string',
+            'jurusan' => 'nullable|string',
+            'tahunPendidikan' => 'nullable|string',
+        ]);
     
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
 
-    // Buat entri pendidikan terkait
-    foreach ($request->riwayatPendidikan as $pendidikan) {
-        Pendidikan::updateOrCreate([
-        'pengguna_id' => 1,
-        'pendidikanFormal' => $pendidikan['pendidikanFormal'],
-        'jurusan' => $pendidikan['jurusan'],
-        'tahunPendidikan' => $pendidikan['tahunPendidikan'],
-    ]);;
+    $data = User::where('user_id', $userId)->first();
+        // Process and store pendidikan data
+        foreach ($request->riwayatPendidikan as $pendidikan) {
+            $data = Pendidikan::create([
+                'user_id' => $userId,
+                'pendidikanFormal' => $pendidikan['pendidikanFormal'],
+                'jurusan' => $pendidikan['jurusan'],
+                'tahunPendidikan' => $pendidikan['tahunPendidikan'],
+            ]);
+        }
+    
+        return redirect()->route('tambahdatapendidikan', )->with('success', 'Data Berhasil di Simpan');
     }
     
-    return redirect()->route('tambahdatapendidikan')->with('success', 'Data Berhasil di Simpan');
-}
 
     /**
      * Show the form for creating a new resource.
@@ -113,14 +119,14 @@ class PendidikanController extends Controller
         }
     
         // Ambil pengguna_id dari pengguna yang sedang login atau sesuaikan dengan logika aplikasi Anda
-        $pengguna = pengguna::first();
-    
+        $data = Pendidikan::find($id);
+        $user = Auth::user();
+
          if ($request->has('pendidikan')) {
             foreach ($request->pendidikan as $pendidikanId => $pendidikan) {
-                Pendidikan::updateOrCreate(
+                $data = Pendidikan::updateOrCreate(
                     ['id' => $pendidikanId],
                     [
-                        'pengguna_id' => $pengguna->id,
                         'pendidikanFormal' => $pendidikan['pendidikanFormal'],
                         'jurusan' => $pendidikan['jurusan'],
                         'tahunPendidikan' => $pendidikan['tahunPendidikan'],

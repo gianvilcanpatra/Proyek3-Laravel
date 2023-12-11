@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('penggunas', function (Blueprint $table) {
             $table->id(); 
             // $table->id();
+            $table->unsignedBigInteger('user_id')->index()->nullable();
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->string('firstName');
             $table->string('lastName');
             $table->enum('gender', ['Male', 'Female']);

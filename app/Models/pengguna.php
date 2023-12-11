@@ -24,25 +24,10 @@ class pengguna extends Model
         return Storage::url($this->document_path);
     }
 
-    public function pendidikan()
+    public function user()
     {
-        return $this->hasMany(Pendidikan::class, 'pengguna_id', 'id');
-    } 
-
-    public function pekerjaan()
-    {
-        return $this->hasMany(Pekerjaan::class);
-    } 
-
-    public function keterampilan()
-    {
-        return $this->hasMany(Keterampilan::class);
-    } 
-
-    public function dokumen()
-    {
-        return $this->hasMany(Dokumen::class);
-    } 
+        return $this->belongsTo(User::class,'user_id', 'id');
+    }
 
 
 }

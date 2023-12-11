@@ -33,7 +33,7 @@ class LoginController extends Controller
             return redirect('tampilanawal');
         }
     
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('email', $request->email);
     
         if ($user) {
             // Incorrect password
@@ -75,12 +75,15 @@ class LoginController extends Controller
 
         session(['name' => $request->name]);
 
-        User::create([
+        $user = User::create([
+            'user_id' => Str::uuid(),
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'remember_token' => Str::random(60),
         ]);
+
+        Auth::login($user);
 
         return redirect('/login');
     }

@@ -13,8 +13,8 @@ class Pekerjaan extends Model
     protected $guarded = [];
     // protected $fillable = ['pengguna_id', 'pekerjaan','city','employer','mulai','tahun','terakhir','tambah','deskripsis'];
 
-    public function pengguna()
+    public function user()
     {
-        return $this->hasMany(pengguna::class,'pengguna_id', 'id');
+        return $this->belongsTo(User::class,'user_id', 'id');
     }
 }

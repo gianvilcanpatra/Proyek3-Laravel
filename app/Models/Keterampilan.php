@@ -12,8 +12,8 @@ class Keterampilan extends Model
     protected $guarded = [];
     //protected $primaryKey = "id";
 
-    public function pengguna()
+    public function user()
     {
-        return $this->hasMany(pengguna::class,'pengguna_id', 'id');
+        return $this->belongsTo(User::class,'user_id', 'id');
     }
 }

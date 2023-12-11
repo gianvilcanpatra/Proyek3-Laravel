@@ -3,43 +3,50 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use App\Models\Dokumen;
+use App\Models\Pekerjaan;
+use App\Models\Pendidikan;
+use App\Models\Keterampilan;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 
-class User extends Authenticatable
+class User extends Model implements Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use AuthenticableTrait;
+    use hasFactory;
+    
+    protected $primaryKey = 'user_id';
+    protected $table = 'users';
+    protected $fillable = ['user_id','name','email', 'password',];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    
+    public function pengguna()
+{
+    return $this->hasOne(Pengguna::class, 'user_id', 'id');
+}
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+public function keterampilan()
+{
+    return $this->hasMany(Keterampilan::class, 'user_id', 'id');
+}
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+public function pendidikan()
+{
+    return $this->hasMany(Pendidikan::class, 'user_id', 'id');
+}
+
+public function pekerjaan()
+{
+    return $this->hasMany(Pekerjaan::class, 'user_id', 'id');
+}
+
+public function dokumen()
+{
+    return $this->hasMany(Dokumen::class, 'user_id', 'id');
+}
+
 }

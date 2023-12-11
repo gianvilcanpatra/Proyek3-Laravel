@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Dokumen;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+
 class DokumenController extends Controller
 {
     public function index()
@@ -21,13 +24,17 @@ class DokumenController extends Controller
 
     public function tambahdatadokumen()
     {
-        $data = Dokumen::all();
+        $userId = Auth::id();
+        $data = Dokumen::where('user_id', $userId)->get();
         return view('dokumenpendukung', compact('data'));
     }
 
     public function insertdatadokumen(Request $request)
     {
     // Validasi data input
+    $data = Auth::id();
+    $userId = Auth::id();
+
     $validator = Validator::make($request->all(), [
         'document' => 'nullable|file',
     ]);
@@ -36,9 +43,6 @@ class DokumenController extends Controller
         return back()->withErrors($validator)->withInput();
     }
 
-    if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('fotoprofil', 'public');
-    }
 
     // Simpan dokumen jika diunggah
     if ($request->hasFile('document')) {
@@ -48,10 +52,10 @@ class DokumenController extends Controller
         $documentPath = null;
     }
 
-
+    $data = User::where('user_id', $userId)->first();
     // Buat entri pendidikan terkait
     $data = Dokumen::create([
-        'pengguna_id' => 1,
+        'user_id' => $userId,
         'document_name' => $documentPath,
     ]);;
     return redirect()->route('tambahdatadokumen')->with('success', 'Data Berhasil di Simpan');

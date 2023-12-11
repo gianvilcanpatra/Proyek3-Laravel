@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('pendidikans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pengguna_id')->references('id')->on('penggunas')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->index();
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->string('pendidikanFormal')->nullable();
             $table->string('jurusan')->nullable();
             $table->string('tahunPendidikan')->nullable();

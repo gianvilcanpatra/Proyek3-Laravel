@@ -10,10 +10,10 @@ class Pendidikan extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'pengguna_id', 'pendidikanFormal', 'jurusan', 'tahunPendidikan'];
+        'user_id','pendidikanFormal', 'jurusan', 'tahunPendidikan'];
 
-    public function pengguna()
-    {
-        return $this->hasOne(pengguna::class,'pengguna_id', 'id');
-    }
+        public function user()
+        {
+            return $this->belongsTo(User::class,'user_id', 'id');
+        }
 }

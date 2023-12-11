@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('dokumens', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pengguna_id')->references('id')->on('penggunas')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->index()->nullable();
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->string('document_name')->nullable(); 
             $table->text('document_path')->nullable(); 
             $table->timestamps();

@@ -11,8 +11,8 @@ class Dokumen extends Model
     protected $guarded = [];
     protected $primaryKey = "id";
 
-    public function pengguna()
+    public function user()
     {
-        return $this->hasOne(pengguna::class);
+        return $this->belongsTo(User::class,'user_id', 'id');
     }
 }

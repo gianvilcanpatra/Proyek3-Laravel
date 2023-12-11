@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Keterampilan;
+use App\Models\User;
 use App\Models\Pengguna;
+use App\Models\Keterampilan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+
 class KeterampilanController extends Controller
 {
     /**
@@ -21,20 +24,24 @@ class KeterampilanController extends Controller
 
     public function tambahdataketerampilan()
     {
-        $data = Keterampilan::all();
+        $userId = Auth::id();
+        $data = Keterampilan::where('user_id', $userId)->get();
         return view('keterampilan', compact('data'));
     }
 
     public function tampilketerampilan($id)
     {
-        // dd($id);
-        $data = Keterampilan::find($id);
+        $userId = Auth::id();
+        $keterampilan = Keterampilan::where('user_id', $userId)->get();
 
-        return view('tampilketerampilan', compact('data'));
+        return view('tampilketerampilan', compact('keterampilan'));
     }
 
     public function insertdataketerampilan(Request $request)
     {
+
+    $data = Auth::id();
+    $userId = Auth::id();
     // Validasi data input
     $validator = Validator::make($request->all(), [
         'level' => 'nullable|in:novice,intermediate',
@@ -45,13 +52,12 @@ class KeterampilanController extends Controller
         return back()->withErrors($validator)->withInput();
     }
 
-    $pengguna = Pengguna::first();
-    $id = $pengguna->id;
+    $data = User::where('user_id', $userId)->first();
 
     // Buat entri pendidikan terkait
     foreach ($request->Keterampilan as $keterampilan) {
         Keterampilan::updateOrCreate([
-        'pengguna_id' => 1,
+        'user_id' => $userId,
         'skill' => $keterampilan['skill'],
         'level' => $keterampilan['level'],
     ]);
@@ -95,7 +101,7 @@ class KeterampilanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function updatedataketerampilan(Request $request)
+    public function updatedataketerampilan(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'Keterampilan.*.level' => 'nullable|in:Novice,Intermediate',
@@ -105,7 +111,10 @@ class KeterampilanController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-    
+        
+        $data = Keterampilan::find($id);
+        $user = Auth::user();
+
         foreach ($request->Keterampilan as $keterampilanId => $keterampilanData) {
             $keterampilan = Keterampilan::find($keterampilanId);
     

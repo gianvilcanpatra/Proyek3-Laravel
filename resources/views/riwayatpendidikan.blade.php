@@ -8,6 +8,7 @@
             <div class="card-body">
                 <form action="/insertdatapendidikan" method="POST" enctype="multipart/form-data"
                     onsubmit="return validateForm()">
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                     <div style="display: flex; align-items: center;">
                         <img src="image/education_.png" alt="Profil Image" style="margin-right: 15px; width: 30px;">
                         <h2 class="header-profil">RIWAYAT PENDIDIKAN</h2>

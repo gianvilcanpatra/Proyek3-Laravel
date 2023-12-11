@@ -22,45 +22,46 @@ Route::get('/', function () {
     return view('login');
 })->name('home');
 
-Route::get('/pengguna',[PenggunaController::class, 'index'])->name('pengguna');
-Route::get('/oneuser',[PenggunaController::class, 'oneuser'])->name('oneuser');
-Route::get('/profil',[PenggunaController::class, 'profil'])->name('profil');
-Route::post('/insertdata',[PenggunaController::class, 'insertdata'])->name('insertdata');
-Route::post('/updatedata/{id}',[PenggunaController::class, 'updatedata'])->name('updatedata');
+Route::middleware(['auth'])->group(function () {
+        Route::get('/pengguna',[PenggunaController::class, 'index'])->name('pengguna');
+        Route::get('/oneuser',[PenggunaController::class, 'oneuser'])->name('oneuser');
+        Route::get('/profil',[PenggunaController::class, 'profil'])->name('profil');
+        Route::post('/insertdata',[PenggunaController::class, 'insertdata'])->name('insertdata');
+        Route::post('/updatedata/{id}',[PenggunaController::class, 'updatedata'])->name('updatedata');
 
-Route::put('/updatedatapendidikan/{id}',[PendidikanController::class, 'updatedatapendidikan'])->name('updatedata.pendidikan');
-Route::get('/tampilriwayatpendidikan/{id}',[PendidikanController::class, 'tampilriwayatpendidikan'])->name('tampilriwayatpendidikan');
+        Route::put('/updatedatapendidikan/{id}',[PendidikanController::class, 'updatedatapendidikan'])->name('updatedata.pendidikan');
+        Route::get('/tampilriwayatpendidikan/{id}',[PendidikanController::class, 'tampilriwayatpendidikan'])->name('tampilriwayatpendidikan');
 
-Route::put('/updatedatapekerjaan/{id}',[PekerjaanController::class, 'updatedatapekerjaan'])->name('updatedata.pekerjaan');
-Route::get('/tampilriwayatpekerjaan/{id}',[PekerjaanController::class, 'tampilriwayatpekerjaan'])->name('tampilriwayatpekerjaan');
+        Route::put('/updatedatapekerjaan/{id}',[PekerjaanController::class, 'updatedatapekerjaan'])->name('updatedata.pekerjaan');
+        Route::get('/tampilriwayatpekerjaan/{id}',[PekerjaanController::class, 'tampilriwayatpekerjaan'])->name('tampilriwayatpekerjaan');
 
-Route::put('/updatedataketerampilan/{id}',[KeterampilanController::class, 'updatedataketerampilan'])->name('updatedata.keterampilan');
-Route::get('/tampilketerampilan/{id}',[KeterampilanController::class, 'tampilketerampilan'])->name('tampilketerampilan');
-
-
-Route::get('/deletependidikan/{id}',[PendidikanController::class, 'delete'])->name('delete');
-Route::get('/deletepekerjaan/{id}',[PekerjaanController::class, 'delete'])->name('delete');
-Route::get('/deleteketerampilan/{id}',[KeterampilanController::class, 'delete'])->name('delete');
+        Route::put('/updatedataketerampilan/{id}',[KeterampilanController::class, 'updatedataketerampilan'])->name('updatedata.keterampilan');
+        Route::get('/tampilketerampilan/{id}',[KeterampilanController::class, 'tampilketerampilan'])->name('tampilketerampilan');
 
 
+        Route::get('/deletependidikan/{id}',[PendidikanController::class, 'delete'])->name('delete');
+        Route::get('/deletepekerjaan/{id}',[PekerjaanController::class, 'delete'])->name('delete');
+        Route::get('/deleteketerampilan/{id}',[KeterampilanController::class, 'delete'])->name('delete');
 
-Route::get('/riwayatpendidikan', [PendidikanController::class, 'tambahdatapendidikan'])->name('tambahdatapendidikan');
-Route::post('/insertdatapendidikan', [PendidikanController::class, 'insertdatapendidikan'])->name('insertdatapendidikan');
 
-Route::get('/riwayatpekerjaan', [PekerjaanController::class, 'tambahdatapekerjaan'])->name('tambahdatapekerjaan');
-Route::post('/insertdatapekerjaan', [PekerjaanController::class, 'insertdatapekerjaan'])->name('insertdatapekerjaan');
 
-Route::get('/keterampilan', [KeterampilanController::class, 'tambahdataketerampilan'])->name('tambahdataketerampilan');
-Route::post('/insertdataketerampilan', [KeterampilanController::class, 'insertdataketerampilan'])->name('insertdataketerampilan');
+        Route::get('/riwayatpendidikan', [PendidikanController::class, 'tambahdatapendidikan'])->name('tambahdatapendidikan');
+        Route::post('/insertdatapendidikan', [PendidikanController::class, 'insertdatapendidikan'])->name('insertdatapendidikan');
 
-Route::get('/dokumenpendukung', [DokumenController::class, 'tambahdatadokumen'])->name('tambahdatadokumen');
-Route::post('/insertdatadokumen', [DokumenController::class, 'insertdatadokumen'])->name('insertdatadokumen');
+        Route::get('/riwayatpekerjaan', [PekerjaanController::class, 'tambahdatapekerjaan'])->name('tambahdatapekerjaan');
+        Route::post('/insertdatapekerjaan', [PekerjaanController::class, 'insertdatapekerjaan'])->name('insertdatapekerjaan');
 
-Route::get('/keterampilan', [KeterampilanController::class, 'tambahdataketerampilan'])->name('tambahdataketerampilan');
-Route::post('/insertdataketerampilan', [KeterampilanController::class, 'insertdataketerampilan'])->name('insertdataketerampilan');
+        Route::get('/keterampilan', [KeterampilanController::class, 'tambahdataketerampilan'])->name('tambahdataketerampilan');
+        Route::post('/insertdataketerampilan', [KeterampilanController::class, 'insertdataketerampilan'])->name('insertdataketerampilan');
 
-Route::get('/tampilanawal', function () {
-    return view('tampilanawal');
+        Route::get('/dokumenpendukung', [DokumenController::class, 'tambahdatadokumen'])->name('tambahdatadokumen');
+        Route::post('/insertdatadokumen', [DokumenController::class, 'insertdatadokumen'])->name('insertdatadokumen');
+
+        Route::get('/keterampilan', [KeterampilanController::class, 'tambahdataketerampilan'])->name('tambahdataketerampilan');
+        Route::post('/insertdataketerampilan', [KeterampilanController::class, 'insertdataketerampilan'])->name('insertdataketerampilan');
+
+        Route::get('/tampilanawal', function () {
+            return view('tampilanawal');
 });
 
 Route::get('/preview', [PenggunaController::class, 'tampilcv'])->name('tampilcv');
@@ -80,6 +81,8 @@ Route::get('/tampilkandata/{id}',[PenggunaController::class, 'tampilkandata'])->
 Route::get('/tampil/{id}',[PenggunaController::class, 'tampil'])->name('tampil');
 
 Route::get('/delete/{id}',[PenggunaController::class, 'delete'])->name('delete');
+
+});
 
 Route::get('/login',[LoginController::class,'login'])->name('login');
 Route::post('/loginproses',[LoginController::class,'loginproses'])->name('loginproses');
