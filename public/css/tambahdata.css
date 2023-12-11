@@ -1,10 +1,10 @@
 /* Atur gaya untuk body dan konten utama */
-body {
+/* body {
     background-color: #fefefe;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
+} */
 
 
 
@@ -70,11 +70,12 @@ h1 {
 } */
 
 .center {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     
 }
+
 
 .card {
     /* border-color: rgb(177, 174, 174); */
@@ -92,6 +93,7 @@ h1 {
     justify-content: center;
     min-height: 90vh;
     margin-top: 50px;
+    align-items: center;
 }
 
 .btn {
@@ -169,7 +171,7 @@ h1 {
 
 .next-button {
     background-color: #007BFF;
-    color: #fff;
+    /* color: #fff; */
     border: none;
     padding: 10px 20px;
     margin: 5px;
@@ -217,28 +219,17 @@ h1 {
 
 
 body {
-    display: flex;
+    /* display: flex; */
   }
 .navbar {
-    flex: 5;
-    border-bottom: 2px solid black;
-    flex-direction: column;
-    width: 300px;
-    margin-left: 100px;
-    border-right: 2px solid #ddd;
-  }
-  
-  
-  #sidebar {
-    height: 100vh;
-    background-color: #f8f9fa;
-    padding-top: 30px;
-    padding: 5px; 
-    
+    align-items: center;
+    justify-content: center;
+
   }
 
-
-
+.navbar-nav .nav-link {
+    text-decoration: none; /* Menghapus garis bawah pada tautan */
+}
 .prev-next-list {
     list-style: none;
     padding: 0;

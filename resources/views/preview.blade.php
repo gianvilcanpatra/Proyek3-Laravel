@@ -1,3 +1,4 @@
+@extends('layout.content1')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,8 +12,6 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{ asset('css/preview.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/tambahdata.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap">
 
 
@@ -20,36 +19,10 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/tampilanawal">
-                <img src="image/home.png" width="50" height="50" alt="Home">
-            </a>
-        </div>
-
-
-        <nav id="sidebar" style="text-align: left;">
-            <ul class="prev-next-list">
-                <li><a href="/profil" class="next-button" style="color: black; font-size: 19px;">Profil</a></li>
-                <li><a href="/riwayatpendidikan" class="next-button" style="color: black; font-size: 19px;">Riwayat
-                        Pendidikan</a></li>
-                <li><a href="/riwayatpekerjaan" class="next-button" style="color: black; font-size: 19px;">Riwayat
-                        Pekerjaan</a></li>
-                <li><a href="/keterampilan" class="next-button" style="color: black; font-size: 19px;">Keterampilan</a>
-                </li>
-                <li><a href="/dokumenpendukung" class="next-button" style="color: black; font-size: 19px;">Dokumen
-                        Pendukung</a></li>
-                <li><a href="/preview" class="next-button" style="color: black; font-size: 19px;">Tampil CV</a></li>
-            </ul>
-        </nav>
-    </nav>
-
-    <h1 class="center">PREVIEW CV</h1>
+@section('card')
     @if ($pengguna->count() > 0)
-    <div class="container">
-        <div id="cv-downloads">
             <div class="row justify-content-center">
-                <div class="col-8">
+                <div class="col-8; align-items: center;">
                     <!-- <div class="card">
                     <div class="card-body">
 
@@ -67,7 +40,7 @@
                                         <div class="name-info"> {{ $dataPengguna->firstName }} {{
                                             $dataPengguna->lastName }}
                                         </div>
-                                        <div class="role-info">Pelajar</div>
+                                        <div class="role-info">{{ $dataPengguna->deskripsi }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -350,6 +323,7 @@
 
 
     </script>
+@endsection
 </body>
 
 </html>

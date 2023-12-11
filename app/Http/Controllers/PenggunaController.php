@@ -68,7 +68,7 @@ class PenggunaController extends Controller
     if ($existingUser) {
         // Update existing user
         $existingUser->update([
-            'id' => $pengguna->id,
+            // 'id' => $pengguna->id,
             'firstName' => $request->input('firstName'),
             'lastName' => $request->input('lastName'),
             'gender' => $request->input('gender'),
