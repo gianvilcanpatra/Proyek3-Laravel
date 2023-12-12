@@ -28,7 +28,7 @@ class PekerjaanController extends Controller
         return view('riwayatpekerjaan', compact('data'));
     }
 
-    public function tampilriwayatpekerjaan($id)
+    public function tampilriwayatpekerjaan()
     {
         // dd($id);
         $userId = Auth::id();

@@ -1,54 +1,38 @@
+@extends('layout.content1')
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}"> 
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Add Data</title>
 </head>
+
 <body>
-  <body class="d-flex">
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('home') }}">
-                <img src="image/home.png" width="50" height="50" alt="Home">
-            </a>
-        </div>
-    
-   
-    <nav id="sidebar" style="text-align: left;">
-        <ul class="prev-next-list">
-            <li><a href="/profil" class="next-button" style="color: black; font-size: 19px;">Profil</a></li>
-            <li><a href="/riwayatpendidikan" class="next-button" style="color: black; font-size: 19px;">Riwayat Pendidikan</a></li>
-            <li><a href="/riwayatpekerjaan" class="next-button" style="color: black; font-size: 19px;">Riwayat Pekerjaan</a></li>
-            <li><a href="/keterampilan" class="next-button" style="color: black; font-size: 19px;">Keterampilan</a></li>
-            <li><a href="/dokumenpendukung" class="next-button" style="color: black; font-size: 19px;">Dokumen Pendukung</a></li>
-            <li><a href="/pengguna" class="next-button" style="color: black; font-size: 19px;">Tampil CV</a></li>
-        </ul>
-    </nav>
-  </nav>
-    
-  <div class="container">
+    @section('card')
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-10; align-items: center;">
             <div class="card">
                 <div class="card-body">
                   <form action="{{ route('updatedata.pekerjaan', ['id' => $riwayatPekerjaan[0]->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <h2 class="header-profil">RIWAYAT PEKERJA</h2>
+                    <div style="display: flex; align-items: center;">
+                      <img src="image/network-enterprise_.png" alt="Profil Image"
+                          style="margin-right: 15px; width: 30px;">
+                      <h2 class="header-profil">RIWAYAT PEKERJAAN</h2>
+                    </div>
                     <hr style="margin-top: 0px; margin-bottom: 20px; color:#000000;">
-                    <div class="mb-3">
-                      <label for="riwayatPekerjaan" class="form-label">Riwayat Pekerjaan</label>
-                      <table class="table">
-                          <thead>
-                              <tr>
+                    <div class="mb-5">
+                        <label for="riwayatPekerjaan" class="form-label"></label>
+                        <table class="table table-bordered" style="border-color: #f50202">
+                            <thead style="background-color:rgb(252, 252, 228);">
+                                <tr class="table-bordered" style="border-color: #000000">
                                   <th>Jabatan</th>
                                   <th>Nama Perusahaan</th>
                                   <th>Domisili Perusahaan</th>
@@ -94,4 +78,5 @@
 <script src="{{ asset('admin') }}/js/jquery.cookie.js" type="text/javascript">
 </script>
 </body>
+@endsection
 </html>

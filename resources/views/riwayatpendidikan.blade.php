@@ -19,11 +19,11 @@
                         <div class="row-1">
                             <div id="formRiwayatContainer">
 
-                                <div class="mb-3">
+                                <div class="mb-5">
                                     <label for="riwayatPendidikan" class="form-label"></label>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
+                                    <table class="table table-bordered" style="border-color: #f50202">
+                                        <thead style="background-color:rgb(252, 252, 228);">
+                                            <tr class="table-bordered" style="border-color: #000000">
                                                 <th>Nama Sekolah/Universitas</th>
                                                 <th>Jurusan</th>
                                                 <th>Tahun</th>
@@ -57,14 +57,15 @@
 
                             </div>
 
-                            <div class="row">
+                            <div class="row" style="width: 1060px;">
                                 <table class="table" style="margin-left: 10px; margin-right: 10px;">
-                                    <thead>
+                                    <thead class="thead-dark" >
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Pendidikan Formal</th>
                                             <th scope="col">Jurusan</th>
                                             <th scope="col">Tahun Pendidikan</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -79,18 +80,21 @@
                                             <td>{{ $rowpen->jurusan }}</td>
                                             <td>{{ $rowpen->tahunPendidikan }}</td>
                                             <td>
-                                                <a href="/tampilriwayatpendidikan/{{ $rowpen->id }}"
-                                                    class="btn btn-warning text-black">Edit</a>
+                                                
                                                 <a href="/deletependidikan/{{ $rowpen->id }}"
                                                     class="btn btn-danger">Delete</a>
 
                                             </td>
 
                                         </tr>
-                                        @endforeach
+
                                     </tbody>
+                                    
+                                    @endforeach
                                 </table>
                             </div>
+                            <a href="/tampilriwayatpendidikan"
+                                class="btn btn-warning text-black">Edit</a>
                 </form>
 
             </div>
@@ -99,18 +103,32 @@
     </div>
 </div>
 <script>
-    let riwayatPendidikanIndex = 2;
+    let riwayatPendidikanIndex = 1;
 
     document.getElementById('tambahRiwayatPendidikan').addEventListener('click', function () {
         let newRow = document.createElement('tr');
         newRow.innerHTML = `
         <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][pendidikanFormal]" placeholder="Nama Sekolah/Universitas"></td>
-        <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][jurusan]" placeholder=""></td>
-        <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][tahunPendidikan]" placeholder=""></td>
+        <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][jurusan]" placeholder="Jurusan"></td>
+        <td><input type="text" class="form-control" name="riwayatPendidikan[${riwayatPendidikanIndex}][tahunPendidikan]" placeholder="Periode Tahun"></td>
     `;
         document.getElementById('Pendidikan').appendChild(newRow);
-        riwayatPekerjaanIndex++;
+        riwayatPendidikanIndex++;
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

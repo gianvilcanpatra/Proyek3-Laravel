@@ -18,24 +18,20 @@
                         <div class="row-1">
                             <div class="profile-section">
                                 <div class="profile-image">
-                                    @if($data &&$data->image)
-                                    <img src="{{ asset('fotoprofil/' . $data->image) }}"
-                                        alt="Profile Image">
+                                    @if($data && $data->image)
+                                    <img src="{{ asset('fotoprofil/' . $data->image) }}" alt="Profile Image">
                                     @else
                                     <img src="{{ asset('image/profil.png') }}" alt="Profile Image">
-                                    <!-- Provide a default image or leave it empty based on your requirement -->
                                     @endif
-                                    <!-- <label for="nomorTelepon" class="form-label">Foto*</label>
-                        <input type="file" name="image" class="form-control"
-                            id="exampleInputEmail1"> -->
                                 </div>
-
-
-                                <input type="file" name="image" class="form-control"
-                                    id="exampleInputEmail1">
-                                <label for="nomorTelepon" class="form-label">Foto*</label>
-
+                            
+                                <div class="button-section">
+                                    <label for="nomorTelepon" class="form-label">Foto*</label>
+                                    <input type="file" name="image" class="form-control" id="exampleInputEmail1">
+                                </div>
                             </div>
+                            
+                            
 
 
                             <div class="fn-ln">

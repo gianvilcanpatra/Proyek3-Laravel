@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use File;
 
 class PenggunaController extends Controller
 {
@@ -67,13 +68,13 @@ class PenggunaController extends Controller
         return back()->withErrors($validator)->withInput();
     }
     $userId = Auth::id();
-
     $data = Pengguna::where('id', $userId)->first();
 
     // Simpan gambar jika diunggah
-    if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('fotoprofil', 'public');
-    }
+    $fileName = $request->file('image')->getClientOriginalName();
+    $request->file('image')->move(public_path('fotoprofil'), $fileName);
+
+
         // If the user with ID 1 does not exist, create a new user
         $data = Pengguna::create([
             'user_id' => Auth::id(),
@@ -86,14 +87,8 @@ class PenggunaController extends Controller
             'tanggalLahir' => $request->input('tanggalLahir'),
             'deskripsi' => $request->input('deskripsi'),
             'country' => $request->input('country'),
-            'image' => $request->hasFile('image') ? $request->file('image')->hashName() : null,
+            'image' => $fileName,
         ]);
-
-        if ($request->hasFile('image')) {
-            $request->file('image')->move('fotoprofil/', $request->file('image')->getClientOriginalName());
-            $data->image = $request->file('image')->getClientOriginalName();
-            $data->save();
-        }
 
         $userId = $data->id;
         return redirect()->route('profil', ['id' => $userId])->with('success', 'Data berhasil disimpan');
@@ -118,30 +113,34 @@ class PenggunaController extends Controller
         return view('tampildata', compact('data', 'pendidikan'));
     }
 
+
+
     public function updatedata(Request $request, $id)
-    {
-        // $userId = Auth::id();
-        // $userData = Pengguna::where('user_id', $userId)->get();
-        // dd($userData);
+{
+    $userData = Pengguna::find($id);
 
-        $userData = Pengguna::find($id);
+    if ($request->hasFile('image')) {
+        $request->validate([
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
+        ]);
 
-        // Update existing user profile
-        if ($userData) {
-            // Update the user data
-            $userData->update($request->all());
-            // dd($userData);
-            
-            // Handle image upload
-            if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('fotoprofil', 'public');
-            }
-            return redirect()->route('tampildata', ['id' => $id])->with('success', 'Data berhasil diperbarui');
+        
+        if (file_exists(public_path('fotoprofil/' . $userData->image))) {
+            unlink(public_path('fotoprofil/' . $userData->image));
         }
 
-        // Redirect with error message if user data does not exist
-        return redirect()->route('profil')->with('error', 'User data not found for updating');
+        $fileName = $request->file('image')->getClientOriginalName();
+        $request->file('image')->move(public_path('fotoprofil'), $fileName);
+        $userData->update(['image' => $fileName]);
     }
+
+    $userData->update($request->except('image'));
+
+    return redirect()->route('tampildata', ['id' => $id])->with('success', 'Data berhasil diperbarui');
+}
+
+
+    
     
     public function tampilcv()
     {

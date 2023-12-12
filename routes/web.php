@@ -31,13 +31,13 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/updatedata/{id}',[PenggunaController::class, 'updatedata'])->name('updatedata');
 
         Route::put('/updatedatapendidikan/{id}',[PendidikanController::class, 'updatedatapendidikan'])->name('updatedata.pendidikan');
-        Route::get('/tampilriwayatpendidikan/{id}',[PendidikanController::class, 'tampilriwayatpendidikan'])->name('tampilriwayatpendidikan');
+        Route::get('/tampilriwayatpendidikan',[PendidikanController::class, 'tampilriwayatpendidikan'])->name('tampilriwayatpendidikan');
 
         Route::put('/updatedatapekerjaan/{id}',[PekerjaanController::class, 'updatedatapekerjaan'])->name('updatedata.pekerjaan');
-        Route::get('/tampilriwayatpekerjaan/{id}',[PekerjaanController::class, 'tampilriwayatpekerjaan'])->name('tampilriwayatpekerjaan');
+        Route::get('/tampilriwayatpekerjaan',[PekerjaanController::class, 'tampilriwayatpekerjaan'])->name('tampilriwayatpekerjaan');
 
         Route::put('/updatedataketerampilan/{id}',[KeterampilanController::class, 'updatedataketerampilan'])->name('updatedata.keterampilan');
-        Route::get('/tampilketerampilan/{id}',[KeterampilanController::class, 'tampilketerampilan'])->name('tampilketerampilan');
+        Route::get('/tampilketerampilan',[KeterampilanController::class, 'tampilketerampilan'])->name('tampilketerampilan');
 
 
         Route::get('/deletependidikan/{id}',[PendidikanController::class, 'delete'])->name('delete');

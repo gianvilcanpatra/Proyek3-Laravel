@@ -28,11 +28,11 @@
                             <h2 class="header-profil">RIWAYAT PEKERJAAN</h2>
                         </div>
                         <hr style="margin-top: 0px; margin-bottom: 20px; color:#000000;">
-                        <div class="mb-3">
+                        <div class="mb-5">
                             <label for="riwayatPekerjaan" class="form-label"></label>
-                            <table class="table">
-                                <thead>
-                                    <tr>
+                            <table class="table table-bordered" style="border-color: #f50202">
+                                <thead style="background-color:rgb(252, 252, 228);">
+                                    <tr class="table-bordered" style="border-color: #000000">
                                         <th>Jabatan</th>
                                         <th>Nama Perusahaan</th>
                                         <th>Domisili Perusahaan</th>
@@ -68,9 +68,9 @@
                         <button class="btn btn-success" style="float: right;" type="submit">
                             Submit</button>
                     </form>
-                    <div class="row mt-5">
+                    <div class="row mt-5" style="width: 1080px">
                         <table class="table" style="margin-left: 10px; margin-right: 10px;">
-                            <thead>
+                            <thead class="thead-dark" style="width: 1000px">
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Jabatan</th>
@@ -78,6 +78,7 @@
                                     <th scope="col">Kota</th>
                                     <th scope="col">Awal bekerja</th>
                                     <th scope="col">Akhir bekerja</th>
+                                    <th scope="col">action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -94,8 +95,6 @@
                                     <td>{{ $rowpek->mulaikerja }}</td>
                                     <td>{{ $rowpek->akhirkerja }}</td>
                                     <td>
-                                        <a href="/tampilriwayatpekerjaan/{{ $rowpek->id }}"
-                                            class="btn btn-warning">Edit</a>
                                         <a href="/deletepekerjaan/{{ $rowpek->id }}" class="btn btn-danger">Delete</a>
                                     </td>
 
@@ -103,6 +102,8 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <a href="/tampilriwayatpekerjaan"
+                            class="btn btn-warning">Edit</a>
                     </div>
                     {{-- <button onclick="prevSlide(1)">Kembali</button>
                     <button onclick="nextSlide(2)">Selanjutnya</button> --}}

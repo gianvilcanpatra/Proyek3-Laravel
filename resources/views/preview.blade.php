@@ -323,7 +323,8 @@
 
 
     </script>
-@endsection
+
 </body>
+@endsection
 
 </html>

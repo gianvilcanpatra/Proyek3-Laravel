@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->index()->nullable();
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->string('skill')->nullable();
-            $table->enum('level',['novice', 'intermediate'])->nullable();
+            $table->string('tahunPengalaman')->nullable();
+            $table->enum('level',['Novice', 'Compotent', 'Proficient', 'Expert', 'Master'])->nullable();
             $table->timestamps();
         });
     }

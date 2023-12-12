@@ -29,7 +29,7 @@ class KeterampilanController extends Controller
         return view('keterampilan', compact('data'));
     }
 
-    public function tampilketerampilan($id)
+    public function tampilketerampilan()
     {
         $userId = Auth::id();
         $keterampilan = Keterampilan::where('user_id', $userId)->get();
@@ -44,8 +44,9 @@ class KeterampilanController extends Controller
     $userId = Auth::id();
     // Validasi data input
     $validator = Validator::make($request->all(), [
-        'level' => 'nullable|in:novice,intermediate',
+        'level' => 'nullable|in:Novice,Competent,Proficient,Expert,Master',
         'skill' => 'nullable|string',
+        'tahunPengalaman' => 'nullable|string',
     ]);
 
     if ($validator->fails()) {
@@ -59,6 +60,7 @@ class KeterampilanController extends Controller
         Keterampilan::updateOrCreate([
         'user_id' => $userId,
         'skill' => $keterampilan['skill'],
+        'tahunPengalaman' => $keterampilan['tahunPengalaman'],
         'level' => $keterampilan['level'],
     ]);
 }
@@ -103,14 +105,16 @@ class KeterampilanController extends Controller
      */
     public function updatedataketerampilan(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'Keterampilan.*.level' => 'nullable|in:Novice,Intermediate',
-            'Keterampilan.*.skill' => 'nullable|string',
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'Keterampilan.*.level' => 'nullable|in:Novice,Competent,Proficient,Expert,Master',
+        //     'Keterampilan.*.skill' => 'nullable|string',
+        //     'Keterampilan.*.tahunPengalaman' => 'nullable|string',
+
+        // ]);
     
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
+        // if ($validator->fails()) {
+        //     return back()->withErrors($validator)->withInput();
+        // }
         
         $data = Keterampilan::find($id);
         $user = Auth::user();
@@ -121,6 +125,7 @@ class KeterampilanController extends Controller
             if ($keterampilan) {
                 $keterampilan->update([
                     'skill' => $keterampilanData['skill'],
+                    'tahunPengalaman' => $keterampilanData['tahunPengalaman'],
                     'level' => $keterampilanData['level'],
                 ]);
             }

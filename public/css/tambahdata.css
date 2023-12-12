@@ -47,14 +47,35 @@ h1 {
 
 .profile-section .form-control {
     width: 100%; /* Mengisi lebar form-control sesuai lebar profile-section */
-    margin-top: 5px; /* Sesuaikan dengan jarak yang diinginkan antara label dan input */
+    margin-top: 30px; /* Sesuaikan dengan jarak yang diinginkan antara label dan input */
+}
+
+.button-section {
+    text-align: center;
+    margin-top: 120px;
 }
 
 .profile-image img {
-    max-width: 100%; /* Membuat gambar tidak melebihi lebar parent (.profile-section) */
-    max-height: 100%; /* Membuat gambar tidak melebihi tinggi parent (.profile-section) */
-    width: auto; /* Menjaga aspek ratio gambar */
-    height: auto; /* Menjaga aspek ratio gambar */
+    /* Pastikan gambar selalu di dalam kotak */
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.profile-section input[type="file"] {
+    margin-top: 10px; /* Sesuaikan margin sesuai kebutuhan */
+}
+
+.profile-section label {
+    display: block;
+    text-align: center;
+    margin-top: 20px; /* Sesuaikan margin sesuai kebutuhan */
+    font-size: 14px; /* Sesuaikan ukuran font sesuai kebutuhan */
 }
 
 .profile- img {
@@ -218,9 +239,7 @@ h1 {
 }
 
 
-body {
-    /* display: flex; */
-  }
+
 .navbar {
     align-items: center;
     justify-content: center;
