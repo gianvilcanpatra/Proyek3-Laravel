@@ -34,7 +34,7 @@
 
                             <div class="fn-ln">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">First
+                                    <label for="exampleInputEmail1" class="form-label">Fiwrst
                                         Name</label><p class="bintang" style="color: red;"></p>
                                     <input type="text" name="firstName" class="form-control"
                                         id="exampleInputEmail1" aria-describedby="emailHelp"

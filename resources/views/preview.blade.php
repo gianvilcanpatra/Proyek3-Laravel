@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="{{ asset('css/preview.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap">
 
-
     <title>Add Data</title>
 </head>
 
@@ -27,7 +26,7 @@
                     <div class="card-body">
 
                         <div class="container mb-4"> -->
-            <div class="cv-container " id="cv-download">
+            <div class="cv-container" id="cv-download">
                 <div class="cv">
 
                     @foreach ($pengguna as $dataPengguna)
@@ -135,9 +134,7 @@
                         <div class="pekerjaan-box" style="margin-top: {{ $marginValue }}px;">
                             <div class="info">
                                 <div class="info-label">{{ $pekerjaan[$index]->pekerjaan }}</div>
-                                <div class="info-value-pendidikan">{{ $pekerjaan[$index]->mulai }} {{
-                                    $pekerjaan[$index]->tahun }} - {{ $pekerjaan[$index]->terakhir }} {{
-                                    $pekerjaan[$index]->tambah }}</div>
+                                <div class="info-value-pendidikan">{{ $pekerjaan[$index]->mulaikerja }} - {{ $pekerjaan[$index]->akhirkerja }}</div>
                             </div>
                             <div class="info">
                                 <div class="info-label">{{ $pekerjaan[$index]->employer }}</div>
@@ -187,6 +184,9 @@
     </div>
     @endif
     </div>
+    <!-- <div class="col-sm-1.5">
+        <a href="/download-film-pdf" type="button" class="btn btn-info btn-sm">Download PDF</a>
+    </div> -->
 
 
     <!-- Optional JavaScript; choose one of the two! -->
@@ -209,5 +209,4 @@
 -->
 </body>
 @endsection
-
-</html>
+</body>
