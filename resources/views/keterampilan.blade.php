@@ -29,7 +29,7 @@
 
 
           <div class="mb-3">
-            <label for="Keterampilan" class="form-label">Keterampilan</label>
+            <label for="Keterampilan" class="form-label"></label>
             <table class="table">
               <thead>
                 <tr>

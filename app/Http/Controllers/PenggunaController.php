@@ -7,6 +7,7 @@ use App\Models\pengguna;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
 use App\Models\Keterampilan;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -26,14 +27,20 @@ class PenggunaController extends Controller
 
     public function profil()
     {
+    $userId = Auth::id();
+    $userData = Pengguna::where('user_id', $userId)->first();
+    $data = $userData;
 
-        $userId = Auth::id();
-        $userData = Pengguna::where('user_id', $userId)->first();
+    if ($data) {
+        // If user data is available, redirect to tampildata.blade.php
+        return view('tampildata', compact('data'));
+    } else {
+        // If user data is not available, continue with the 'profil' view
         $data = $userData;
-        
-            return view('profil' ,compact('data'));
-        
+        return view('profil', compact('data'));
     }
+    }  
+
 
     public function insertdata(Request $request)
     {
@@ -61,32 +68,12 @@ class PenggunaController extends Controller
     }
     $userId = Auth::id();
 
-    $existingUser = Pengguna::where('id', $userId)->first();
+    $data = Pengguna::where('id', $userId)->first();
 
     // Simpan gambar jika diunggah
     if ($request->hasFile('image')) {
         $imagePath = $request->file('image')->store('fotoprofil', 'public');
     }
-
-    if ($existingUser) {
-        // Update existing user
-        $existingUser->update([
-            // 'id' => $pengguna->id,
-            'user_id' => Auth::id(),
-            'firstName' => $request->input('firstName'),
-            'lastName' => $request->input('lastName'),
-            'gender' => $request->input('gender'),
-            'address' => $request->input('address'),
-            'emailUser' => $request->input('emailUser'),
-            'nomorTelepon' => $request->input('nomorTelepon'),
-            'tanggalLahir' => $request->input('tanggalLahir'),
-            'deskripsi' => $request->input('deskripsi'),
-            'country' => $request->input('country'),
-            'image' => $request->hasFile('image') ? $request->file('image')->hashName() : $existingUser->image,
-        ]);
-
-        return redirect()->route('profil')->with('success', 'Data berhasil diperbarui');
-    } else {
         // If the user with ID 1 does not exist, create a new user
         $data = Pengguna::create([
             'user_id' => Auth::id(),
@@ -111,108 +98,49 @@ class PenggunaController extends Controller
         $userId = $data->id;
         return redirect()->route('profil', ['id' => $userId])->with('success', 'Data berhasil disimpan');
     }
-    }
-    public function tampilkandata($id)
+
+
+    public function tampildata($id)
     {
         // dd($id);
-        $data = pengguna::find($id);
-        
+    $userId = Auth::id();
+    $userData = Pengguna::where('user_id', $userId)->first();
+    $data = $userData;
 
+    if ($data) {
+        // If user data is available, redirect to tampildata.blade.php
+        return view('tampildata', compact('data'));
+    } else {
+        // If user data is not available, continue with the 'profil' view
+        $data = $userData;
+        return view('profil', compact('data'));   
+    }
         return view('tampildata', compact('data', 'pendidikan'));
     }
 
-    public function tampil($id)
-    {
-        // dd($id);
-        $data = pengguna::find($id);
-        $pendidikan = Pendidikan::find($id);
-        $pekerjaan = Pekerjaan::find($id);
-        $keterampilan = Keterampilan::find($id);
-        $dokumen = Dokumen::find($id);
-        // dd($pendidikan);
-        
-
-        return view('tampil', compact('data', 'pendidikan', 'pekerjaan', 'keterampilan', 'dokumen'));
-    }
-
-    public function tampilketerampilan($id)
-    {
-        // dd($id);
-        $keterampilan = Keterampilan::find($id);
-        // dd($data);
-
-        return view('tampilketerampilan', compact('keterampilan'));
-    }
-
-    public function tampilriwayatpendidikan($id)
-    {
-        // dd($id);
-        $pendidikan = Pendidikan::find($id);
-
-        return view('tampilriwayatpendidikan', compact('pendidikan'));
-    }
-
-    public function tampilriwayatpekerjaan($id)
-    {
-        // dd($id);
-        $pekerjaan = Pekerjaan::find($id);
-        // dd($data);
-
-        return view('tampilriwayatpekerjaan', compact('pekerjaan'));
-    }
-
-    public function tampilprofil($id)
-    {
-        // dd($id);
-        $data = pengguna::find(1);
-        // dd($data);
-
-        return view('tampilprofil', compact('data'));
-    }
-
-    public function tampildokumenpendukung($id)
-    {
-        // dd($id);
-        $data = pengguna::find($id);
-        // dd($data);
-
-        return view('tampildokumenpendukung', compact('data'));
-    }
-    
     public function updatedata(Request $request, $id)
     {
-        // Validasi data input
-        $validator = Validator::make($request->all(), [
-            'firstName' => 'required|string',
-            'lastName' => 'required|string',
-            'gender' => 'required|in:Male,Female',
-            'address' => 'required|string',
-            'emailUser' => 'required|email',
-            'nomorTelepon' => 'required|numeric',
-            'tanggalLahir' => 'required|date',
-            'deskripsi' => 'required|string',
-            'country' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-        ]);
-    
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
+        // $userId = Auth::id();
+        // $userData = Pengguna::where('user_id', $userId)->get();
+        // dd($userData);
+
+        $userData = Pengguna::find($id);
+
+        // Update existing user profile
+        if ($userData) {
+            // Update the user data
+            $userData->update($request->all());
+            // dd($userData);
+            
+            // Handle image upload
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('fotoprofil', 'public');
+            }
+            return redirect()->route('tampildata', ['id' => $id])->with('success', 'Data berhasil diperbarui');
         }
 
-        $pengguna = Pengguna::find($id);
-        $pengguna->update([
-            'firstName' => $request->input('firstName'),
-            'lastName' => $request->input('lastName'),
-            'gender' => $request->input('gender'),
-            'address' => $request->input('address'),
-            'emailUser' => $request->input('emailUser'),
-            'nomorTelepon' => $request->input('nomorTelepon'),
-            'tanggalLahir' => $request->input('tanggalLahir'),
-            'deskripsi' => $request->input('deskripsi'),
-            'country' => $request->input('country'),
-        ]);
-
-        return redirect()->route('tambahdatapendidikan');
+        // Redirect with error message if user data does not exist
+        return redirect()->route('profil')->with('error', 'User data not found for updating');
     }
     
     public function tampilcv()
@@ -223,20 +151,6 @@ class PenggunaController extends Controller
         $pendidikan = Pendidikan::where('user_id' ,$user)->get();
         $pekerjaan = Pekerjaan::where('user_id' ,$user)->get();
         $keterampilan = Keterampilan::where('user_id' ,$user)->get();
-
-
-        // $userId = Auth::id();
-        // $userData = Pengguna::where('user_id', $userId)->first();
-        // $pengguna = $userData;
-    
-        // $userData = Pendidikan::where('user_id', $userId)->first();
-        // $pengguna = $userData;
-    
-        // $userData = Pekerjaan::where('user_id', $userId)->first();
-        // $pengguna = $userData;
-    
-        // $userData = Keterampilan::where('user_id', $userId)->first();
-        // $pengguna = $userData;
 
         return view('preview', compact('pengguna', 'pendidikan', 'pekerjaan', 'keterampilan'));
     }

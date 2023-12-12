@@ -83,7 +83,7 @@
           <img src="{{ asset('lte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div> -->
         <div class="info">
-          <a href="#" class="d-block">Hello, {{ session('name') }}!</a>
+          <a href="#" class="d-block">Hello, {{ auth()->check() ? auth()->user()->name : 'Guest' }}!</a>
         </div>
       </div>
 
@@ -115,11 +115,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/profil" class="nav-link">
+            <a href="/tampilprofil/{id}" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Create CV
-               
               </p>
             </a>
           </li>

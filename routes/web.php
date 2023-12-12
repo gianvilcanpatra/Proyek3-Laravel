@@ -26,8 +26,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/pengguna',[PenggunaController::class, 'index'])->name('pengguna');
         Route::get('/oneuser',[PenggunaController::class, 'oneuser'])->name('oneuser');
         Route::get('/profil',[PenggunaController::class, 'profil'])->name('profil');
+        Route::get('/tampilprofil/{id}',[PenggunaController::class, 'tampildata'])->name('tampildata');
         Route::post('/insertdata',[PenggunaController::class, 'insertdata'])->name('insertdata');
-        Route::post('/updatedata/{id}',[PenggunaController::class, 'updatedata'])->name('updatedata');
+        Route::put('/updatedata/{id}',[PenggunaController::class, 'updatedata'])->name('updatedata');
 
         Route::put('/updatedatapendidikan/{id}',[PendidikanController::class, 'updatedatapendidikan'])->name('updatedata.pendidikan');
         Route::get('/tampilriwayatpendidikan/{id}',[PendidikanController::class, 'tampilriwayatpendidikan'])->name('tampilriwayatpendidikan');

@@ -29,7 +29,7 @@
                         </div>
                         <hr style="margin-top: 0px; margin-bottom: 20px; color:#000000;">
                         <div class="mb-3">
-                            <label for="riwayatPekerjaan" class="form-label">Riwayat Pekerjaan</label>
+                            <label for="riwayatPekerjaan" class="form-label"></label>
                             <table class="table">
                                 <thead>
                                     <tr>
