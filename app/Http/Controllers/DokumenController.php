@@ -39,6 +39,7 @@ class DokumenController extends Controller
         'document' => 'nullable|file',
     ]);
 
+
     if ($validator->fails()) {
         return back()->withErrors($validator)->withInput();
     }
@@ -47,7 +48,9 @@ class DokumenController extends Controller
     // Simpan dokumen jika diunggah
     if ($request->hasFile('document')) {
         $document = $request->file('document');
-        $documentPath = $document->store('public/documents');
+        $documentName = $document->getClientOriginalName();
+        $documentPath = $document->storeAs('public/documents', $documentName);
+        // dd($documentPath);
     } else {
         $documentPath = null;
     }
@@ -56,8 +59,9 @@ class DokumenController extends Controller
     // Buat entri pendidikan terkait
     $data = Dokumen::create([
         'user_id' => $userId,
-        'document_name' => $documentPath,
-    ]);;
+        'document_name' => $documentName,
+        'document_path' => $documentPath,
+    ]);
     return redirect()->route('tambahdatadokumen')->with('success', 'Data Berhasil di Simpan');
     // return redirect()->route('pengguna')->with('success', 'Data Berhasil di Simpan');
 }
@@ -106,8 +110,11 @@ class DokumenController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete($id)
     {
-        //
+        $data = Dokumen::find($id);
+        // dd($data);
+        $data->delete();
+        return redirect()->route('tambahdatadokumen');
     }
 }

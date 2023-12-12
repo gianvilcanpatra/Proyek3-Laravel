@@ -250,6 +250,8 @@ h1 {
 .prev-next-list {
     list-style-type: none; /* Remove default list styles */
     padding: 0; /* Remove default padding */
+    position: relative;
+    left: 30%;
 }
 
 

@@ -20,12 +20,12 @@
   
     <div class="card-body">
      <p class="login-box-msg">
-        <img src="image/icon1.png" alt="Icon" style="vertical-align: middle; margin-right: 5px; width: 30px;">
+        <img src="image/icon1.png" alt="Icon" style="vertical-align: middle; margin-right: 5px; width: 30px; margin-bottom:5px;">
         WP4
       </p>
-      <p class="login-box-msg1">
+      <p class="login-box-msg1" style="margin-top:10px; margin-bottom:35px;">
 
-        Welcome to our App
+        Welcome to our App!
       </p>
       @if(session('login_error'))
             <div class="alert alert-danger"  style="color: red;">
@@ -46,7 +46,7 @@
           @endif
       <form action="/loginproses" method="post">
       @csrf
-      <label for="email" style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+      <label for="email" style="color: black; font-weight: bold;">
         Email
       </label>
         <div class="input-group mb-3"style="margin-top: 5px; margin-bottom: 15px;">
@@ -60,7 +60,7 @@
           @error('email')
               <div class="alert alert-danger" style="color: red;">{{ $message }}</div>
             @enderror
-            <label for="password" style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Password</label>
+            <label for="password" style="color: black; font-weight: bold;;">Password</label>
           <div class="input-group mb-3"  style="margin-top: 5px; margin-bottom: 5px;"> <!-- Atur margin-top sesuai keinginan Anda -->
             <input type="password" class="form-control" name="password" placeholder="Password">
             <div class="input-group-append">
@@ -76,9 +76,9 @@
   <div class="col-4">
     <div class="signin-container">
       <button type="submit" class="btn btn-primary btn-block" style="color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">SIGN IN</button>
-      <p class="signup-link" style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
-        No account?
-        <a href="/register" style="color: black;">SIGN UP</a>
+      <p class="signup-link" style="color: black;">
+        Don't have account?
+        <a href="/register" style="color: black; font-weight:bold;">SIGN UP</a>
       </p>
     </div>
   </div>

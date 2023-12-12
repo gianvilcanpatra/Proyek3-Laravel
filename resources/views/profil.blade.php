@@ -9,8 +9,8 @@
                     onsubmit="return validateForm()" id="profileForm">
                     @csrf
                     <div style="display: flex; align-items: center;">
-                        <img src="image/user-profile_.png" alt="Profil Image"
-                            style="margin-right: -5px; width: 30px; margin-bottom:10px">
+                        <img src="{{ asset('image/user-profile_.png') }}" alt="Profil Image"
+                            style="margin-right: -5px; width: 30px; margin-bottom:10px;">
                         <h2 class="header-profil">PROFIL</h2>
                     </div>
                     <hr style="margin-top: 0px; margin-bottom: 30px; color:#000000;">
@@ -35,7 +35,7 @@
                             <div class="fn-ln">
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">First
-                                        Name*</label>
+                                        Name</label><p class="bintang" style="color: red;"></p>
                                     <input type="text" name="firstName" class="form-control"
                                         id="exampleInputEmail1" aria-describedby="emailHelp"
                                         value="{{ old('firstName', $data ? $data->firstName : '') }}"

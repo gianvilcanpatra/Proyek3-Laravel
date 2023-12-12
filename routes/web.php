@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/deletependidikan/{id}',[PendidikanController::class, 'delete'])->name('delete');
         Route::get('/deletepekerjaan/{id}',[PekerjaanController::class, 'delete'])->name('delete');
         Route::get('/deleteketerampilan/{id}',[KeterampilanController::class, 'delete'])->name('delete');
+        Route::get('/deletedokumen/{id}',[DokumenController::class, 'delete'])->name('delete');
 
 
 

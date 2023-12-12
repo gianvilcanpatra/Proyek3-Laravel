@@ -2,8 +2,6 @@ Atur gaya untuk body dan konten utama
 body {
     /* background-color: #fefefe; */
     font-family: 'Inter', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
 }
 
 
@@ -59,7 +57,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 50px;
+    /* margin-left: 50px; */
     
 }
 
@@ -81,11 +79,11 @@ h1 {
     justify-content: center;
     min-height: 90vh;
     margin-top: 50px;
-    margin-left:50px;
+    /* margin-left:50px; */
 }
 
 .profile-section {
-    float: left;
+    /* float: left; */
     display: inline;
     position: relative;
     margin: 3px 0 0 0;
@@ -114,8 +112,12 @@ h1 {
     /* flex-direction: column;  */
     /* justify-content: flex-start;  */
     align-items: center; 
-    margin-left:500px;
+    position: absolute;
+    /* margin-left:500px; */
     /* display: inline-flex; */
+    top: 50%;
+    left: 50%;
+    margin-top: 50px;
 }
 
 .cv{

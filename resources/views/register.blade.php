@@ -30,7 +30,7 @@
 
           <form action="/registeruser" method="post">
             @csrf
-            <label for="email" style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+            <label for="email" style="color: black;">
               Username
             </label>
             
@@ -46,7 +46,7 @@
             @error('name')
               <div class="alert alert-danger" style="color: red;">{{ $message }}</div>
             @enderror
-            <label for="email" style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+            <label for="email" style="color: black;">
               Email
             </label>
             <div class="input-group mb-3" style="margin-top: 5px; margin-bottom: 20px;">
@@ -60,7 +60,7 @@
             @error('email')
               <div class="alert alert-danger" style="color: red;">{{ $message }}</div>
             @enderror
-            <label for="email" style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+            <label for="email" style="color: black;">
               Password
             </label>
             <div class="input-group mb-3" style="margin-top: 5px; margin-bottom: 20px;">
@@ -76,7 +76,7 @@
             @error('password')
               <div class="alert alert-danger" style="color: red;">{{ $message }}</div>
             @enderror
-            <label for="email" style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+            <label for="email" style="color: black;">
               Confirm Password
             </label>
             <div class="input-group mb-3" style="margin-top: 5px; margin-bottom: 5px;">
@@ -90,9 +90,9 @@
 
             <div class="col-4">
               <div class="signin-container">
-                <button type="submit" class="btn btn-primary btn-block" style="color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Sign up</button>
-                <p class="signup-link">
-                  <a href="/login"  style="color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">login</a>
+                <button type="submit" class="btn btn-primary btn-block" style="color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">SIGN UP</button>
+                <p class="signup-link">Have account?
+                  <a href="/login"  style="color: black; font-weight:bold;">LOGIN</a>
                 </p>
               </div>
             </div>

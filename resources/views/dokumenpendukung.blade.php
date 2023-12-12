@@ -9,14 +9,15 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <title>Add Data</title>
 </head>
 
 <body>
     @section('card')
     <div class="row justify-content-center">
-        <div class="col-8">
-            <div class="card">
+        <div class="align-items: center;">
+            <div class="card" style="max-height: 250px;">
                 <div class="card-body">
                     <form action="/insertdatadokumen" method="POST" enctype="multipart/form-data"
                         onsubmit="return validateForm()">
@@ -26,18 +27,21 @@
                             <h2 class="header-profil">DOKUMEN PENDUKUNG</h2>
                         </div>
 
-                        <hr style="margin-top: 0px; margin-bottom: 20px; color:#000000;">
+                        <hr style="margin-top: 0px; margin-bottom: 20px;">
                         @csrf
                         <div class="container mb-4">
                             <div class="row-1">
                                 <div class="mb-3">
                                     <label for="document" class="form-label">Dokumen</label>
                                     <div class="custom-file">
-                                        <input type="file" name="document" accept=".pdf, .doc, .docx" id="document"
-                                            class="custom-file-input">
+                                        <input type="file" class="form-label" name="document" accept=".pdf, .doc, .docx"
+                                            id="document" class="custom-file-input">
                                     </div>
                                 </div>
-                                {{-- <button onclick="prevSlide(1)">Kembali</button> --}}
+                                <!-- <div class="mb-3">
+                                    <label for="document" class="form-label">Default file input example</label>
+                                    <input class="form-control" type="file" id="formFile">
+                                </div> -->
                                 <button class="btn btn-success" style="float: right;" type="submit">
                                     Submit</button>
                             </div>
@@ -46,6 +50,35 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="row mt-5" style="width: 1080px">
+        <table class="table" style="margin-left: 10px; margin-right: 10px;">
+            <thead class="thead-dark" style="width: 1000px">
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama File</th>
+                    <th scope="col">File Path</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @php
+                $no = 1;
+                @endphp
+                @foreach ($data as $rowket)
+                <tr>
+                    <td>{{ $no++ }}</td>
+                    <td>{{ $rowket->document_name }}</td>
+                    <td><a href="{{ $rowket->document_url }}" download="{{ basename($rowket->document_path) }}">Download</a></td>
+                    <td>
+                        <a href="/deletedokumen/{{ $rowket->id }}" class="btn btn-danger">Delete</a>
+
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 
     <script type="text/javascript">
@@ -64,10 +97,8 @@
 
             clearButton.addEventListener('click', function () {
                 fileInput.value = ''; // Membersihkan nilai input file
-                fileLabel.textContent = 'Pilih file...'; // Mengatur label kembali ke "Pilih file..."
-            });
-        });
-
+                fileLabel.textContent = 'Pilih file...'; // Mengatur label kembali ke "Pilih f.."
+            
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -98,9 +129,8 @@
                 alert("Please fill in all required fields in the profile section before proceeding.");
             } else {
                 // If all required fields are filled, navigate to the target URL
-                window.location.href = targetUrl;
-            }
-        }
+                window.location.href = taUrl;      }
+     
     </script>
     @endsection
 </body>
