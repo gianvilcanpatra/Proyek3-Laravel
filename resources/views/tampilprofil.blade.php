@@ -9,8 +9,8 @@
                     @csrf
                     @method('PUT')
                     <div style="display: flex; align-items: center;">
-                        <img src="image/user-profile_.png" alt="Profil Image"
-                            style="margin-right: -5px; width: 30px; margin-bottom:10px">
+                        <!-- <img src="{{ asset('image/user-profile_.png') }}" alt="Profil Image"
+                            style="margin-right: -5px; width: 30px; margin-bottom:10px"> -->
                         <h2 class="header-profil">PROFIL</h2>
                     </div>
                     <hr style="margin-top: 0px; margin-bottom: 30px; color:#000000;">

@@ -41,9 +41,9 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/tampilanawal" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
-      </li>
+      </li> -->
     </ul>
 
     <!-- Right navbar links -->
@@ -105,7 +105,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="/templatecv" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -113,7 +113,7 @@
                 
               </p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a href="/tampilprofil/{id}" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>

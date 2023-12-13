@@ -39,7 +39,7 @@
                                 <div class="name-info"> {{ $dataPengguna->firstName }} {{
                                     $dataPengguna->lastName }}
                                 </div>
-                                <div class="role-info">{{ $dataPengguna->deskripsi }}</div>
+                                <!-- <div class="role-info">{{ $dataPengguna->deskripsi }}</div> -->
                             </div>
                         </div>
                     </div>
@@ -134,7 +134,8 @@
                         <div class="pekerjaan-box" style="margin-top: {{ $marginValue }}px;">
                             <div class="info">
                                 <div class="info-label">{{ $pekerjaan[$index]->pekerjaan }}</div>
-                                <div class="info-value-pendidikan">{{ $pekerjaan[$index]->mulaikerja }} - {{ $pekerjaan[$index]->akhirkerja }}</div>
+                                <div class="info-value-pendidikan">{{ date('d F Y', strtotime($pekerjaan[$index]->mulaikerja)) }} — 
+                        {{ date('d F Y', strtotime($pekerjaan[$index]->akhirkerja)) }}</div>
                             </div>
                             <div class="info">
                                 <div class="info-label">{{ $pekerjaan[$index]->employer }}</div>
@@ -159,10 +160,15 @@
             @endphp
             @while ($index < $totalKeterampilan) <div class="keterampilan-container">
                 <div class="content">
-                    <div class="keterampilan-box">
-                        <div class="info" style="margin-top: {{ $marginValue }}px;">
+                    <div class="keterampilan-box" style="margin-top: {{ $marginValue }}px;">
+                        <div class="info">
                             <div class="info-label">{{ $keterampilan[$index]->skill }}</div>
-                            <div class="info-value-pendidikan">{{ $keterampilan[$index]->level }}</div>
+                            <div class="info-value-pendidikan">{{
+                                $keterampilan[$index]->tahunPengalaman }} Tahun</div>
+                        </div>
+                        <div class="info">
+                            <div class="info-label">{{ $keterampilan[$index]->level }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -173,7 +179,7 @@
         </div>
         @php
         $index++;
-        $marginValue += 25;
+        $marginValue += 75;
         @endphp
         @endwhile
     </div>
