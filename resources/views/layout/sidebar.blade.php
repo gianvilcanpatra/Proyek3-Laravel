@@ -129,13 +129,14 @@
             </a>
           </li>
         </ul>
-        <ul style="list-style-type: none; padding: 50; margin: 30;">
+        <ul style="list-style-type: none; padding: 50px; margin: 300px 0 0;">
           <li>
             <a href="/login" class="nav-link">
               <p class="mb-0">Logout</p>
             </a>
           </li>
         </ul>
+        
         
        
       </nav>
