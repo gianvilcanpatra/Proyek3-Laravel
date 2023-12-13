@@ -129,7 +129,17 @@
             </a>
           </li>
         </ul>
+        <ul style="list-style-type: none; padding: 50; margin: 30;">
+          <li>
+            <a href="/login" class="nav-link">
+              <p class="mb-0">Logout</p>
+            </a>
+          </li>
+        </ul>
+        
+       
       </nav>
+
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
@@ -152,6 +162,7 @@
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
+  
 </div>
 <!-- ./wrapper -->
 
