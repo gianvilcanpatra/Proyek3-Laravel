@@ -92,3 +92,9 @@ Route::post('/loginproses',[LoginController::class,'loginproses'])->name('loginp
 
 Route::get('/register',[LoginController::class,'register'])->name('register');
 Route::post('/registeruser',[LoginController::class,'registeruser'])->name('registeruser');
+
+Route::get('/cetak',[PenggunaController::class,'cetak'])->name('cetak');
+Route::get('/cetak',[PendidikanController::class,'cetak'])->name('cetak');
+
+
+

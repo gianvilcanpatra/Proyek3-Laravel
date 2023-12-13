@@ -8,6 +8,7 @@ use App\Models\Pendidikan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use PDF;
 
 class PendidikanController extends Controller
 {
@@ -152,5 +153,17 @@ class PendidikanController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function cetak() {
+        $data = Pengguna::all();
+        $pendidikan = Pendidikan::all(); // Assuming Pendidikan is the model for your education data
+    
+        \Log::info('Retrieved Data:', $data->toArray());
+    
+        view()->share('data', $data);
+        view()->share('pendidikan', $pendidikan);
+    
+        $pdf = PDF::loadview('cetak');
+        return $pdf->download('CV.pdf');
     }
 }

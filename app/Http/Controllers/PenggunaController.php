@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use File;
+use PDF;
 
 class PenggunaController extends Controller
 {
@@ -174,5 +175,15 @@ class PenggunaController extends Controller
         }
 
         // Lanjutkan dengan penyimpanan data jika validasi berhasil
+    }
+    public function cetak() {
+        $data = Pengguna::all();
+    
+        \Log::info('Retrieved Data:', $data->toArray());
+    
+        view()->share('data', $data);
+    
+        $pdf = PDF::loadview('cetak');
+        return $pdf->download('CV.pdf');
     }
 }

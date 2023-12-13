@@ -182,13 +182,18 @@
         $marginValue += 75;
         @endphp
         @endwhile
+        <div class="position-absolute top-0 end-0 m-3">
+            <a href="{{route('cetak')}}" class="btn btn-info">Download</a>
+        </div>
     </div>
+   
     @else
     <div class="no-data-message">
         Anda belum mengisi data, silahkan untuk
         <a href="/profil">mengisi!</a>
     </div>
     @endif
+    
     </div>
     <!-- <div class="col-sm-1.5">
         <a href="/download-film-pdf" type="button" class="btn btn-info btn-sm">Download PDF</a>
